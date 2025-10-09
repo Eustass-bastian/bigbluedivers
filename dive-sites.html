@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dive Sites • Big Blue Dive Rasdhoo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html#home">
+              <img src="images/logo.webp" alt="Big Blue Logo" />
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="about.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="dive-sites.html" class="nav-link active">Dive Sites</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#packages" class="nav-link">Packages</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#courses" class="nav-link">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#excursions" class="nav-link">Excursions</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#about-us" class="nav-link">Accommodation</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#safety" class="nav-link">Safety Tips</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#location" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="dive-sites-main">
+      <!-- Hero Section -->
+      <section class="dive-sites-hero">
+        <div class="container dive-sites-hero__inner">
+          <div class="dive-sites-hero__card">
+            <h2 class="dive-sites-hero__title section-title">Dive Sites</h2>
+            <p class="dive-sites-hero__text section-subtitle">
+              Discover the most spectacular dive sites around Rasdhoo Atoll.
+              From gentle lagoons to thrilling shark encounters, each site
+              offers unique underwater adventures.
+            </p>
+          </div>
+        </div>
+        <div class="dive-sites-hero__bubbles" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="dive-sites-hero__overlay"></div>
+      </section>
+
+      <!-- Dive Sites Introduction Section -->
+      <section class="dive-sites-intro">
+        <div class="container">
+          <div class="dive-sites-intro__content">
+            <div class="dive-sites-intro__left">
+              <h3 class="dive-sites-intro__title">
+                Discover Paradise Beneath the Waves
+              </h3>
+            </div>
+            <div class="dive-sites-intro__right">
+              <p class="dive-sites-intro__highlight">
+                Unforgettable underwater adventures await in the pristine waters
+                of Rasdhoo Atoll.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dive Map Section -->
+      <section class="dive-map-section">
+        <div class="container">
+          <div class="dive-map-content">
+            <h2 class="dive-map-title">Explore Our Dive Sites</h2>
+            <div class="dive-map-image">
+              <img
+                src="images/divemap.webp"
+                alt="Dive Sites Map of Rasdhoo Atoll"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dive Site Details Section -->
+      <section class="dive-site-details-section">
+        <div class="container">
+          <div class="dive-site-details-content">
+            <h2 class="dive-site-details-title">Featured Dive Sites</h2>
+
+            <div class="dive-sites-grid">
+              <!-- Dive Site Card 1 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">1</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Rasdhoo Reef</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty beginner">
+                    Beginner
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Beautiful coral formations with abundant marine life and
+                    excellent visibility.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 8-25m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Reef fish, turtles, rays</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 2 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">2</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Hammerhead Point</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty advanced">
+                    Advanced
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Famous hammerhead shark encounters in deep blue waters with
+                    strong currents.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 20-40m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Hammerhead sharks, pelagics</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 3 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">3</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Madivaru Channel</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty intermediate">
+                    Intermediate
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Thrilling drift dive through the channel with strong
+                    currents and pelagic encounters.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 12-35m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Sharks, eagle rays, jacks</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 4 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">4</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Madivaru Corner</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty intermediate">
+                    Intermediate
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Spectacular corner dive with dramatic drop-offs and diverse
+                    marine ecosystems.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 10-30m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Reef sharks, barracudas</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 5 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">5</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Madivaru Reef</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty beginner">
+                    Beginner
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Gentle reef dive perfect for beginners with colorful corals
+                    and friendly marine life.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 5-20m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Reef fish, nudibranchs</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 6 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">6</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Veligandu East</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty intermediate">
+                    Intermediate
+                  </div>
+                  <p class="dive-site-detail-description">
+                    East-facing reef with excellent coral coverage and abundant
+                    fish life.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 8-28m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Groupers, snappers, rays</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 7 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">7</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Veligandu North</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty intermediate">
+                    Intermediate
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Northern reef section with dramatic topography and large
+                    fish aggregations.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 10-32m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Napoleon wrasse, sharks</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 8 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">8</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Madigaa</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty beginner">
+                    Beginner
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Shallow reef perfect for snorkeling and beginner divers with
+                    calm conditions.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 3-15m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Colorful reef fish, corals</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 9 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">9</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">North Channel</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty advanced">
+                    Advanced
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Challenging drift dive through the northern channel with
+                    strong currents.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 15-40m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Manta rays, sharks, tunas</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 10 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">10</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">North Corner</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty intermediate">
+                    Intermediate
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Corner dive with excellent coral formations and diverse
+                    marine life.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 8-25m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Reef sharks, groupers</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 11 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">11</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Miyaru Faru</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty intermediate">
+                    Intermediate
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Spectacular reef with vibrant coral gardens and abundant
+                    marine biodiversity.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 10-30m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Coral gardens, reef fish</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 12 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">12</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">The Caves</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty advanced">
+                    Advanced
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Underwater cave system with dramatic rock formations and
+                    unique marine life.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 15-35m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Cave fish, lobsters</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 13 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">13</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Bodugaa</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty beginner">
+                    Beginner
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Beautiful reef with thriving hard corals and excellent
+                    visibility for photography.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 5-25m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Coral formations, reef fish</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 14 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">14</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Three Palms</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty beginner">
+                    Beginner
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Named after three distinctive coral formations, offering
+                    diverse marine habitats.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 8-25m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Unique structures, turtles</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 15 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">15</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Holhifaru</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty intermediate">
+                    Intermediate
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Spectacular reef with vibrant coral gardens and diverse
+                    marine ecosystems.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 10-30m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Coral gardens, reef sharks</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 16 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">16</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Rashoo Channel</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty advanced">
+                    Advanced
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Thrilling drift dive through the channel with chances to
+                    spot pelagic species.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 12-35m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Strong currents, eagle rays</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 17 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">17</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Reef Explorer</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty intermediate">
+                    Intermediate
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Artificial reef created by a sunken vessel, now home to
+                    diverse marine species.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 15-30m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Wreck exploration, marine life</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dive Site Card 18 -->
+              <div class="dive-site-detail-card">
+                <div class="dive-site-number">18</div>
+                <div class="dive-site-detail-info">
+                  <div class="dive-site-detail-header">
+                    <h3 class="dive-site-detail-name">Kuramthi Queen</h3>
+                    <div class="dive-site-click-indicator">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="dive-site-detail-difficulty advanced">
+                    Advanced
+                  </div>
+                  <p class="dive-site-detail-description">
+                    Deep dive site known for large pelagic encounters and
+                    dramatic underwater landscapes.
+                  </p>
+                  <div class="dive-site-detail-specs">
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-water"></i>
+                      <span>Depth: 20-45m</span>
+                    </div>
+                    <div class="dive-site-detail-spec">
+                      <i class="fas fa-fish"></i>
+                      <span>Large pelagics, sharks</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
