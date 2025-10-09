@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About • Big Blue Dive Rasdhoo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <script src="script.js"></script>
+    <script>
+      // Simple popup functionality
+      function openAirportInfo() {
+        console.log("Opening airport popup");
+        const popup = document.getElementById('airportInfoPopup');
+        if (popup) {
+          popup.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeAirportInfo() {
+        const popup = document.getElementById('airportInfoPopup');
+        if (popup) {
+          popup.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      function openImmigrationInfo() {
+        console.log("Opening immigration popup");
+        const popup = document.getElementById('immigrationInfoPopup');
+        if (popup) {
+          popup.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeImmigrationInfo() {
+        const popup = document.getElementById('immigrationInfoPopup');
+        if (popup) {
+          popup.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      function openTravelTips() {
+        console.log("Opening travel tips popup");
+        const popup = document.getElementById('travelTipsPopup');
+        if (popup) {
+          popup.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeTravelTips() {
+        const popup = document.getElementById('travelTipsPopup');
+        if (popup) {
+          popup.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      }
+
+      // Close popups when clicking outside
+      document.addEventListener('DOMContentLoaded', function() {
+        const popups = ['airportInfoPopup', 'immigrationInfoPopup', 'travelTipsPopup'];
+        
+        popups.forEach(function(popupId) {
+          const popup = document.getElementById(popupId);
+          if (popup) {
+            popup.addEventListener('click', function(e) {
+              if (e.target === popup) {
+                popup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+              }
+            });
+          }
+        });
+
+        // Close with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            popups.forEach(function(popupId) {
+              const popup = document.getElementById(popupId);
+              if (popup && popup.style.display === 'flex') {
+                popup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+              }
+            });
+          }
+        });
+
+        // Scroll animations for How to Get Here section
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const section = entry.target;
+              const header = section.querySelector('.section-header');
+              const triggers = section.querySelector('.travel-info-triggers');
+              const content = section.querySelector('.transport-content');
+              const cta = section.querySelector('.transport-cta');
+
+              if (header) header.classList.add('animate');
+              if (triggers) triggers.classList.add('animate');
+              if (content) content.classList.add('animate');
+              if (cta) cta.classList.add('animate');
+            }
+          });
+        }, observerOptions);
+
+        // Observe the How to Get Here section
+        const howToGetHereSection = document.querySelector('.how-to-get-here-section');
+        if (howToGetHereSection) {
+          observer.observe(howToGetHereSection);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html#home">
+              <img src="images/logo.webp" alt="Big Blue Logo" />
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="about.html" class="nav-link active">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="dive-sites.html" class="nav-link">Dive Sites</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#packages" class="nav-link">Packages</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#courses" class="nav-link">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#excursions" class="nav-link">Excursions</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#about-us" class="nav-link">Accommodation</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#safety" class="nav-link">Safety Tips</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#location" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="about-main">
+      <section class="about-hero">
+        <div class="container about-hero__inner">
+          <div class="about-hero__card">
+            <h2 class="about-hero__title section-title">About Big Blue</h2>
+            <p class="about-hero__text section-subtitle">
+              Local guides. Small groups. Safety‑first diving in Rasdhoo’s clear
+              waters and where unforgettable experiences await.
+            </p>
+          </div>
+        </div>
+        <div class="about-hero__bubbles" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="about-hero__overlay"></div>
+      </section>
+      <!-- Our Story Section (inserted before Rasdhoo section) -->
+      <section class="our-story-section">
+        <div class="container">
+          <div class="story-header">
+            <h2 class="story-title">Our Story</h2>
+          </div>
+
+          <div class="story-body">
+            <p>
+              Big Blue Dive Rasdhoo is built by a great team of local
+              professionals whose purpose is simple: to assist people and show
+              what our underwater world gives you. Whether it’s your first
+              breath on scuba or your next big adventure, we’re here for you.
+            </p>
+            <p>
+              We keep groups small, move at your pace, and focus on comfort and
+              safety so you can relax and enjoy manta rays, reefs, and the calm
+              turquoise lagoons that surround our island home.
+            </p>
+            <p>
+              This ocean is for everyone. Our team welcomes all levels, shares
+              local knowledge with care, and guides you to experiences you’ll
+              remember long after you surface.
+            </p>
+          </div>
+
+          <div class="story-highlights">
+            <div class="highlight">
+              <h3 class="highlight-title">Founded <span>2024</span></h3>
+              <p>
+                A passionate local team welcoming divers of all levels to
+                discover Rasdhoo’s best with safety and heart.
+              </p>
+            </div>
+            <div class="highlight">
+              <h3 class="highlight-title">Our <span>Vision</span></h3>
+              <p>
+                Sharing the ocean with everyone, respectfully and sustainably.
+              </p>
+            </div>
+            <div class="highlight">
+              <h3 class="highlight-title">Our <span>Mission</span></h3>
+              <p>
+                Guide safely, protect our reefs, and create unforgettable dives
+                for every guest.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dive Center Showcase (below Our Story) -->
+      <section class="center-showcase">
+        <div class="container">
+          <div class="center-poster">
+            <div class="poster-media">
+              <div class="poster-circle reveal-item">
+                <img
+                  src="images/bigbluehou.webp"
+                  alt="Big Blue Dive Rasdhoo Center"
+                />
+              </div>
+              <img
+                class="mini-shot ms1 reveal-item"
+                src="images/picnicisland.webp"
+                alt="Dive Center View 1"
+              />
+              <img
+                class="mini-shot ms2 reveal-item"
+                src="images/hightide.webp"
+                alt="Dive Center View 2"
+              />
+              <div class="poster-pin reveal-item">
+                <i class="fas fa-location-dot"></i> Rasdhoo
+              </div>
+            </div>
+            <div class="poster-info reveal-item">
+              <h3>Big Blue Dive Center</h3>
+              <p>
+                Our dive center is located in the heart of Rasdhoo, offering a
+                unique experience for divers and non-divers alike. This is where
+                we learn and share our passion for the ocean.
+              </p>
+              <div class="poster-tags">
+                <span><i class="fas fa-clock"></i> 05:30–22:00</span>
+                <span><i class="fas fa-users"></i> For Everyone </span>
+                <span><i class="fas fa-check-circle"></i> Easy Access</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Meet The Team Section -->
+      <section class="meet-team-section">
+        <div class="team-header">
+          <div class="container">
+            <h2 class="team-title">Meet The Team</h2>
+          </div>
+        </div>
+
+        <div class="team-content">
+          <div class="container">
+            <div class="team-grid">
+              <div class="team-card">
+                <div class="team-image">
+                  <img
+                    src="images/thille.webp"
+                    alt="Mary Brown - Creative Leader"
+                  />
+                </div>
+                <div class="team-info">
+                  <h3 class="team-name">Thille</h3>
+                  <p class="team-role">Lead Instructor</p>
+                  <p class="team-description">
+                    an experienced diver with a passion for teaching and sharing his knowledge with others with fun and safety.
+                  </p>
+                  <div class="team-social">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
+                    
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="team-card">
+                <div class="team-image">
+                  <img
+                    src="images/aboutus.webp"
+                    alt="Ann Richmond - Creative Leader"
+                  />
+                </div>
+                <div class="team-info">
+                  <h3 class="team-name">Yatte'</h3>
+                  <p class="team-role">Instructor</p>
+                  <p class="team-description">
+                   your everday guide with a passion for to make your day unforgettable with smile on his face to ensure you have a safe and enjoyable experience.
+                  </p>
+                  <div class="team-social">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
+                    </a>
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="team-card">
+                <div class="team-image">
+                  <img
+                    src="images/cappi.webp"
+                    alt="Bob Greenfield - Programming Guru"
+                  />
+                </div>
+                <div class="team-info">
+                  <h3 class="team-name">Beybe</h3>
+                  <p class="team-role">Boat Captain</p>
+                  <p class="team-description">
+                    Ensures the safety of the boat and the passengers with a smile on his face.
+                  </p>
+                  <div class="team-social">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
+
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="team-card">
+                <div class="team-image">
+                  <img
+                    src="images/crew.webp"
+                    alt="Team Member - Dive Instructor"
+                  />
+                </div>
+                <div class="team-info">
+                  <h3 class="team-name">Brother</h3>
+                  <p class="team-role">crew</p>
+                  <p class="team-description">
+                    The crew of the boat with a smile on his face to ensure you have a safe and enjoyable experience.
+                  </p>
+                  <div class="team-social">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
+                    
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="team-card">
+                <div class="team-image">
+                  <img
+                    src="images/aboutus.webp"
+                    alt="Team Member - Dive Master"
+                  />
+                </div>
+                <div class="team-info">
+                  <h3 class="team-name">Yanish</h3>
+                  <p class="team-role">Manager</p>
+                  <p class="team-description">
+                    The manager of the dive center ensures you have a safe and enjoyable experience.
+                  </p>
+                  <div class="team-social">
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
+                    
+                    <a href="#" class="social-link"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Our Values & Mission -->
+        <div class="team-values">
+          <div class="container">
+            <div class="values-header">
+              <h3>Our Values & Mission</h3>
+              <p>What drives us to provide exceptional diving experiences</p>
+            </div>
+            
+            <div class="values-grid">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4>Safety First</h4>
+                <p>Your safety is our top priority. We maintain the highest safety standards and use only certified equipment.</p>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <h4>Passion for Ocean</h4>
+                <p>We're passionate about marine conservation and sharing the beauty of Rasdhoo's underwater world.</p>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h4>Personal Service</h4>
+                <p>Small groups, personalized attention, and local expertise ensure your perfect diving experience.</p>
+              </div>
+              
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-leaf"></i>
+                </div>
+                <h4>Sustainable Diving</h4>
+                <p>We practice responsible diving to protect and preserve the marine environment for future generations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications & Awards -->
+        <div class="team-certifications">
+          <div class="container">
+            <div class="certifications-header">
+              <h3>Certifications & Awards</h3>
+              <p>Recognized excellence in diving instruction and safety</p>
+            </div>
+            
+            <div class="certifications-grid">
+              <div class="cert-item">
+                <div class="cert-logo">
+                  <img src="images/PADI-logo.webp" alt="PADI Certified" />
+                </div>
+                <div class="cert-info">
+                  <h4>PADI Certified</h4>
+                  <p>Professional Association of Diving Instructors certified dive center with qualified instructors.</p>
+                </div>
+              </div>
+              
+              <div class="cert-item">
+                <div class="cert-logo">
+                  <i class="fas fa-medal"></i>
+                </div>
+                <div class="cert-info">
+                  <h4>Safety Excellence</h4>
+                  <p>Zero accident record with over 1000+ successful dives and comprehensive safety protocols.</p>
+                </div>
+              </div>
+              
+              <div class="cert-item">
+                <div class="cert-logo">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="cert-info">
+                  <h4>5-Star Reviews</h4>
+                  <p>Consistently rated 5 stars by our guests for exceptional service and unforgettable experiences.</p>
+                </div>
+              </div>
+              
+              <div class="cert-item">
+                <div class="cert-logo">
+                  <i class="fas fa-award"></i>
+                </div>
+                <div class="cert-info">
+                  <h4>Local Expertise</h4>
+                  <p>Born and raised in Rasdhoo with intimate knowledge of the best dive sites and marine life.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rasdhoo Island Section -->
+      <section class="rasdhoo-section">
+        <!-- Section Header -->
+        <div class="rasdhoo-header">
+          <div class="container">
+            <h2 class="rasdhoo-main-title">Discover the island : Rasdhoo</h2>
+          </div>
+        </div>
+
+        <!-- Heart of Maldives Section -->
+        <div class="heart-of-maldives">
+          <div class="container">
+            <div class="heart-content">
+              <div class="heart-image">
+                <img
+                  src="images/rasdhoo-island.webp"
+                  alt="Aerial View of Rasdhoo Island"
+                />
+                <div class="heart-badge">
+                  <i class="fas fa-heart"></i>
+                  <span>Heart of the Maldives</span>
+                </div>
+              </div>
+
+              <div class="heart-text">
+                <h3>The Heart of the Maldives</h3>
+                <p>
+                  Rasdhoo Island beats at the very heart of the Maldives,
+                  offering an authentic Maldivian experience that captures the
+                  true essence of island life. From its pristine beaches to its
+                  vibrant coral reefs, every corner of this paradise tells a
+                  story of natural beauty and cultural richness.
+                </p>
+
+                <div class="heart-features">
+                  <div class="feature">
+                    <div class="feature-icon">
+                      <i class="fas fa-water"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h4>Crystal Clear Waters</h4>
+                      <p>Experience the clearest waters in the Maldives</p>
+                    </div>
+                  </div>
+
+                  <div class="feature">
+                    <div class="feature-icon">
+                      <i class="fas fa-fish"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h4>Marine Paradise</h4>
+                      <p>Home to manta rays, whale sharks, and coral gardens</p>
+                    </div>
+                  </div>
+
+                  <div class="feature">
+                    <div class="feature-icon">
+                      <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="feature-text">
+                      <h4>Pristine Beaches</h4>
+                      <p>
+                        White sand beaches that stretch as far as the eye can
+                        see
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Things to Experience -->
+        <div class="experience-content">
+          <div class="container">
+            <div class="experience-header">
+              <h3>Things to Experience in Rasdhoo</h3>
+              <p>
+                Discover the unique offerings that make Rasdhoo a true paradise
+              </p>
+            </div>
+
+            <div class="experience-grid">
+              <div class="experience-card">
+                <div class="card-image">
+                  <img src="images/whitebeach.webp" alt="Bikini Beach Paradise" />
+                </div>
+                <div class="card-content">
+                  <h4>White Beach</h4>
+                  <p>
+                    Relax on pristine white sand beaches with crystal clear
+                    turquoise waters. Perfect for swimming, sunbathing, and
+                    enjoying the tropical paradise atmosphere.
+                  </p>
+                  <div class="card-features">
+                    <span
+                      ><i class="fas fa-umbrella-beach"></i> White Sand</span
+                    >
+                    <span><i class="fas fa-sun"></i> Perfect Weather</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="experience-card">
+                <div class="card-image">
+                <img src="images/localcusines.webp" alt="Local Maldivian Cuisine" />
+                </div>
+                <div class="card-content">
+                  <h4>Local Cuisines</h4>
+                  <p>
+                    Taste authentic Maldivian flavors with fresh seafood,
+                    coconut-based dishes, and traditional recipes passed down
+                    through generations.
+                  </p>
+                  <div class="card-features">
+                    <span><i class="fas fa-fish"></i> Fresh Seafood</span>
+                    <span><i class="fas fa-leaf"></i> Local Ingredients</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="experience-card">
+                <div class="card-image">
+                  <img src="images/islandculture.webp" alt="Snorkeling Adventure" />
+                </div>
+                <div class="card-content">
+                  <h4>Island Culture</h4>
+                  <p>
+                    Experience the rich cultural heritage of Rasdhoo through
+                    traditional music, dance, and storytelling. Engage with
+                    local communities and learn about their way of life.
+                  </p>
+                  <div class="card-features">
+                    <span><i class="fas fa-music"></i> Traditional Music</span>
+                    <span><i class="fas fa-book"></i> Local Stories</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="experience-card">
+                <div class="card-image">
+                  <img
+                    src="images/sharkshow.webp"
+                    alt="Island Hopping Adventure"
+                  />
+                </div>
+                <div class="card-content">
+                  <h4>Nurse Shark Show</h4>
+                  <p>
+                    Witness the graceful movement of nurse sharks as they glide
+                    through the water. Experience the thrill of swimming
+                    alongside these gentle giants in their natural habitat.
+                  </p>
+                  <div class="card-features">
+                    <span><i class="fas fa-fish"></i> Marine Giants</span>
+                    <span><i class="fas fa-map"></i> Hidden Gems</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="experience-card">
+                <div class="card-image">
+                  <img src="images/fishfeeding.webp" alt="Manta Ray Experience" />
+                </div>
+                <div class="card-content">
+                  <h4>Fish Feeding</h4>
+                  <p>
+                    Watch the feeding frenzy up close as colorful reef fish
+                    gather around the feeding area. Get up close and personal
+                    with these fascinating creatures.
+                  </p>
+                  <div class="card-features">
+                    <span><i class="fas fa-fish"></i> Feeding Frenzy</span>
+                    <span><i class="fas fa-eye"></i> Unique Experience</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How to Get Here Section -->
+      <section id="how-to-get-here" class="how-to-get-here-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">How to Get Here</h2>
+            <p class="section-subtitle">Your journey to paradise starts here</p>
+          </div>
+
+          <!-- Travel Information Popup Triggers -->
+          <div class="travel-info-triggers">
+            <button class="travel-info-btn airport-btn" onclick="openAirportInfo()" type="button" style="cursor: pointer;">
+              <i class="fas fa-plane"></i>
+              <span>Airport Info</span>
+            </button>
+            <button class="travel-info-btn immigration-btn" onclick="openImmigrationInfo()" type="button" style="cursor: pointer;">
+              <i class="fas fa-passport"></i>
+              <span>Immigration</span>
+            </button>
+            <button class="travel-info-btn tips-btn" onclick="openTravelTips()" type="button" style="cursor: pointer;">
+              <i class="fas fa-lightbulb"></i>
+              <span>Travel Tips</span>
+            </button>
+          </div>
+
+          <!-- Airport Information Popup -->
+          <div id="airportInfoPopup" class="travel-info-popup" style="display: none;">
+            <div class="popup-content">
+              <div class="popup-header">
+                <h3><i class="fas fa-plane"></i> Malé International Airport</h3>
+                <button class="close-btn" onclick="closeAirportInfo()">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              
+              <div class="popup-body">
+                <div class="info-section">
+                  <div class="info-content">
+                    <div class="info-item">
+                      <strong>Location:</strong> Hulhulé Island, Malé
+                    </div>
+                    <div class="info-item">
+                      <strong>Distance to Rasdhoo:</strong> ~70 km (1.5 hours by speed boat)
+                    </div>
+                    <div class="info-item">
+                      <strong>Terminal:</strong> Single terminal serving international and domestic flights
+                    </div>
+                    <div class="info-item">
+                      <strong>Facilities:</strong> Duty-free shops, restaurants, currency exchange, ATMs, free WiFi
+                    </div>
+                    <div class="info-item">
+                      <strong>Parking:</strong> Available for short and long-term parking
+                    </div>
+                    <div class="info-item">
+                      <strong>Transportation:</strong> Taxis, buses, and speed boat transfers available
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Immigration Information Popup -->
+          <div id="immigrationInfoPopup" class="travel-info-popup" style="display: none;">
+            <div class="popup-content">
+              <div class="popup-header">
+                <h3><i class="fas fa-passport"></i> Immigration & Customs</h3>
+                <button class="close-btn" onclick="closeImmigrationInfo()">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              
+              <div class="popup-body">
+                <div class="info-section">
+                  <div class="info-content">
+                    <div class="info-item">
+                      <strong>Visa:</strong> 30-day free visa on arrival for most nationalities
+                    </div>
+                    <div class="info-item">
+                      <strong>Passport:</strong> Must be valid for at least 6 months from arrival date
+                    </div>
+                    <div class="info-item">
+                      <strong>Customs:</strong> No duty on personal items, alcohol prohibited
+                    </div>
+                    <div class="info-item">
+                      <strong>Currency:</strong> Maldivian Rufiyaa (MVR), USD widely accepted
+                    </div>
+                    <div class="info-item">
+                      <strong>Health:</strong> No vaccination requirements for most travelers
+                    </div>
+                    <div class="info-item">
+                      <strong>Prohibited:</strong> Alcohol, pork products, religious materials
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Travel Tips Popup -->
+          <div id="travelTipsPopup" class="travel-info-popup" style="display: none;">
+            <div class="popup-content">
+              <div class="popup-header">
+                <h3><i class="fas fa-lightbulb"></i> Travel Tips</h3>
+                <button class="close-btn" onclick="closeTravelTips()">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              
+              <div class="popup-body">
+                <div class="info-section">
+                  <div class="info-content">
+                    <div class="info-item">
+                      <strong>Best Time:</strong> November to April (dry season)
+                    </div>
+                    <div class="info-item">
+                      <strong>Weather:</strong> Tropical climate, 25-30°C year-round
+                    </div>
+                    <div class="info-item">
+                      <strong>Language:</strong> Dhivehi (official), English widely spoken
+                    </div>
+                    <div class="info-item">
+                      <strong>Time Zone:</strong> Maldives Time (MVT) - UTC+5
+                    </div>
+                    <div class="info-item">
+                      <strong>Clothing:</strong> Light, breathable clothing recommended
+                    </div>
+                    <div class="info-item">
+                      <strong>Sun Protection:</strong> High SPF sunscreen essential
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="transport-content">
+            <div class="transport-info">
+              <div class="transport-intro">
+                <h3>Speed Boat Transfer</h3>
+                <p>
+                  Convenient and comfortable speed boat transfers connect Rasdhoo
+                  with Malé International Airport. Our reliable service ensures
+                  you reach your diving adventure safely and on time.
+                </p>
+              </div>
+
+              <div class="schedule-container">
+                <h4>Speed Boat Schedule</h4>
+                <div class="schedule-grid">
+                  <div class="schedule-item">
+                    <div class="time">07:30</div>
+                    <div class="route">Rasdhoo → Airport</div>
+                  </div>
+                  <div class="schedule-item">
+                    <div class="time">10:30</div>
+                    <div class="route">Airport → Rasdhoo</div>
+                  </div>
+                  <div class="schedule-item">
+                    <div class="time">13:30</div>
+                    <div class="route">Rasdhoo → Airport</div>
+                  </div>
+                  <div class="schedule-item">
+                    <div class="time">16:00</div>
+                    <div class="route">Airport → Rasdhoo</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="transport-details">
+                <div class="detail-item">
+                  <i class="fas fa-clock"></i>
+                  <div class="detail-content">
+                    <h5>Journey Time</h5>
+                    <p>Approximately 1.5 hours from Malé International Airport</p>
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-ship"></i>
+                  <div class="detail-content">
+                    <h5>Modern Vessels</h5>
+                    <p>
+                      Comfortable speed boats with safety equipment and
+                      refreshments
+                    </p>
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-calendar-check"></i>
+                  <div class="detail-content">
+                    <h5>Booking</h5>
+                    <p>
+                      Advance booking recommended, especially during peak season
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="transport-image">
+              <img
+                src="images/howtogethere.webp"
+                alt="Speed boat transfer to Rasdhoo"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="transport-cta">
+            <p>
+              Need help with your transfer? We can assist with booking and
+              coordination.
+            </p>
+            <a href="index.html#location" class="cta-button"
+              >Contact Us for Transfer Details</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Dive Gallery Section -->
+      <section class="galle-section">
+        <div class="galle-container">
+          <div class="galle-header">
+            <h2 class="galle-title">Dive Gallery</h2>
+            <p class="galle-subtitle">Explore the underwater wonders of Rasdhoo</p>
+          </div>
+          
+          <div class="galle-grid">
+            <div class="galle-item">
+              <div class="galle-image">
+                <img src="images/lowtide.webp" alt="Underwater diving experience" loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="galle-item">
+              <div class="galle-image">
+                <img src="images/intotheblue.webp" alt="Coral reef diving" loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="galle-item">
+              <div class="galle-image">
+                <img src="images/sharkally.webp" alt="Marine life exploration" loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="galle-item">
+              <div class="galle-image">
+                <img src="images/crystalclear.webp" alt="Dive center activities" loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="galle-item">
+              <div class="galle-image">
+                <img src="images/underwaterbeauty.webp" alt="Big Blue dive center" loading="lazy" />
+              </div>
+            </div>
+            
+            <div class="galle-item">
+              <div class="galle-image">
+                <img src="images/smallwave.webp" alt="Diving certification" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- Company Information Column -->
+          <div class="footer-column company-info">
+            <div class="company-avatar">
+              <img src="images/logo.webp" alt="Big Blue Logo" />
+            </div>
+            <h3 class="company-name">Big Blue Divers Rasdhoo</h3>
+            <div class="company-details">
+              <p>Ghaazee Magu, Rasdhoo 09020</p>
+              <p>Maldives</p>
+              <p>+960 123-4567</p>
+            </div>
+            <div class="social-icons">
+              <a href="#" class="social-icon" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-icon" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Explore Column -->
+          <div class="footer-column">
+            <h4 class="footer-title">EXPLORE</h4>
+            <ul class="footer-links">
+              <li><a href="#packages">Dive Packages</a></li>
+              <li><a href="#courses">PADI Courses</a></li>
+              <li><a href="#excursions">Island Excursions</a></li>
+              <li><a href="#location">Our Location</a></li>
+            </ul>
+          </div>
+
+          <!-- Know More Column -->
+          <div class="footer-column">
+            <h4 class="footer-title">KNOW MORE</h4>
+            <ul class="footer-links">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="#safety">Safety & Equipment</a></li>
+              <li><a href="#reviews">Guest Reviews</a></li>
+              <li><a href="dive-sites.html">Dive Sites</a></li>
+            </ul>
+          </div>
+
+          <!-- About Column -->
+          <div class="footer-column">
+            <h4 class="footer-title">ABOUT</h4>
+            <ul class="footer-links">
+              <li><a href="#location">Contact Us</a></li>
+              <li><a href="#booking">Book Now</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#terms">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-divider"></div>
+          <div class="footer-bottom-content">
+            <p class="copyright">
+              © 2025 Big Blue Divers Rasdhoo. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </main>
+  </body>
+</html>
