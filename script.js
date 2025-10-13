@@ -1,307 +1,349 @@
-// Simple Dive Site Modal Functionality
-const createDiveSiteModal = () => {
-  console.log("Setting up dive site modals...");
+// Dive Site Modal Functionality - Images match card numbers (1.rasdhoo-reef.webp for card 1)
+const diveSiteData = {
+  1: {
+    image: "images/1.rasdhoo-reef.webp",
+    title: "Rasdhoo Reef",
+    difficulty: "Beginner",
+    description:
+      "Beautiful coral formations with abundant marine life and excellent visibility. Perfect for photographers and marine enthusiasts looking to capture the vibrant underwater ecosystem.",
+    depth: "Depth: 8-25m",
+    marineLife: "Reef fish, turtles, rays",
+  },
+  2: {
+    image: "images/2.madivaru-channel.webp",
+    title: "Madivaru Channel",
+    difficulty: "Intermediate",
+    description:
+      "Thrilling drift dive through the channel with strong currents and pelagic encounters. Experience the rush of gliding through nutrient-rich waters teeming with marine life.",
+    depth: "Depth: 12-35m",
+    marineLife: "Sharks, eagle rays, jacks",
+  },
+  3: {
+    image: "images/3.hammerhead.webp",
+    title: "Hammerhead Point",
+    difficulty: "Advanced",
+    description:
+      "Famous hammerhead shark encounters in deep blue waters with strong currents. This thrilling dive site offers unforgettable encounters with schools of hammerhead sharks.",
+    depth: "Depth: 20-40m",
+    marineLife: "Hammerhead sharks, pelagics",
+  },
+  4: {
+    image: "images/4.madivaru-corner.webp",
+    title: "Madivaru Corner",
+    difficulty: "Intermediate",
+    description:
+      "Spectacular corner dive with dramatic drop-offs and diverse marine ecosystems. The corner creates a natural gathering point for large schools of fish and predators.",
+    depth: "Depth: 10-30m",
+    marineLife: "Reef sharks, barracudas",
+  },
+  5: {
+    image: "images/5.madivaru-reef.webp",
+    title: "Madivaru Reef",
+    difficulty: "Beginner",
+    description:
+      "Gentle reef dive perfect for beginners with colorful corals and friendly marine life. Enjoy a relaxed dive exploring healthy coral gardens and spotting tropical reef fish.",
+    depth: "Depth: 5-20m",
+    marineLife: "Reef fish, nudibranchs",
+  },
+  6: {
+    image: "images/6.veligandu-east.webp",
+    title: "Veligandu East",
+    difficulty: "Intermediate",
+    description:
+      "East-facing reef with excellent coral coverage and abundant fish life. This pristine reef showcases some of the healthiest coral formations in the atoll.",
+    depth: "Depth: 8-28m",
+    marineLife: "Groupers, snappers, rays",
+  },
+  7: {
+    image: "images/7.veligandu-north.webp",
+    title: "Veligandu North",
+    difficulty: "Intermediate",
+    description:
+      "Northern reef section with dramatic topography and large fish aggregations. The unique underwater landscape creates perfect habitat for diverse marine species.",
+    depth: "Depth: 10-32m",
+    marineLife: "Napoleon wrasse, sharks",
+  },
+  8: {
+    image: "images/8.madigaa.webp",
+    title: "Madigaa",
+    difficulty: "Beginner",
+    description:
+      "Shallow reef perfect for snorkeling and beginner divers with calm conditions. An ideal spot for first-time divers and those seeking a peaceful underwater experience.",
+    depth: "Depth: 3-15m",
+    marineLife: "Colorful reef fish, corals",
+  },
+  9: {
+    image: "images/9.north-channel.webp",
+    title: "North Channel",
+    difficulty: "Advanced",
+    description:
+      "Challenging drift dive through the northern channel with strong currents. Advanced divers will love the adrenaline rush and spectacular pelagic encounters.",
+    depth: "Depth: 15-40m",
+    marineLife: "Manta rays, sharks, tunas",
+  },
+  10: {
+    image: "images/10.north-corner.webp",
+    title: "North Corner",
+    difficulty: "Intermediate",
+    description:
+      "Corner dive with excellent coral formations and diverse marine life. This strategic location attracts both reef dwellers and passing pelagic species.",
+    depth: "Depth: 8-25m",
+    marineLife: "Reef sharks, groupers",
+  },
+  11: {
+    image: "images/11.miyaru-faru.webp",
+    title: "Miyaru Faru",
+    difficulty: "Intermediate",
+    description:
+      "Spectacular reef with vibrant coral gardens and abundant marine biodiversity. A photographer's paradise with endless opportunities to capture underwater beauty.",
+    depth: "Depth: 10-30m",
+    marineLife: "Coral gardens, reef fish",
+  },
+  12: {
+    image: "images/12.caves.webp",
+    title: "The Caves",
+    difficulty: "Advanced",
+    description:
+      "Underwater cave system with dramatic rock formations and unique marine life. Explore mysterious caverns and swim-throughs adorned with soft corals and sponges.",
+    depth: "Depth: 15-35m",
+    marineLife: "Cave fish, lobsters",
+  },
+  13: {
+    image: "images/13.bodugaa.webp",
+    title: "Bodugaa",
+    difficulty: "Beginner",
+    description:
+      "Beautiful reef with thriving hard corals and excellent visibility for photography. Crystal clear waters make this an ideal site for underwater photography and videography.",
+    depth: "Depth: 5-25m",
+    marineLife: "Coral formations, reef fish",
+  },
+  14: {
+    image: "images/14.three-palm.webp",
+    title: "Three Palms",
+    difficulty: "Beginner",
+    description:
+      "Named after three distinctive coral formations, offering diverse marine habitats. These iconic pinnacles serve as landmarks and hubs of marine activity.",
+    depth: "Depth: 8-25m",
+    marineLife: "Unique structures, turtles",
+  },
+  15: {
+    image: "images/15.holhifaru.webp",
+    title: "Holhifaru",
+    difficulty: "Intermediate",
+    description:
+      "Spectacular reef with vibrant coral gardens and diverse marine ecosystems. This site showcases the incredible biodiversity of Rasdhoo Atoll.",
+    depth: "Depth: 10-30m",
+    marineLife: "Coral gardens, reef sharks",
+  },
+  16: {
+    image: "images/16.rashoo-channel.webp",
+    title: "Rashoo Channel",
+    difficulty: "Advanced",
+    description:
+      "Thrilling drift dive through the channel with chances to spot pelagic species. Strong currents bring nutrients and attract magnificent pelagic visitors.",
+    depth: "Depth: 12-35m",
+    marineLife: "Strong currents, eagle rays",
+  },
+  17: {
+    image: "images/17.reef-explorer.webp",
+    title: "Reef Explorer",
+    difficulty: "Intermediate",
+    description:
+      "Artificial reef created by a sunken vessel, now home to diverse marine species. This wreck has transformed into a thriving ecosystem over the years.",
+    depth: "Depth: 15-30m",
+    marineLife: "Wreck exploration, marine life",
+  },
+  18: {
+    image: "images/18.kuramthi-queen.webp",
+    title: "Kuramthi Queen",
+    difficulty: "Advanced",
+    description:
+      "Deep dive site known for large pelagic encounters and dramatic underwater landscapes. Experience the thrill of diving in the blue with massive schools of fish.",
+    depth: "Depth: 20-45m",
+    marineLife: "Large pelagics, sharks",
+  },
+};
 
-  // Dive site data
-  const diveSiteData = {
-    1: {
-      image: "images/1.rasdhoo-reef.webp",
-      title: "Rasdhoo Reef",
-      difficulty: "Beginner",
-      description:
-        "Beautiful coral formations with abundant marine life and excellent visibility.",
-      depth: "Depth: 8-25m",
-      marineLife: "Reef fish, turtles, rays",
-    },
-    2: {
-      image: "images/3.hammerhead.webp",
-      title: "Hammerhead Point",
-      difficulty: "Advanced",
-      description:
-        "Famous hammerhead shark encounters in deep blue waters with strong currents.",
-      depth: "Depth: 20-40m",
-      marineLife: "Hammerhead sharks, pelagics",
-    },
-    3: {
-      image: "images/2.madivaru-channel.webp",
-      title: "Madivaru Channel",
-      difficulty: "Intermediate",
-      description:
-        "Thrilling drift dive through the channel with strong currents and pelagic encounters.",
-      depth: "Depth: 12-35m",
-      marineLife: "Sharks, eagle rays, jacks",
-    },
-    4: {
-      image: "images/4.madivaru-corner.webp",
-      title: "Madivaru Corner",
-      difficulty: "Intermediate",
-      description:
-        "Spectacular corner dive with dramatic drop-offs and diverse marine ecosystems.",
-      depth: "Depth: 10-30m",
-      marineLife: "Reef sharks, barracudas",
-    },
-    5: {
-      image: "images/5.madivaru-reef.webp",
-      title: "Madivaru Reef",
-      difficulty: "Beginner",
-      description:
-        "Gentle reef dive perfect for beginners with colorful corals and friendly marine life.",
-      depth: "Depth: 5-20m",
-      marineLife: "Reef fish, nudibranchs",
-    },
-    6: {
-      image: "images/6.veligandu-east.webp",
-      title: "Veligandu East",
-      difficulty: "Intermediate",
-      description:
-        "East-facing reef with excellent coral coverage and abundant fish life.",
-      depth: "Depth: 8-28m",
-      marineLife: "Groupers, snappers, rays",
-    },
-    7: {
-      image: "images/7.veligandu-north.webp",
-      title: "Veligandu North",
-      difficulty: "Intermediate",
-      description:
-        "Northern reef section with dramatic topography and large fish aggregations.",
-      depth: "Depth: 10-32m",
-      marineLife: "Napoleon wrasse, sharks",
-    },
-    8: {
-      image: "images/8.madigaa.webp",
-      title: "Madigaa",
-      difficulty: "Beginner",
-      description:
-        "Shallow reef perfect for snorkeling and beginner divers with calm conditions.",
-      depth: "Depth: 3-15m",
-      marineLife: "Colorful reef fish, corals",
-    },
-    9: {
-      image: "images/9.north-channel.webp",
-      title: "North Channel",
-      difficulty: "Advanced",
-      description:
-        "Challenging drift dive through the northern channel with strong currents.",
-      depth: "Depth: 15-40m",
-      marineLife: "Manta rays, sharks, tunas",
-    },
-    10: {
-      image: "images/10.north-corner.webp",
-      title: "North Corner",
-      difficulty: "Intermediate",
-      description:
-        "Corner dive with excellent coral formations and diverse marine life.",
-      depth: "Depth: 8-25m",
-      marineLife: "Reef sharks, groupers",
-    },
-    11: {
-      image: "images/11.miyaru-faru.webp",
-      title: "Miyaru Faru",
-      difficulty: "Intermediate",
-      description:
-        "Spectacular reef with vibrant coral gardens and abundant marine biodiversity.",
-      depth: "Depth: 10-30m",
-      marineLife: "Coral gardens, reef fish",
-    },
-    12: {
-      image: "images/12.caves.webp",
-      title: "The Caves",
-      difficulty: "Advanced",
-      description:
-        "Underwater cave system with dramatic rock formations and unique marine life.",
-      depth: "Depth: 15-35m",
-      marineLife: "Cave fish, lobsters",
-    },
-    13: {
-      image: "images/13.bodugaa.webp",
-      title: "Bodugaa",
-      difficulty: "Beginner",
-      description:
-        "Beautiful reef with thriving hard corals and excellent visibility for photography.",
-      depth: "Depth: 5-25m",
-      marineLife: "Coral formations, reef fish",
-    },
-    14: {
-      image: "images/14.three-palm.webp",
-      title: "Three Palms",
-      difficulty: "Beginner",
-      description:
-        "Named after three distinctive coral formations, offering diverse marine habitats.",
-      depth: "Depth: 8-25m",
-      marineLife: "Unique structures, turtles",
-    },
-    15: {
-      image: "images/15.holhifaru.webp",
-      title: "Holhifaru",
-      difficulty: "Intermediate",
-      description:
-        "Spectacular reef with vibrant coral gardens and diverse marine ecosystems.",
-      depth: "Depth: 10-30m",
-      marineLife: "Coral gardens, reef sharks",
-    },
-    16: {
-      image: "images/16.rashoo-channel.webp",
-      title: "Rashoo Channel",
-      difficulty: "Advanced",
-      description:
-        "Thrilling drift dive through the channel with chances to spot pelagic species.",
-      depth: "Depth: 12-35m",
-      marineLife: "Strong currents, eagle rays",
-    },
-    17: {
-      image: "images/17.reef-explorer.webp",
-      title: "Reef Explorer",
-      difficulty: "Intermediate",
-      description:
-        "Artificial reef created by a sunken vessel, now home to diverse marine species.",
-      depth: "Depth: 15-30m",
-      marineLife: "Wreck exploration, marine life",
-    },
-    18: {
-      image: "images/18.kuramthi-queen.webp",
-      title: "Kuramthi Queen",
-      difficulty: "Advanced",
-      description:
-        "Deep dive site known for large pelagic encounters and dramatic underwater landscapes.",
-      depth: "Depth: 20-45m",
-      marineLife: "Large pelagics, sharks",
-    },
-  };
+// Function to show image-only modal
+const showDiveSiteModal = (siteData) => {
+  console.log("Showing image modal for:", siteData.title);
 
-  // Function to show modal
-  const showModal = (siteData) => {
-    console.log("Showing modal for:", siteData.title);
+  // Remove any existing modal
+  const existingModal = document.getElementById("dive-modal");
+  if (existingModal) {
+    existingModal.remove();
+  }
 
-    // Remove any existing modal
-    const existingModal = document.getElementById("dive-modal");
-    if (existingModal) {
-      existingModal.remove();
-    }
-
-    // Create modal HTML
-    const modalHTML = `
+  // Create simple image-only modal HTML
+  const modalHTML = `
       <div id="dive-modal" style="
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.8);
+        background: rgba(0,0,0,0.92);
+        backdrop-filter: blur(10px);
         z-index: 9999;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 20px;
         box-sizing: border-box;
+        animation: modalFadeIn 0.3s ease-out;
+        cursor: zoom-out;
       ">
-        <div style="
-          background: white;
-          border-radius: 15px;
-          max-width: 800px;
-          max-height: 90vh;
-          overflow: hidden;
+        <div id="dive-modal-content" style="
           position: relative;
-          box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+          max-width: 95vw;
+          max-height: 95vh;
+          width: auto;
+          height: auto;
+          animation: modalZoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         ">
-          <button onclick="document.getElementById('dive-modal').remove()" style="
+          <button onclick="document.getElementById('dive-modal').style.animation='modalFadeOut 0.2s ease-out';document.getElementById('dive-modal-content').style.animation='modalZoomOut 0.2s ease-out';setTimeout(()=>{document.getElementById('dive-modal').remove();document.body.style.overflow='auto';},200)" style="
             position: absolute;
-            top: 15px;
-            right: 20px;
-            background: rgba(255,255,255,0.9);
+            top: -15px;
+            right: -15px;
+            background: rgba(255,255,255,0.95);
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            font-size: 20px;
+            font-size: 28px;
             cursor: pointer;
-            z-index: 10000;
+            z-index: 10001;
             display: flex;
             align-items: center;
             justify-content: center;
-          ">&times;</button>
+            transition: all 0.3s ease;
+            color: #1b4965;
+            font-weight: 300;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+          " onmouseover="this.style.background='#ff4444';this.style.color='white';this.style.transform='rotate(90deg) scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.95)';this.style.color='#1b4965';this.style.transform='rotate(0deg) scale(1)'">&times;</button>
           
-          <div style="width: 100%; height: 300px; overflow: hidden;">
-            <img src="${siteData.image}" alt="${siteData.title}" style="
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            " />
-          </div>
+          <img src="${siteData.image}" alt="${siteData.title}" style="
+            width: 100%;
+            height: 100%;
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+            display: block;
+          " />
           
-          <div style="padding: 30px;">
-            <h2 style="margin: 0 0 15px 0; color: #1b4965; font-size: 2rem;">${
-              siteData.title
-            }</h2>
-            <div style="
-              display: inline-block;
-              padding: 8px 16px;
-              border-radius: 25px;
-              font-size: 0.9rem;
-              font-weight: 600;
-              text-transform: uppercase;
-              margin-bottom: 20px;
-              background: ${
-                siteData.difficulty === "Beginner"
-                  ? "linear-gradient(135deg, #10b981, #059669)"
-                  : siteData.difficulty === "Intermediate"
-                  ? "linear-gradient(135deg, #0ea5e9, #0284c7)"
-                  : "linear-gradient(135deg, #f59e0b, #d97706)"
-              };
-              color: white;
-            ">${siteData.difficulty}</div>
-            
-            <p style="color: #64748b; line-height: 1.7; margin-bottom: 25px; font-size: 1.1rem;">${
-              siteData.description
-            }</p>
-            
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-              <div style="display: flex; align-items: center; color: #475569; font-size: 1rem;">
-                <i class="fas fa-water" style="color: #0ea5e9; margin-right: 12px; width: 20px; text-align: center;"></i>
-                <span>${siteData.depth}</span>
-              </div>
-              <div style="display: flex; align-items: center; color: #475569; font-size: 1rem;">
-                <i class="fas fa-fish" style="color: #0ea5e9; margin-right: 12px; width: 20px; text-align: center;"></i>
-                <span>${siteData.marineLife}</span>
-              </div>
-            </div>
-          </div>
+          <div style="
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            font-family: 'Quicksand', sans-serif;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            animation: slideUpLabel 0.5s ease-out 0.2s both;
+          ">${siteData.title}</div>
         </div>
       </div>
     `;
 
-    // Add modal to body
-    document.body.insertAdjacentHTML("beforeend", modalHTML);
+  // Add modal to body
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
 
-    // Close on backdrop click
-    document.getElementById("dive-modal").addEventListener("click", (e) => {
-      if (e.target.id === "dive-modal") {
-        document.getElementById("dive-modal").remove();
-      }
-    });
+  // Prevent body scroll
+  document.body.style.overflow = "hidden";
+
+  // Close on backdrop click
+  const modal = document.getElementById("dive-modal");
+  modal.addEventListener("click", (e) => {
+    if (e.target.id === "dive-modal" || e.target.tagName === "IMG") {
+      modal.style.animation = "modalFadeOut 0.2s ease-out";
+      document.getElementById("dive-modal-content").style.animation =
+        "modalZoomOut 0.2s ease-out";
+      setTimeout(() => {
+        modal.remove();
+        document.body.style.overflow = "auto";
+      }, 200);
+    }
+  });
+
+  // Close on Escape key
+  const escapeHandler = (e) => {
+    if (e.key === "Escape") {
+      modal.style.animation = "modalFadeOut 0.2s ease-out";
+      document.getElementById("dive-modal-content").style.animation =
+        "modalZoomOut 0.2s ease-out";
+      setTimeout(() => {
+        modal.remove();
+        document.body.style.overflow = "auto";
+      }, 200);
+      document.removeEventListener("keydown", escapeHandler);
+    }
   };
+  document.addEventListener("keydown", escapeHandler);
+};
 
-  // Add click listeners to all cards
-  const addClickListeners = () => {
-    const cards = document.querySelectorAll(".dive-site-detail-card");
-    console.log("Found cards:", cards.length);
+// Global function to open dive site modal (can be called from HTML onclick)
+window.openDiveSite = function (siteNumber) {
+  console.log(`openDiveSite called for site ${siteNumber}`);
+  const siteData = diveSiteData[siteNumber];
 
-    cards.forEach((card, index) => {
-      card.addEventListener("click", (e) => {
+  if (siteData) {
+    showDiveSiteModal(siteData);
+  } else {
+    console.error(`No data found for site ${siteNumber}`);
+  }
+};
+
+// Function to setup dive site click handlers
+const setupDiveSiteCards = () => {
+  console.log("Setting up dive site cards...");
+
+  const cards = document.querySelectorAll(".dive-site-detail-card");
+  console.log("Found dive site cards:", cards.length);
+
+  if (cards.length === 0) {
+    console.warn(
+      "No dive site cards found! Make sure you're on dive-sites.html"
+    );
+    return;
+  }
+
+  cards.forEach((card, index) => {
+    const siteNumber = index + 1;
+    console.log(`Setting up card ${siteNumber}`);
+
+    // Set cursor to pointer
+    card.style.cursor = "pointer";
+
+    // Add click handler
+    card.onclick = function (e) {
+      console.log(`Card ${siteNumber} clicked via onclick!`);
+      window.openDiveSite(siteNumber);
+    };
+
+    // Also add event listener as backup
+    card.addEventListener(
+      "click",
+      function (e) {
+        console.log(`Card ${siteNumber} clicked via addEventListener!`);
         e.preventDefault();
-        const siteNumber = index + 1;
-        const siteData = diveSiteData[siteNumber];
+        e.stopPropagation();
+        window.openDiveSite(siteNumber);
+      },
+      false
+    );
+  });
 
-        if (siteData) {
-          showModal(siteData);
-        }
-      });
-    });
-  };
-
-  // Try multiple times to ensure it works
-  addClickListeners();
-  setTimeout(addClickListeners, 100);
-  setTimeout(addClickListeners, 500);
+  console.log("Dive site cards setup complete!");
 };
 
 // Enhanced Mobile menu toggle
@@ -1005,16 +1047,382 @@ const initTravelInfoPopup = () => {
   }
 };
 
+// Add modal animations CSS
+const addModalAnimations = () => {
+  const style = document.createElement("style");
+  style.textContent = `
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes modalFadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+    
+    @keyframes modalZoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes modalZoomOut {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+    }
+    
+    @keyframes slideUpLabel {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    
+    /* Mobile responsive image modal */
+    @media (max-width: 768px) {
+      #dive-modal {
+        padding: 10px !important;
+      }
+      
+      #dive-modal-content button {
+        top: -10px !important;
+        right: -10px !important;
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 24px !important;
+      }
+      
+      #dive-modal-content img {
+        max-width: 100vw !important;
+        max-height: 85vh !important;
+        border-radius: 8px !important;
+      }
+      
+      #dive-modal-content > div:last-child {
+        bottom: 10px !important;
+        font-size: 0.9rem !important;
+        padding: 8px 16px !important;
+        max-width: 90% !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+    }
+    
+    /* Tablet responsive */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      #dive-modal-content img {
+        max-width: 85vw !important;
+        max-height: 85vh !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+};
+
 // Initialize all features when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM loaded - initializing features...");
+
   initScrollAnimations();
   initCTAButton();
   addRippleAnimation();
   initReviewSlider();
   initTravelInfoPopup();
-  createDiveSiteModal();
+  addModalAnimations();
+
+  // Setup dive site cards (only on dive-sites.html page)
+  setupDiveSiteCards();
+
+  // Try again after a short delay to ensure DOM is fully rendered
+  setTimeout(() => {
+    setupDiveSiteCards();
+  }, 500);
 
   // Partnerships section removed; related animations not initialized
   // Uncomment the line below if you want parallax effect
   // initParallaxEffect();
+});
+
+// FAQ Toggle Functionality
+window.toggleFAQ = function (faqNumber) {
+  const faqItem = document.querySelector(`.faq-item:nth-child(${faqNumber})`);
+  const allFaqItems = document.querySelectorAll(".faq-item");
+
+  if (faqItem) {
+    // Check if this FAQ is already active
+    const isActive = faqItem.classList.contains("active");
+
+    // Close all FAQs
+    allFaqItems.forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    // If it wasn't active, open it
+    if (!isActive) {
+      faqItem.classList.add("active");
+
+      // Smooth scroll to the FAQ item if it's not fully visible
+      setTimeout(() => {
+        const rect = faqItem.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+        if (!isVisible) {
+          faqItem.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+          });
+        }
+      }, 100);
+    }
+  }
+};
+
+// Package Customizer Functionality
+const packagePricing = {
+  divePerUnit: 60, // $60 per dive
+  nightPerUnit: 50, // $50 per night
+  addons: {
+    picnic: 65,
+    snorkeling: 45,
+    transfer: 80,
+    night: 90,
+  },
+};
+
+// Update dives count with buttons
+window.updateDives = function (change) {
+  const divesCount = document.getElementById("dives-count");
+  const divesSlider = document.getElementById("dives-slider");
+
+  if (divesCount && divesSlider) {
+    let currentValue = parseInt(divesCount.textContent);
+    let newValue = currentValue + change;
+
+    // Constrain value between min and max
+    newValue = Math.max(
+      parseInt(divesSlider.min),
+      Math.min(parseInt(divesSlider.max), newValue)
+    );
+
+    divesCount.textContent = newValue;
+    divesSlider.value = newValue;
+
+    // Update slider background
+    updateSliderBackground(divesSlider);
+
+    // Calculate total
+    calculateTotal();
+  }
+};
+
+// Update dives from slider
+window.updateDivesFromSlider = function () {
+  const divesCount = document.getElementById("dives-count");
+  const divesSlider = document.getElementById("dives-slider");
+
+  if (divesCount && divesSlider) {
+    divesCount.textContent = divesSlider.value;
+
+    // Update slider background
+    updateSliderBackground(divesSlider);
+
+    // Calculate total
+    calculateTotal();
+  }
+};
+
+// Update nights count with buttons
+window.updateNights = function (change) {
+  const nightsCount = document.getElementById("nights-count");
+  const nightsSlider = document.getElementById("nights-slider");
+
+  if (nightsCount && nightsSlider) {
+    let currentValue = parseInt(nightsCount.textContent);
+    let newValue = currentValue + change;
+
+    // Constrain value between min and max
+    newValue = Math.max(
+      parseInt(nightsSlider.min),
+      Math.min(parseInt(nightsSlider.max), newValue)
+    );
+
+    nightsCount.textContent = newValue;
+    nightsSlider.value = newValue;
+
+    // Update slider background
+    updateSliderBackground(nightsSlider);
+
+    // Calculate total
+    calculateTotal();
+  }
+};
+
+// Update nights from slider
+window.updateNightsFromSlider = function () {
+  const nightsCount = document.getElementById("nights-count");
+  const nightsSlider = document.getElementById("nights-slider");
+
+  if (nightsCount && nightsSlider) {
+    nightsCount.textContent = nightsSlider.value;
+
+    // Update slider background
+    updateSliderBackground(nightsSlider);
+
+    // Calculate total
+    calculateTotal();
+  }
+};
+
+// Update slider background gradient
+function updateSliderBackground(slider) {
+  const min = parseInt(slider.min);
+  const max = parseInt(slider.max);
+  const value = parseInt(slider.value);
+  const percentage = ((value - min) / (max - min)) * 100;
+
+  slider.style.background = `linear-gradient(to right, #5ebec4 0%, #5ebec4 ${percentage}%, #e2e8f0 ${percentage}%, #e2e8f0 100%)`;
+}
+
+// Calculate total price
+window.calculateTotal = function () {
+  // Get dive count
+  const divesCount = document.getElementById("dives-count");
+  const nightsCount = document.getElementById("nights-count");
+
+  if (!divesCount || !nightsCount) return;
+
+  const dives = parseInt(divesCount.textContent);
+  const nights = parseInt(nightsCount.textContent);
+
+  // Calculate base prices
+  const divesPrice = dives * packagePricing.divePerUnit;
+  const nightsPrice = nights * packagePricing.nightPerUnit;
+
+  // Calculate addons
+  let addonsPrice = 0;
+  const picnicChecked = document.getElementById("addon-picnic")?.checked;
+  const snorkelingChecked =
+    document.getElementById("addon-snorkeling")?.checked;
+  const transferChecked = document.getElementById("addon-transfer")?.checked;
+  const nightChecked = document.getElementById("addon-night")?.checked;
+
+  if (picnicChecked) addonsPrice += packagePricing.addons.picnic;
+  if (snorkelingChecked) addonsPrice += packagePricing.addons.snorkeling;
+  if (transferChecked) addonsPrice += packagePricing.addons.transfer;
+  if (nightChecked) addonsPrice += packagePricing.addons.night;
+
+  // Calculate total
+  const total = divesPrice + nightsPrice + addonsPrice;
+
+  // Update UI with smooth animation
+  updatePriceDisplay("dives-price", divesPrice);
+  updatePriceDisplay("nights-price", nightsPrice);
+  updatePriceDisplay("addons-price", addonsPrice);
+  updatePriceDisplay("total-price", total);
+
+  // Update summary counts
+  const summaryDives = document.getElementById("summary-dives");
+  const summaryNights = document.getElementById("summary-nights");
+
+  if (summaryDives) summaryDives.textContent = dives;
+  if (summaryNights) summaryNights.textContent = nights;
+};
+
+// Update price display with animation
+function updatePriceDisplay(elementId, value) {
+  const element = document.getElementById(elementId);
+  if (!element) return;
+
+  const formattedValue = `$${value}`;
+
+  // Add pulse animation
+  element.style.transform = "scale(1.1)";
+  element.style.color = "#5ebec4";
+
+  setTimeout(() => {
+    element.textContent = formattedValue;
+    element.style.transform = "scale(1)";
+    element.style.color = "";
+  }, 150);
+}
+
+// Initialize package customizer on page load
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize sliders backgrounds
+  const divesSlider = document.getElementById("dives-slider");
+  const nightsSlider = document.getElementById("nights-slider");
+
+  if (divesSlider) {
+    updateSliderBackground(divesSlider);
+  }
+
+  if (nightsSlider) {
+    updateSliderBackground(nightsSlider);
+  }
+
+  // Calculate initial total
+  calculateTotal();
+
+  // Add event listener to request quote button
+  const requestQuoteBtn = document.querySelector(".request-quote-btn");
+  if (requestQuoteBtn) {
+    requestQuoteBtn.addEventListener("click", function () {
+      // Get current configuration
+      const dives = document.getElementById("dives-count")?.textContent || "5";
+      const nights =
+        document.getElementById("nights-count")?.textContent || "3";
+      const total = document.getElementById("total-price")?.textContent || "$0";
+
+      // Add ripple effect
+      const ripple = document.createElement("span");
+      ripple.style.position = "absolute";
+      ripple.style.borderRadius = "50%";
+      ripple.style.background = "rgba(255, 255, 255, 0.5)";
+      ripple.style.transform = "scale(0)";
+      ripple.style.animation = "ripple 0.6s linear";
+      ripple.style.left = "50%";
+      ripple.style.top = "50%";
+      ripple.style.width = "20px";
+      ripple.style.height = "20px";
+      ripple.style.marginLeft = "-10px";
+      ripple.style.marginTop = "-10px";
+
+      this.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+
+      // Show alert (in a real application, this would submit to a form or API)
+      setTimeout(() => {
+        alert(
+          `Quote Request:\n${dives} Dives, ${nights} Nights\nEstimated Total: ${total}\n\nThank you! We'll contact you shortly with a detailed quote.`
+        );
+      }, 300);
+    });
+  }
 });

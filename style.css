@@ -372,6 +372,25 @@ body {
   box-shadow: 0 10px 30px var(--shadow-dark);
   border-radius: 25px;
   animation: slideDown 0.3s ease;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(27, 73, 101, 0.3) transparent;
+}
+
+.nav-menu.mobile-active::-webkit-scrollbar {
+  width: 6px;
+}
+
+.nav-menu.mobile-active::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav-menu.mobile-active::-webkit-scrollbar-thumb {
+  background-color: rgba(27, 73, 101, 0.3);
+  border-radius: 3px;
 }
 
 .nav-menu.mobile-active .nav-item {
@@ -421,6 +440,20 @@ body {
     padding: 10px 15px;
   }
 
+  .nav-menu.mobile-active {
+    max-height: calc(100vh - 100px);
+    padding: 15px 0;
+  }
+
+  .nav-menu.mobile-active .nav-item {
+    margin: 8px 0;
+  }
+
+  .nav-menu.mobile-active .nav-link {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+
   .logo img {
     width: 3rem;
     height: auto;
@@ -434,6 +467,24 @@ body {
 
   .logo img {
     height: 40px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 380px) {
+  .nav-menu.mobile-active {
+    max-height: calc(100vh - 90px);
+    padding: 12px 0;
+    border-radius: 20px;
+  }
+
+  .nav-menu.mobile-active .nav-item {
+    margin: 6px 0;
+  }
+
+  .nav-menu.mobile-active .nav-link {
+    font-size: 0.95rem;
+    padding: 7px 12px;
   }
 }
 
