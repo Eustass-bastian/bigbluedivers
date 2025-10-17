@@ -1425,4 +1425,136 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 300);
     });
   }
+
+  // Initialize courses review slider
+  initCoursesReviewSlider();
+
+  // Initialize course filters
+  initCourseFilters();
 });
+
+// Course Filter Functionality
+function initCourseFilters() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const courseCards = document.querySelectorAll(".course-card");
+  const specialtyHeader = document.querySelector(".specialty-header");
+
+  if (filterBtns.length === 0 || courseCards.length === 0) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const filter = this.getAttribute("data-filter");
+
+      // Update active button
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      this.classList.add("active");
+
+      // Filter courses with smooth animation
+      let visibleCount = 0;
+      let delay = 0;
+
+      courseCards.forEach((card, index) => {
+        const cardLevel = card
+          .querySelector(".course-level")
+          ?.textContent.toLowerCase();
+        const isSpecialty = card.classList.contains("specialty");
+
+        let shouldShow = false;
+
+        if (filter === "all") {
+          shouldShow = true;
+        } else if (filter === "specialty") {
+          shouldShow = isSpecialty;
+        } else if (cardLevel && cardLevel.includes(filter)) {
+          shouldShow = true;
+        }
+
+        if (shouldShow) {
+          // First hide all cards instantly
+          card.classList.remove("card-visible");
+          card.classList.add("card-hidden");
+
+          // Then show with staggered animation
+          setTimeout(() => {
+            card.style.display = "flex";
+            setTimeout(() => {
+              card.classList.remove("card-hidden");
+              card.classList.add("card-visible");
+            }, 20);
+          }, delay);
+
+          delay += 80; // Stagger by 80ms for smoother effect
+          visibleCount++;
+        } else {
+          // Hide with fade out
+          card.classList.remove("card-visible");
+          card.classList.add("card-hidden");
+          setTimeout(() => {
+            card.style.display = "none";
+          }, 500); // Match CSS transition duration
+        }
+      });
+
+      // Show/hide specialty header with smooth transition
+      if (specialtyHeader) {
+        if (filter === "all" || filter === "specialty") {
+          specialtyHeader.style.display = "block";
+          setTimeout(() => {
+            specialtyHeader.style.opacity = "1";
+            specialtyHeader.style.transform = "translateY(0)";
+          }, delay + 100);
+        } else {
+          specialtyHeader.style.opacity = "0";
+          specialtyHeader.style.transform = "translateY(-20px)";
+          setTimeout(() => {
+            specialtyHeader.style.display = "none";
+          }, 500);
+        }
+      }
+    });
+  });
+
+  // Initialize all cards as visible
+  courseCards.forEach((card) => {
+    card.classList.add("card-visible");
+  });
+}
+
+// Courses Review Slider Functionality
+let currentReviewIndex = 0;
+let reviewInterval;
+
+function initCoursesReviewSlider() {
+  const slides = document.querySelectorAll(".review-slide");
+  const dots = document.querySelectorAll(".review-dot");
+
+  if (slides.length === 0) return;
+
+  // Auto-slide every 5 seconds
+  reviewInterval = setInterval(() => {
+    goToReview((currentReviewIndex + 1) % slides.length);
+  }, 5000);
+}
+
+window.goToReview = function (index) {
+  const slides = document.querySelectorAll(".review-slide");
+  const dots = document.querySelectorAll(".review-dot");
+
+  if (slides.length === 0) return;
+
+  // Remove active class from all
+  slides.forEach((slide) => slide.classList.remove("active"));
+  dots.forEach((dot) => dot.classList.remove("active"));
+
+  // Add active class to current
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+
+  currentReviewIndex = index;
+
+  // Reset auto-slide timer
+  clearInterval(reviewInterval);
+  reviewInterval = setInterval(() => {
+    goToReview((currentReviewIndex + 1) % slides.length);
+  }, 5000);
+};
