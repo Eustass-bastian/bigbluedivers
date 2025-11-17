@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery • Big Blue Dive Rasdhoo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="script.js"></script>
+    <style>
+      .gallery-hero {
+        background: linear-gradient(135deg, var(--primary-color) 0%, #2a5f7a 100%);
+        padding: 150px 0 80px;
+        text-align: center;
+        color: var(--white);
+        margin-top: 80px;
+      }
+
+      .gallery-hero h1 {
+        font-family: "Alan Sans", sans-serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .gallery-hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.95;
+      }
+
+      .gallery-section {
+        padding: 80px 0;
+        background: var(--white);
+      }
+
+      .gallery-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .gallery-filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 50px;
+      }
+
+      .filter-btn {
+        padding: 12px 30px;
+        background: var(--white);
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        font-family: "Quicksand", sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--primary-color);
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(27, 73, 101, 0.3);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+        aspect-ratio: 4/3;
+        box-shadow: 0 4px 15px rgba(27, 73, 101, 0.15);
+        transition: all 0.3s ease;
+        background: var(--primary-color);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(27, 73, 101, 0.3);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-item-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(27, 73, 101, 0.7) 100%
+        );
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .gallery-item:hover .gallery-item-overlay {
+        opacity: 1;
+      }
+
+      .gallery-item-title {
+        color: var(--white);
+        font-family: "Quicksand", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .gallery-item.hidden {
+        display: none;
+      }
+
+      /* Lightbox Styles */
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .lightbox-image {
+        max-width: 100%;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .lightbox-title {
+        color: var(--white);
+        font-family: "Quicksand", sans-serif;
+        font-size: 1.5rem;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: var(--white);
+        font-size: 3rem;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 10000;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(27, 73, 101, 0.8);
+        border-radius: 50%;
+      }
+
+      .lightbox-close:hover {
+        transform: rotate(90deg);
+        background: rgba(190, 233, 232, 0.9);
+        color: var(--primary-color);
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(27, 73, 101, 0.8);
+        color: var(--white);
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+      }
+
+      .lightbox-nav:hover {
+        background: rgba(190, 233, 232, 0.9);
+        color: var(--primary-color);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .lightbox-prev {
+        left: 30px;
+      }
+
+      .lightbox-next {
+        right: 30px;
+      }
+
+      .gallery-stats {
+        text-align: center;
+        padding: 40px 0;
+        background: var(--secondary-color);
+        margin-top: 50px;
+        border-radius: 12px;
+      }
+
+      .gallery-stats h3 {
+        font-family: "Alan Sans", sans-serif;
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        font-family: "Alan Sans", sans-serif;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        margin-top: 10px;
+      }
+
+      @media (max-width: 768px) {
+        .gallery-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 15px;
+        }
+
+        .lightbox-nav {
+          width: 50px;
+          height: 50px;
+          font-size: 1.2rem;
+        }
+
+        .lightbox-prev {
+          left: 10px;
+        }
+
+        .lightbox-next {
+          right: 10px;
+        }
+
+        .lightbox-close {
+          top: 10px;
+          right: 10px;
+          width: 40px;
+          height: 40px;
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html#home">
+              <img src="images/logo.webp" alt="Big Blue Logo" />
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="about.html" class="nav-link">About</a>
+              <ul class="dropdown-menu">
+                <li><a href="about.html">About Big Blue</a></li>
+                <li><a href="about.html#our-story">Our Story</a></li>
+                <li><a href="about.html#dive-center">Dive Center</a></li>
+                <li><a href="about.html#team">Meet The Team</a></li>
+                <li><a href="about.html#values">Our Values & Mission</a></li>
+                <li><a href="about.html#certifications">Certifications</a></li>
+                <li><a href="about.html#rasdhoo">Discover Rasdhoo</a></li>
+                <li>
+                  <a href="about.html#how-to-get-here">How to Get Here</a>
+                </li>
+                <li><a href="gallery.html">Dive Gallery</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="dive-sites.html" class="nav-link">Dive Sites</a>
+              <ul class="dropdown-menu">
+                <li><a href="dive-sites.html">All Dive Sites</a></li>
+                <li><a href="dive-sites.html#dive-map">Dive Map</a></li>
+                <li><a href="dive-sites.html#dive-sites">Featured Sites</a></li>
+                <li><a href="dive-sites.html#marine-life">Marine Life</a></li>
+                <li><a href="dive-sites.html#faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="packages.html" class="nav-link">Packages</a>
+              <ul class="dropdown-menu">
+                <li><a href="index.html#services">All Packages</a></li>
+                <li>
+                  <a href="packages.html#packages-overview">Package Overview</a>
+                </li>
+                <li><a href="packages.html#customize">Customize Package</a></li>
+                <li>
+                  <a href="packages.html#what-to-expect">What to Expect</a>
+                </li>
+                <li><a href="index.html#package-small-wave">Small Wave</a></li>
+                <li><a href="index.html#package-low-tide">Low Tide</a></li>
+                <li><a href="index.html#package-high-tide">High Tide</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a href="courses.html" class="nav-link">Courses</a>
+              <ul class="dropdown-menu">
+                <li><a href="courses.html#courses-grid">All Courses</a></li>
+                <li><a href="courses.html#courses-grid">PADI Courses</a></li>
+                <li>
+                  <a href="courses.html#course-packages">Course Packages</a>
+                </li>
+                <li><a href="courses.html#requirements">Requirements</a></li>
+                <li><a href="courses.html#book-course">Book Course</a></li>
+                <li><a href="courses.html#faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="excursions.html" class="nav-link">Excursions</a>
+              <ul class="dropdown-menu">
+                <li><a href="excursions.html">All Excursions</a></li>
+                <li>
+                  <a href="excursions.html#excursion-snorkeling">Snorkeling</a>
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-sunset">Sunset Cruise</a>
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-dolphin"
+                    >Dolphin Watching</a
+                  >
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-fish-feeding"
+                    >Fish Feeding</a
+                  >
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-picnic">Picnic Islands</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="gallery.html" class="nav-link active">Gallery</a>
+              <ul class="dropdown-menu">
+                <li><a href="gallery.html">Photo Gallery</a></li>
+                <li><a href="index.html#reviews">Guest Reviews</a></li>
+                <li><a href="dive-sites.html">Dive Sites</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#safety" class="nav-link">Safety</a>
+              <ul class="dropdown-menu">
+                <li><a href="index.html#safety">Safety First</a></li>
+                <li><a href="index.html#safety-certified">Certified Equipment</a></li>
+                <li><a href="index.html#safety-guides">Professional Guides</a></li>
+                <li><a href="index.html#safety-protocols">Safety Protocols</a></li>
+                <li><a href="index.html#safety-vessels">Modern Vessels</a></li>
+                <li><a href="index.html#safety-emergency">Emergency Procedures</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#location" class="nav-link">Contact</a>
+              <ul class="dropdown-menu">
+                <li><a href="index.html#location">Our Location</a></li>
+                <li><a href="index.html#location">Get Directions</a></li>
+                <li><a href="index.html#about-us">About Us</a></li>
+                <li><a href="about.html">Full About Page</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Gallery Hero Section -->
+    <section class="gallery-hero">
+      <div class="container">
+        <h1>Dive Gallery</h1>
+        <p>
+          Explore the breathtaking underwater world of Rasdhoo through our
+          collection of stunning photographs. From vibrant coral reefs to
+          majestic marine life, discover the beauty that awaits beneath the
+          waves.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+      <div class="gallery-container">
+        <!-- Filter Buttons -->
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">All Photos</button>
+          <button class="filter-btn" data-filter="marine-life">Marine Life</button>
+          <button class="filter-btn" data-filter="dive-sites">Dive Sites</button>
+          <button class="filter-btn" data-filter="team">Team & Activities</button>
+          <button class="filter-btn" data-filter="excursions">Excursions</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Marine Life -->
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/1.hammerhead.webp" alt="Hammerhead Shark" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Hammerhead Shark</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/2.mantaray.webp" alt="Manta Ray" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Manta Ray</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/3.hammerhead.webp" alt="Hammerhead Shark" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Hammerhead Shark</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/3.seaturtle.webp" alt="Sea Turtle" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Sea Turtle</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/5.eagleray.webp" alt="Eagle Ray" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Eagle Ray</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/6.reefshark.webp" alt="Reef Shark" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Reef Shark</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/sharkally.webp" alt="Shark Alley" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Shark Alley</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/sharkshow.webp" alt="Shark Show" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Shark Show</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="marine-life">
+            <img src="images/underwaterbeauty.webp" alt="Underwater Beauty" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Underwater Beauty</div>
+            </div>
+          </div>
+
+          <!-- Dive Sites -->
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/1.rasdhoo-reef.webp" alt="Rasdhoo Reef" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Rasdhoo Reef</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/2.madivaru-channel.webp" alt="Madivaru Channel" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Madivaru Channel</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/4.coralgardens.webp" alt="Coral Gardens" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Coral Gardens</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/4.madivaru-corner.webp" alt="Madivaru Corner" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Madivaru Corner</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/5.madivaru-reef.webp" alt="Madivaru Reef" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Madivaru Reef</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/6.veligandu-east.webp" alt="Veligandu East" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Veligandu East</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/7.veligandu-north.webp" alt="Veligandu North" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Veligandu North</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/8.madigaa.webp" alt="Madigaa" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Madigaa</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/9.north-channel.webp" alt="North Channel" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">North Channel</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/10.north-corner.webp" alt="North Corner" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">North Corner</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/11.miyaru-faru.webp" alt="Miyaru Faru" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Miyaru Faru</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/12.caves.webp" alt="Caves" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Caves</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/13.bodugaa.webp" alt="Bodugaa" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Bodugaa</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/14.three-palm.webp" alt="Three Palm" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Three Palm</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/15.holhifaru.webp" alt="Holhifaru" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Holhifaru</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/16.rashoo-channel.webp" alt="Rashoo Channel" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Rashoo Channel</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/17.reef-explorer.webp" alt="Reef Explorer" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Reef Explorer</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/18.kuramthi-queen.webp" alt="Kuramthi Queen" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Kuramthi Queen</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/divesitebg.webp" alt="Dive Site" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Dive Site</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="dive-sites">
+            <img src="images/crystalclear.webp" alt="Crystal Clear Waters" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Crystal Clear Waters</div>
+            </div>
+          </div>
+
+          <!-- Team & Activities -->
+          <div class="gallery-item" data-category="team">
+            <img src="images/aboutbigblue.webp" alt="Big Blue Team" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Big Blue Team</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/aboutus.webp" alt="About Us" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">About Us</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/crew.webp" alt="Crew" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Our Crew</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/cappi.webp" alt="Cappi" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Team Member</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/dan.webp" alt="Dan" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Team Member</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/thille.webp" alt="Thille" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Team Member</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/bigbluehou.webp" alt="Big Blue House" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Big Blue House</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/openwater.webp" alt="Open Water Course" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Open Water Course</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/advandedopen.webp" alt="Advanced Open Water" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Advanced Open Water</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/rescuediver.webp" alt="Rescue Diver" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Rescue Diver</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/speciality.webp" alt="Speciality Course" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Speciality Course</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="team">
+            <img src="images/intotheblue.webp" alt="Into The Blue" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Into The Blue</div>
+            </div>
+          </div>
+
+          <!-- Excursions -->
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/snorkeling.webp" alt="Snorkeling" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Snorkeling</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/sunset.webp" alt="Sunset Cruise" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Sunset Cruise</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/dolphinwatch.webp" alt="Dolphin Watching" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Dolphin Watching</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/fishfeeding.webp" alt="Fish Feeding" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Fish Feeding</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/picnicisland.webp" alt="Picnic Island" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Picnic Island</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/rasdhoo-island.webp" alt="Rasdhoo Island" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Rasdhoo Island</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/islandculture.webp" alt="Island Culture" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Island Culture</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/localcusines.webp" alt="Local Cuisines" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Local Cuisines</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/whitebeach.webp" alt="White Beach" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">White Beach</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/hightide.webp" alt="High Tide" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">High Tide</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/lowtide.webp" alt="Low Tide" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Low Tide</div>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="excursions">
+            <img src="images/smallwave.webp" alt="Small Wave" />
+            <div class="gallery-item-overlay">
+              <div class="gallery-item-title">Small Wave</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Stats -->
+        <div class="gallery-stats">
+          <h3>Gallery Highlights</h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number" id="totalPhotos">50+</div>
+              <div class="stat-label">Stunning Photos</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">18</div>
+              <div class="stat-label">Dive Sites</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">9</div>
+              <div class="stat-label">Marine Species</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">5</div>
+              <div class="stat-label">Excursion Types</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" id="lightboxClose">
+        <i class="fas fa-times"></i>
+      </button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="lightbox-content">
+        <img class="lightbox-image" id="lightboxImage" src="" alt="" />
+        <div class="lightbox-title" id="lightboxTitle"></div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- Company Information Column -->
+          <div class="footer-column company-info">
+            <div class="company-avatar">
+              <img src="images/logo.webp" alt="Big Blue Logo" />
+            </div>
+            <h3 class="company-name">Big Blue Divers Rasdhoo</h3>
+            <div class="company-details">
+              <p>Ghaazee Magu, Rasdhoo 09020</p>
+              <p>Maldives</p>
+              <p>+960 123-4567</p>
+            </div>
+            <div class="social-icons">
+              <a href="#" class="social-icon" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-icon" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Explore Column -->
+          <div class="footer-column">
+            <h4 class="footer-title">EXPLORE</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#services">Dive Packages</a></li>
+              <li><a href="courses.html">PADI Courses</a></li>
+              <li><a href="excursions.html">Island Excursions</a></li>
+              <li><a href="index.html#location">Our Location</a></li>
+            </ul>
+          </div>
+
+          <!-- Know More Column -->
+          <div class="footer-column">
+            <h4 class="footer-title">KNOW MORE</h4>
+            <ul class="footer-links">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="index.html#safety">Safety & Equipment</a></li>
+              <li><a href="index.html#reviews">Guest Reviews</a></li>
+              <li><a href="dive-sites.html">Dive Sites</a></li>
+            </ul>
+          </div>
+
+          <!-- About Column -->
+          <div class="footer-column">
+            <h4 class="footer-title">ABOUT</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#location">Contact Us</a></li>
+              <li><a href="index.html#booking">Book Now</a></li>
+              <li><a href="index.html#faq">FAQ</a></li>
+              <li><a href="index.html#terms">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-divider"></div>
+          <div class="footer-bottom-content">
+            <p class="copyright">
+              © 2025 Big Blue Divers Rasdhoo. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Gallery Filter Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            // Add active class to clicked button
+            this.classList.add("active");
+
+            const filterValue = this.getAttribute("data-filter");
+
+            galleryItems.forEach((item) => {
+              if (
+                filterValue === "all" ||
+                item.getAttribute("data-category") === filterValue
+              ) {
+                item.classList.remove("hidden");
+                // Add fade-in animation
+                item.style.opacity = "0";
+                setTimeout(() => {
+                  item.style.opacity = "1";
+                }, 10);
+              } else {
+                item.classList.add("hidden");
+              }
+            });
+          });
+        });
+
+        // Lightbox Functionality
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxTitle = document.getElementById("lightboxTitle");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const lightboxPrev = document.getElementById("lightboxPrev");
+        const lightboxNext = document.getElementById("lightboxNext");
+
+        let currentImageIndex = 0;
+        let visibleImages = [];
+
+        // Update visible images array based on current filter
+        function updateVisibleImages() {
+          visibleImages = Array.from(
+            document.querySelectorAll(".gallery-item:not(.hidden)")
+          );
+        }
+
+        // Open lightbox
+        galleryItems.forEach((item, index) => {
+          item.addEventListener("click", function () {
+            updateVisibleImages();
+            const clickedIndex = visibleImages.indexOf(item);
+            if (clickedIndex !== -1) {
+              currentImageIndex = clickedIndex;
+              showImage();
+              lightbox.classList.add("active");
+              document.body.style.overflow = "hidden";
+            }
+          });
+        });
+
+        // Show current image in lightbox
+        function showImage() {
+          if (visibleImages.length === 0) return;
+          const currentItem = visibleImages[currentImageIndex];
+          const img = currentItem.querySelector("img");
+          const title = currentItem.querySelector(".gallery-item-title").textContent;
+
+          lightboxImage.src = img.src;
+          lightboxImage.alt = img.alt;
+          lightboxTitle.textContent = title;
+        }
+
+        // Close lightbox
+        lightboxClose.addEventListener("click", function () {
+          lightbox.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
+
+        // Close on background click
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox) {
+            lightbox.classList.remove("active");
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        // Navigate to previous image
+        lightboxPrev.addEventListener("click", function (e) {
+          e.stopPropagation();
+          if (visibleImages.length === 0) return;
+          currentImageIndex =
+            (currentImageIndex - 1 + visibleImages.length) %
+            visibleImages.length;
+          showImage();
+        });
+
+        // Navigate to next image
+        lightboxNext.addEventListener("click", function (e) {
+          e.stopPropagation();
+          if (visibleImages.length === 0) return;
+          currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+          showImage();
+        });
+
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (!lightbox.classList.contains("active")) return;
+
+          if (e.key === "Escape") {
+            lightbox.classList.remove("active");
+            document.body.style.overflow = "auto";
+          } else if (e.key === "ArrowLeft") {
+            if (visibleImages.length === 0) return;
+            currentImageIndex =
+              (currentImageIndex - 1 + visibleImages.length) %
+              visibleImages.length;
+            showImage();
+          } else if (e.key === "ArrowRight") {
+            if (visibleImages.length === 0) return;
+            currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+            showImage();
+          }
+        });
+
+        // Initialize visible images
+        updateVisibleImages();
+
+        // Update photo count
+        const totalPhotos = galleryItems.length;
+        document.getElementById("totalPhotos").textContent = totalPhotos + "+";
+      });
+    </script>
+  </body>
+</html>
+

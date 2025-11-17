@@ -586,74 +586,104 @@ const initParallaxEffect = () => {
 
 // Review Slider functionality
 const initReviewSlider = () => {
-  const slides = document.querySelectorAll(".review-slide");
-  const dots = document.querySelectorAll(".dot");
-  const prevBtn = document.querySelector(".prev-btn");
-  const nextBtn = document.querySelector(".next-btn");
-  let currentSlide = 0;
-  let slideInterval;
+  // Initialize TripAdvisor slider
+  const tripadvisorSlides = document.querySelectorAll(
+    ".tripadvisor-slider .review-slide"
+  );
+  const tripadvisorDots = document.querySelectorAll(
+    ".tripadvisor-dots .dot"
+  );
+  const tripadvisorPrevBtn = document.querySelector(".tripadvisor-prev");
+  const tripadvisorNextBtn = document.querySelector(".tripadvisor-next");
 
-  const showSlide = (index) => {
-    // Remove active class from all slides and dots
-    slides.forEach((slide) => slide.classList.remove("active"));
-    dots.forEach((dot) => dot.classList.remove("active"));
+  // Initialize Google slider
+  const googleSlides = document.querySelectorAll(".google-slider .review-slide");
+  const googleDots = document.querySelectorAll(".google-dots .dot");
+  const googlePrevBtn = document.querySelector(".google-prev");
+  const googleNextBtn = document.querySelector(".google-next");
 
-    // Add active class to current slide and dot
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
-  };
-
-  const nextSlide = () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  };
-
-  const prevSlide = () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  };
-
-  const startAutoSlide = () => {
-    // Auto-slide disabled - slider only changes on manual navigation
-    // slideInterval = setInterval(nextSlide, 5000);
-  };
-
-  const stopAutoSlide = () => {
-    // clearInterval(slideInterval);
-  };
-
-  // Event listeners
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      nextSlide();
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      prevSlide();
-    });
-  }
-
-  // Dot navigation
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      currentSlide = index;
-      showSlide(currentSlide);
-    });
-  });
-
-  // Keyboard navigation
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") {
-      prevSlide();
-    } else if (e.key === "ArrowRight") {
-      nextSlide();
+  // Helper function to initialize a slider
+  const initSlider = (
+    slides,
+    dots,
+    prevBtn,
+    nextBtn,
+    sliderName = "slider"
+  ) => {
+    if (slides.length === 0 || dots.length === 0) {
+      console.info(
+        `${sliderName} not found on this page. Skipping initialization.`
+      );
+      return;
     }
-  });
 
-  // Initialize slider
-  showSlide(currentSlide);
+    let currentSlide = 0;
+
+    const showSlide = (index) => {
+      // Remove active class from all slides and dots
+      slides.forEach((slide) => slide.classList.remove("active"));
+      dots.forEach((dot) => dot.classList.remove("active"));
+
+      // Add active class to current slide and dot
+      if (slides[index]) {
+        slides[index].classList.add("active");
+      }
+      if (dots[index]) {
+        dots[index].classList.add("active");
+      }
+    };
+
+    const nextSlide = () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    };
+
+    const prevSlide = () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    };
+
+    // Event listeners
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        nextSlide();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        prevSlide();
+      });
+    }
+
+    // Dot navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+      });
+    });
+
+    // Initialize slider
+    showSlide(currentSlide);
+  };
+
+  // Initialize both sliders
+  initSlider(
+    tripadvisorSlides,
+    tripadvisorDots,
+    tripadvisorPrevBtn,
+    tripadvisorNextBtn,
+    "TripAdvisor slider"
+  );
+
+  initSlider(
+    googleSlides,
+    googleDots,
+    googlePrevBtn,
+    googleNextBtn,
+    "Google slider"
+  );
 };
 
 // Partnerships Section Interactive Features (removed)
@@ -1153,6 +1183,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initReviewSlider();
   initTravelInfoPopup();
   addModalAnimations();
+  initStickyNavbar();
 
   // Setup dive site cards (only on dive-sites.html page)
   setupDiveSiteCards();
@@ -1166,6 +1197,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // Uncomment the line below if you want parallax effect
   // initParallaxEffect();
 });
+
+// Sticky Navbar Scroll Effect
+const initStickyNavbar = () => {
+  const header = document.querySelector(".header");
+
+  if (!header) return;
+
+  let lastScroll = 0;
+  const scrollThreshold = 50; // Add scrolled class after scrolling 50px
+
+  const handleScroll = () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > scrollThreshold) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+
+    lastScroll = currentScroll;
+  };
+
+  // Use passive event listener for better performance
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  // Check initial scroll position
+  handleScroll();
+};
 
 // FAQ Toggle Functionality
 window.toggleFAQ = function (faqNumber) {
@@ -1528,7 +1587,12 @@ function initCoursesReviewSlider() {
   const slides = document.querySelectorAll(".review-slide");
   const dots = document.querySelectorAll(".review-dot");
 
-  if (slides.length === 0) return;
+  if (slides.length === 0 || dots.length === 0) {
+    console.info(
+      "Courses review slider not found on this page. Skipping initCoursesReviewSlider."
+    );
+    return;
+  }
 
   // Auto-slide every 5 seconds
   reviewInterval = setInterval(() => {
@@ -1540,15 +1604,15 @@ window.goToReview = function (index) {
   const slides = document.querySelectorAll(".review-slide");
   const dots = document.querySelectorAll(".review-dot");
 
-  if (slides.length === 0) return;
+  if (slides.length === 0 || dots.length === 0) return;
 
   // Remove active class from all
   slides.forEach((slide) => slide.classList.remove("active"));
   dots.forEach((dot) => dot.classList.remove("active"));
 
   // Add active class to current
-  slides[index].classList.add("active");
-  dots[index].classList.add("active");
+  slides[index % slides.length]?.classList.add("active");
+  dots[index % dots.length]?.classList.add("active");
 
   currentReviewIndex = index;
 
@@ -1558,3 +1622,19 @@ window.goToReview = function (index) {
     goToReview((currentReviewIndex + 1) % slides.length);
   }, 5000);
 };
+
+// Weather Date Display
+const updateWeatherDate = () => {
+  const weatherDateElement = document.getElementById("weather-date");
+  if (weatherDateElement) {
+    const today = new Date();
+    const options = { weekday: "long", day: "numeric", month: "long" };
+    const formattedDate = today.toLocaleDateString("en-US", options);
+    weatherDateElement.textContent = formattedDate;
+  }
+};
+
+// Initialize weather date on page load
+document.addEventListener("DOMContentLoaded", () => {
+  updateWeatherDate();
+});

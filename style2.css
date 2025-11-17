@@ -4,7 +4,8 @@
   min-height: 60vh;
   display: flex;
   align-items: center;
-  padding-top: 120px;
+  margin-top: -100px;
+  padding-top: 220px;
   background-image: url("images/divesitebg.webp");
   background-size: cover;
   background-position: center center;
@@ -216,7 +217,19 @@
 }
 
 /* Responsive Design for Dive Sites Hero */
+@media (max-width: 1024px) {
+  .dive-sites-hero {
+    margin-top: -80px;
+    padding-top: 190px;
+  }
+}
+
 @media (max-width: 768px) {
+  .dive-sites-hero {
+    margin-top: -70px;
+    padding-top: 170px;
+  }
+
   .dive-sites-hero__title {
     font-size: 2.2rem;
   }
@@ -258,6 +271,13 @@
 
   .dive-sites-intro__highlight::before {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .dive-sites-hero {
+    margin-top: -70px;
+    padding-top: 160px;
   }
 }
 
@@ -1825,8 +1845,16 @@
   }
 }
 
+/* Dive Sites Page Layout */
+.dive-sites-main {
+  margin: 0;
+  padding: 0;
+}
+
 /* Packages Page Styles */
 .packages-main {
+  margin: 0;
+  padding: 0;
   background: #ffffff;
 }
 
@@ -1838,7 +1866,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-top: 80px;
+  margin-top: -100px;
+  padding-top: 180px;
 }
 
 .packages-hero__background {
@@ -2042,6 +2071,8 @@
 @media (max-width: 1024px) {
   .packages-hero {
     min-height: 55vh;
+    margin-top: -80px;
+    padding-top: 170px;
   }
 
   .packages-hero__title {
@@ -2065,7 +2096,8 @@
 @media (max-width: 768px) {
   .packages-hero {
     min-height: 75vh;
-    padding-top: 60px;
+    margin-top: -70px;
+    padding-top: 160px;
   }
 
   .packages-hero__content {
@@ -2101,6 +2133,8 @@
 @media (max-width: 480px) {
   .packages-hero {
     min-height: 70vh;
+    margin-top: -70px;
+    padding-top: 150px;
   }
 
   .packages-hero__title {
