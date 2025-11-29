@@ -445,8 +445,8 @@ document.addEventListener("DOMContentLoaded", createMobileMenu);
 const initScrollAnimations = () => {
   // Intersection Observer for fade-in animations
   const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
+    threshold: 0.05,
+    rootMargin: "0px 0px -20px 0px",
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -502,29 +502,29 @@ const initScrollAnimations = () => {
   allAnimatedElements.forEach((element) => {
     element.style.opacity = "0";
     element.style.transform = "translateY(30px)";
-    element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    element.style.transition = "opacity 0.4s ease, transform 0.4s ease";
     observer.observe(element);
   });
 
   // Grouped stagger for nicer reveal timing
-  const applyStagger = (nodes, baseDelay = 0, step = 0.08) => {
+  const applyStagger = (nodes, baseDelay = 0, step = 0.04) => {
     nodes.forEach((el, i) => {
       el.style.transitionDelay = `${baseDelay + i * step}s`;
     });
   };
 
-  applyStagger(storyHeader, 0, 0.05);
-  applyStagger(storyParagraphs, 0.05, 0.12);
-  applyStagger(storyHighlights, 0.25, 0.1);
-  applyStagger(showcaseItems, 0.15, 0.08);
+  applyStagger(storyHeader, 0, 0.03);
+  applyStagger(storyParagraphs, 0.02, 0.05);
+  applyStagger(storyHighlights, 0.1, 0.05);
+  applyStagger(showcaseItems, 0.05, 0.04);
 
   // Team section stagger timing
-  applyStagger(teamTitle, 0, 0.1);
-  applyStagger(teamCards, 0.2, 0.15);
-  applyStagger(valuesHeaders, 0.1, 0.1);
-  applyStagger(valueItems, 0.3, 0.12);
-  applyStagger(certHeaders, 0.1, 0.1);
-  applyStagger(certItems, 0.3, 0.15);
+  applyStagger(teamTitle, 0, 0.05);
+  applyStagger(teamCards, 0.1, 0.06);
+  applyStagger(valuesHeaders, 0.05, 0.05);
+  applyStagger(valueItems, 0.15, 0.06);
+  applyStagger(certHeaders, 0.05, 0.05);
+  applyStagger(certItems, 0.15, 0.06);
 };
 
 // CTA Button functionality
@@ -1409,6 +1409,9 @@ window.calculateTotal = function () {
 
   if (summaryDives) summaryDives.textContent = dives;
   if (summaryNights) summaryNights.textContent = nights;
+
+  // Update WhatsApp link
+  updateWhatsAppLink();
 };
 
 // Update price display with animation
@@ -1446,45 +1449,72 @@ document.addEventListener("DOMContentLoaded", function () {
   // Calculate initial total
   calculateTotal();
 
-  // Add event listener to request quote button
-  const requestQuoteBtn = document.querySelector(".request-quote-btn");
-  if (requestQuoteBtn) {
-    requestQuoteBtn.addEventListener("click", function () {
-      // Get current configuration
-      const dives = document.getElementById("dives-count")?.textContent || "5";
-      const nights =
-        document.getElementById("nights-count")?.textContent || "3";
-      const total = document.getElementById("total-price")?.textContent || "$0";
+  // Update WhatsApp link with package details
+  updateWhatsAppLink();
 
-      // Add ripple effect
-      const ripple = document.createElement("span");
-      ripple.style.position = "absolute";
-      ripple.style.borderRadius = "50%";
-      ripple.style.background = "rgba(255, 255, 255, 0.5)";
-      ripple.style.transform = "scale(0)";
-      ripple.style.animation = "ripple 0.6s linear";
-      ripple.style.left = "50%";
-      ripple.style.top = "50%";
-      ripple.style.width = "20px";
-      ripple.style.height = "20px";
-      ripple.style.marginLeft = "-10px";
-      ripple.style.marginTop = "-10px";
+  // Update WhatsApp link whenever package changes
+  const addonCheckboxes = document.querySelectorAll(
+    'input[type="checkbox"][id^="addon-"]'
+  );
 
-      this.appendChild(ripple);
+  if (divesSlider) {
+    divesSlider.addEventListener("input", updateWhatsAppLink);
+  }
+  if (nightsSlider) {
+    nightsSlider.addEventListener("input", updateWhatsAppLink);
+  }
+  addonCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", updateWhatsAppLink);
+  });
+});
 
-      setTimeout(() => {
-        ripple.remove();
-      }, 600);
+// Function to update WhatsApp link with current package configuration
+function updateWhatsAppLink() {
+  const whatsappBtn = document.getElementById("whatsapp-quote-btn");
+  if (!whatsappBtn) return;
 
-      // Show alert (in a real application, this would submit to a form or API)
-      setTimeout(() => {
-        alert(
-          `Quote Request:\n${dives} Dives, ${nights} Nights\nEstimated Total: ${total}\n\nThank you! We'll contact you shortly with a detailed quote.`
-        );
-      }, 300);
+  // Get current configuration
+  const dives = document.getElementById("dives-count")?.textContent || "5";
+  const nights = document.getElementById("nights-count")?.textContent || "3";
+  const total = document.getElementById("total-price")?.textContent || "$0";
+
+  // Get selected addons
+  const addons = [];
+  const picnicChecked = document.getElementById("addon-picnic")?.checked;
+  const snorkelingChecked = document.getElementById("addon-snorkeling")?.checked;
+  const transferChecked = document.getElementById("addon-transfer")?.checked;
+  const nightChecked = document.getElementById("addon-night")?.checked;
+
+  if (picnicChecked) addons.push("Picnic Island Trip");
+  if (snorkelingChecked) addons.push("Snorkeling Trip");
+  if (transferChecked) addons.push("Airport Transfer (2-way)");
+  if (nightChecked) addons.push("Night Dive Experience");
+
+  // Build WhatsApp message
+  let message = `Hello! I'm interested in a custom dive package:\n\n`;
+  message += `📊 Package Details:\n`;
+  message += `• ${dives} Dives\n`;
+  message += `• ${nights} Nights\n`;
+  if (addons.length > 0) {
+    message += `\n➕ Add-ons:\n`;
+    addons.forEach((addon) => {
+      message += `• ${addon}\n`;
     });
   }
+  message += `\n💰 Estimated Total: ${total}\n\n`;
+  message += `Please provide a detailed quote for this package. Thank you!`;
 
+  // Encode message for URL
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappNumber = "9609774604";
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+  // Update button href
+  whatsappBtn.href = whatsappUrl;
+}
+
+// Initialize courses review slider and filters
+document.addEventListener("DOMContentLoaded", function () {
   // Initialize courses review slider
   initCoursesReviewSlider();
 
@@ -1624,6 +1654,47 @@ window.goToReview = function (index) {
 };
 
 // Weather Date Display
+// Filter functionality for dive sites
+const initDiveSiteFilters = () => {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const diveSiteCards = document.querySelectorAll('.dive-site-detail-card');
+
+  if (filterButtons.length === 0 || diveSiteCards.length === 0) {
+    return;
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // Filter cards
+      diveSiteCards.forEach(card => {
+        const difficulty = card.getAttribute('data-difficulty');
+        
+        if (filter === 'all' || difficulty === filter) {
+          card.classList.remove('hidden');
+          card.style.animation = 'fadeInUp 0.5s ease both';
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+};
+
+// Initialize filters when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initDiveSiteFilters();
+  });
+} else {
+  initDiveSiteFilters();
+}
+
 const updateWeatherDate = () => {
   const weatherDateElement = document.getElementById("weather-date");
   if (weatherDateElement) {
@@ -1637,4 +1708,34 @@ const updateWeatherDate = () => {
 // Initialize weather date on page load
 document.addEventListener("DOMContentLoaded", () => {
   updateWeatherDate();
+  initSmoothScroll();
 });
+
+// Smooth scroll for hero button and all anchor links
+const initSmoothScroll = () => {
+  // Handle all anchor links with smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      
+      // Skip if href is just "#"
+      if (href === '#') return;
+      
+      const targetElement = document.querySelector(href);
+      
+      if (targetElement) {
+        e.preventDefault();
+        
+        // Calculate offset for fixed header
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+};

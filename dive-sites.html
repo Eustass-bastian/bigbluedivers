@@ -68,6 +68,18 @@
               </ul>
             </li>
             <li class="nav-item">
+              <a href="accomodation.html" class="nav-link">Accomodation</a>
+              <ul class="dropdown-menu">
+                <li><a href="accomodation.html">All Accomodation</a></li>
+                <li><a href="accomodation.html#guesthouses">Guesthouses</a></li>
+                <li><a href="accomodation.html#brickwood">Brickwood Guest House</a></li>
+                <li>
+                  <a href="accomodation.html#what-to-expect">What to Expect</a>
+                </li>
+                <li><a href="accomodation.html#faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
               <a href="courses.html" class="nav-link">Courses</a>
               <ul class="dropdown-menu">
                 <li><a href="courses.html#courses-grid">All Courses</a></li>
@@ -114,31 +126,32 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="index.html#safety" class="nav-link">Safety</a>
+              <a href="safety.html" class="nav-link">Safety</a>
               <ul class="dropdown-menu">
-                <li><a href="index.html#safety">Safety First</a></li>
+                <li><a href="safety.html#safety">Safety First</a></li>
                 <li>
-                  <a href="index.html#safety-certified">Certified Equipment</a>
+                  <a href="safety.html#safety-certified">Certified Equipment</a>
                 </li>
 
                 <li>
-                  <a href="index.html#safety-guides">Professional Guides</a>
+                  <a href="safety.html#safety-guides">Professional Guides</a>
                 </li>
                 <li>
-                  <a href="index.html#safety-protocols">Safety Protocols</a>
+                  <a href="safety.html#safety-protocols">Safety Protocols</a>
                 </li>
-                <li><a href="index.html#safety-vessels">Modern Vessels</a></li>
+                <li><a href="safety.html#safety-vessels">Modern Vessels</a></li>
                 <li>
-                  <a href="index.html#safety-emergency">Emergency Procedures</a>
+                  <a href="safety.html#safety-emergency">Emergency Procedures</a>
                 </li>
               </ul>
             </li>
             <li class="nav-item">
-              <a href="index.html#location" class="nav-link">Contact</a>
+              <a href="contact.html" class="nav-link">Contact</a>
               <ul class="dropdown-menu">
-                <li><a href="index.html#location">Our Location</a></li>
-                <li><a href="index.html#location">Get Directions</a></li>
-                <li><a href="index.html#about-us">About Us</a></li>
+                <li><a href="contact.html#contact">Send a Message</a></li>
+                <li><a href="contact.html#location">Our Location</a></li>
+                <li><a href="contact.html#location">Get Directions</a></li>
+                <li><a href="about.html#about-us">About Us</a></li>
                 <li><a href="about.html">Full About Page</a></li>
               </ul>
             </li>
@@ -150,22 +163,39 @@
     <main class="dive-sites-main">
       <!-- Hero Section -->
       <section class="dive-sites-hero">
-        <div class="container dive-sites-hero__inner">
-          <div class="dive-sites-hero__card">
-            <h2 class="dive-sites-hero__title section-title">Dive Sites</h2>
-            <p class="dive-sites-hero__text section-subtitle">
-              Discover the most spectacular dive sites around Rasdhoo Atoll.
-              From gentle lagoons to thrilling shark encounters, each site
-              offers unique underwater adventures.
-            </p>
-          </div>
+        <div class="dive-sites-hero__background">
+          <img src="images/divesitebg.webp" alt="Dive sites background" />
         </div>
+        <div class="dive-sites-hero__overlay"></div>
         <div class="dive-sites-hero__bubbles" aria-hidden="true">
           <span></span>
           <span></span>
           <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <div class="dive-sites-hero__overlay"></div>
+        <div class="container dive-sites-hero__content">
+          <h1 class="dive-sites-hero__title">Dive Sites</h1>
+          <p class="dive-sites-hero__subtitle">
+            Discover the most spectacular dive sites around Rasdhoo Atoll.
+            From gentle lagoons to thrilling shark encounters, each site
+            offers unique underwater adventures.
+          </p>
+          <div class="dive-sites-hero__features">
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>18 Unique Sites</span>
+            </div>
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>All Difficulty Levels</span>
+            </div>
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Rich Marine Life</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Dive Sites Introduction Section -->
@@ -204,7 +234,7 @@
 
       <!-- Dive Site Details Section -->
       <section id="dive-sites" class="dive-site-details-section">
-        <div class="container">
+        <div class="dive-site-details-wrapper">
           <div class="dive-site-details-content">
             <h2 class="dive-site-details-title">Featured Dive Sites</h2>
             <p class="dive-site-details-subtitle">
@@ -212,22 +242,41 @@
               Click any card to view more details of the dive site
             </p>
 
+            <!-- Filter Buttons -->
+            <div class="dive-site-filters">
+              <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th"></i>
+                <span>All Sites</span>
+              </button>
+              <button class="filter-btn" data-filter="beginner">
+                <i class="fas fa-seedling"></i>
+                <span>Beginner</span>
+              </button>
+              <button class="filter-btn" data-filter="intermediate">
+                <i class="fas fa-water"></i>
+                <span>Intermediate</span>
+              </button>
+              <button class="filter-btn" data-filter="advanced">
+                <i class="fas fa-mountain"></i>
+                <span>Advanced</span>
+              </button>
+            </div>
+
             <div class="dive-sites-grid">
               <!-- Dive Site Card 1 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="beginner"
                 onclick="window.openDiveSite(1)"
               >
-                <div class="dive-site-number">1</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">1</div>
+                  <div class="dive-site-difficulty-badge beginner">Beginner</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Rasdhoo Reef</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty beginner">
-                    Beginner
                   </div>
                   <p class="dive-site-detail-description">
                     Beautiful coral formations with abundant marine life and
@@ -249,18 +298,17 @@
               <!-- Dive Site Card 2 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="intermediate"
                 onclick="window.openDiveSite(2)"
               >
-                <div class="dive-site-number">2</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">2</div>
+                  <div class="dive-site-difficulty-badge intermediate">Intermediate</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Madivaru Channel</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty intermediate">
-                    Intermediate
                   </div>
                   <p class="dive-site-detail-description">
                     Thrilling drift dive through the channel with strong
@@ -282,18 +330,17 @@
               <!-- Dive Site Card 3 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="advanced"
                 onclick="window.openDiveSite(3)"
               >
-                <div class="dive-site-number">3</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">3</div>
+                  <div class="dive-site-difficulty-badge advanced">Advanced</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Hammerhead Point</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty advanced">
-                    Advanced
                   </div>
                   <p class="dive-site-detail-description">
                     Famous hammerhead shark encounters in deep blue waters with
@@ -315,18 +362,17 @@
               <!-- Dive Site Card 4 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="intermediate"
                 onclick="window.openDiveSite(4)"
               >
-                <div class="dive-site-number">4</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">4</div>
+                  <div class="dive-site-difficulty-badge intermediate">Intermediate</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Madivaru Corner</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty intermediate">
-                    Intermediate
                   </div>
                   <p class="dive-site-detail-description">
                     Spectacular corner dive with dramatic drop-offs and diverse
@@ -348,18 +394,17 @@
               <!-- Dive Site Card 5 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="beginner"
                 onclick="window.openDiveSite(5)"
               >
-                <div class="dive-site-number">5</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">5</div>
+                  <div class="dive-site-difficulty-badge beginner">Beginner</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Madivaru Reef</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty beginner">
-                    Beginner
                   </div>
                   <p class="dive-site-detail-description">
                     Gentle reef dive perfect for beginners with colorful corals
@@ -381,18 +426,17 @@
               <!-- Dive Site Card 6 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="intermediate"
                 onclick="window.openDiveSite(6)"
               >
-                <div class="dive-site-number">6</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">6</div>
+                  <div class="dive-site-difficulty-badge intermediate">Intermediate</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Veligandu East</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty intermediate">
-                    Intermediate
                   </div>
                   <p class="dive-site-detail-description">
                     East-facing reef with excellent coral coverage and abundant
@@ -414,18 +458,17 @@
               <!-- Dive Site Card 7 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="intermediate"
                 onclick="window.openDiveSite(7)"
               >
-                <div class="dive-site-number">7</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">7</div>
+                  <div class="dive-site-difficulty-badge intermediate">Intermediate</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Veligandu North</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty intermediate">
-                    Intermediate
                   </div>
                   <p class="dive-site-detail-description">
                     Northern reef section with dramatic topography and large
@@ -447,18 +490,17 @@
               <!-- Dive Site Card 8 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="beginner"
                 onclick="window.openDiveSite(8)"
               >
-                <div class="dive-site-number">8</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">8</div>
+                  <div class="dive-site-difficulty-badge beginner">Beginner</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Madigaa</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty beginner">
-                    Beginner
                   </div>
                   <p class="dive-site-detail-description">
                     Shallow reef perfect for snorkeling and beginner divers with
@@ -480,18 +522,17 @@
               <!-- Dive Site Card 9 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="advanced"
                 onclick="window.openDiveSite(9)"
               >
-                <div class="dive-site-number">9</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">9</div>
+                  <div class="dive-site-difficulty-badge advanced">Advanced</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">North Channel</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty advanced">
-                    Advanced
                   </div>
                   <p class="dive-site-detail-description">
                     Challenging drift dive through the northern channel with
@@ -513,18 +554,17 @@
               <!-- Dive Site Card 10 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="intermediate"
                 onclick="window.openDiveSite(10)"
               >
-                <div class="dive-site-number">10</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">10</div>
+                  <div class="dive-site-difficulty-badge intermediate">Intermediate</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">North Corner</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty intermediate">
-                    Intermediate
                   </div>
                   <p class="dive-site-detail-description">
                     Corner dive with excellent coral formations and diverse
@@ -546,18 +586,17 @@
               <!-- Dive Site Card 11 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="intermediate"
                 onclick="window.openDiveSite(11)"
               >
-                <div class="dive-site-number">11</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">11</div>
+                  <div class="dive-site-difficulty-badge intermediate">Intermediate</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Miyaru Faru</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty intermediate">
-                    Intermediate
                   </div>
                   <p class="dive-site-detail-description">
                     Spectacular reef with vibrant coral gardens and abundant
@@ -579,18 +618,17 @@
               <!-- Dive Site Card 12 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="advanced"
                 onclick="window.openDiveSite(12)"
               >
-                <div class="dive-site-number">12</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">12</div>
+                  <div class="dive-site-difficulty-badge advanced">Advanced</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">The Caves</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty advanced">
-                    Advanced
                   </div>
                   <p class="dive-site-detail-description">
                     Underwater cave system with dramatic rock formations and
@@ -612,18 +650,17 @@
               <!-- Dive Site Card 13 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="beginner"
                 onclick="window.openDiveSite(13)"
               >
-                <div class="dive-site-number">13</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">13</div>
+                  <div class="dive-site-difficulty-badge beginner">Beginner</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Bodugaa</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty beginner">
-                    Beginner
                   </div>
                   <p class="dive-site-detail-description">
                     Beautiful reef with thriving hard corals and excellent
@@ -645,18 +682,17 @@
               <!-- Dive Site Card 14 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="beginner"
                 onclick="window.openDiveSite(14)"
               >
-                <div class="dive-site-number">14</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">14</div>
+                  <div class="dive-site-difficulty-badge beginner">Beginner</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Three Palms</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty beginner">
-                    Beginner
                   </div>
                   <p class="dive-site-detail-description">
                     Named after three distinctive coral formations, offering
@@ -678,18 +714,17 @@
               <!-- Dive Site Card 15 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="intermediate"
                 onclick="window.openDiveSite(15)"
               >
-                <div class="dive-site-number">15</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">15</div>
+                  <div class="dive-site-difficulty-badge intermediate">Intermediate</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Holhifaru</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty intermediate">
-                    Intermediate
                   </div>
                   <p class="dive-site-detail-description">
                     Spectacular reef with vibrant coral gardens and diverse
@@ -711,18 +746,17 @@
               <!-- Dive Site Card 16 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="advanced"
                 onclick="window.openDiveSite(16)"
               >
-                <div class="dive-site-number">16</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">16</div>
+                  <div class="dive-site-difficulty-badge advanced">Advanced</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Rashoo Channel</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty advanced">
-                    Advanced
                   </div>
                   <p class="dive-site-detail-description">
                     Thrilling drift dive through the channel with chances to
@@ -744,18 +778,17 @@
               <!-- Dive Site Card 17 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="intermediate"
                 onclick="window.openDiveSite(17)"
               >
-                <div class="dive-site-number">17</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">17</div>
+                  <div class="dive-site-difficulty-badge intermediate">Intermediate</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Reef Explorer</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty intermediate">
-                    Intermediate
                   </div>
                   <p class="dive-site-detail-description">
                     Artificial reef created by a sunken vessel, now home to
@@ -777,18 +810,17 @@
               <!-- Dive Site Card 18 -->
               <div
                 class="dive-site-detail-card"
+                data-difficulty="advanced"
                 onclick="window.openDiveSite(18)"
               >
-                <div class="dive-site-number">18</div>
                 <div class="dive-site-detail-info">
+                  <div class="dive-site-number">18</div>
+                  <div class="dive-site-difficulty-badge advanced">Advanced</div>
                   <div class="dive-site-detail-header">
                     <h3 class="dive-site-detail-name">Kuramthi Queen</h3>
                     <div class="dive-site-click-indicator">
                       <i class="fas fa-arrow-right"></i>
                     </div>
-                  </div>
-                  <div class="dive-site-detail-difficulty advanced">
-                    Advanced
                   </div>
                   <p class="dive-site-detail-description">
                     Deep dive site known for large pelagic encounters and
@@ -1118,13 +1150,40 @@
               <p>+960 123-4567</p>
             </div>
             <div class="social-icons">
-              <a href="#" class="social-icon" aria-label="Facebook">
+              <a
+                href="https://www.facebook.com/BigBlueDiversRasdhoo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="Facebook"
+              >
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="#" class="social-icon" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/big_blue_divers_rasdhoo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="Instagram"
+              >
                 <i class="fab fa-instagram"></i>
               </a>
-              <a href="#" class="social-icon" aria-label="WhatsApp">
+              <a
+                href="https://www.tiktok.com/@bigbluediversrasdhoo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="TikTok"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a
+                href="https://wa.me/9609774604"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="WhatsApp"
+              >
                 <i class="fab fa-whatsapp"></i>
               </a>
             </div>

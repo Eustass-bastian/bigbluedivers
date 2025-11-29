@@ -21,16 +21,22 @@
       function openAirportInfo() {
         console.log("Opening airport popup");
         const popup = document.getElementById("airportInfoPopup");
+        const button = document.querySelector(".airport-btn");
         if (popup) {
+          popup.classList.add("active");
           popup.style.display = "flex";
+          if (button) button.classList.add("active");
           document.body.style.overflow = "hidden";
         }
       }
 
       function closeAirportInfo() {
         const popup = document.getElementById("airportInfoPopup");
+        const button = document.querySelector(".airport-btn");
         if (popup) {
+          popup.classList.remove("active");
           popup.style.display = "none";
+          if (button) button.classList.remove("active");
           document.body.style.overflow = "auto";
         }
       }
@@ -38,16 +44,22 @@
       function openImmigrationInfo() {
         console.log("Opening immigration popup");
         const popup = document.getElementById("immigrationInfoPopup");
+        const button = document.querySelector(".immigration-btn");
         if (popup) {
+          popup.classList.add("active");
           popup.style.display = "flex";
+          if (button) button.classList.add("active");
           document.body.style.overflow = "hidden";
         }
       }
 
       function closeImmigrationInfo() {
         const popup = document.getElementById("immigrationInfoPopup");
+        const button = document.querySelector(".immigration-btn");
         if (popup) {
+          popup.classList.remove("active");
           popup.style.display = "none";
+          if (button) button.classList.remove("active");
           document.body.style.overflow = "auto";
         }
       }
@@ -55,22 +67,32 @@
       function openTravelTips() {
         console.log("Opening travel tips popup");
         const popup = document.getElementById("travelTipsPopup");
+        const button = document.querySelector(".tips-btn");
         if (popup) {
+          popup.classList.add("active");
           popup.style.display = "flex";
+          if (button) button.classList.add("active");
           document.body.style.overflow = "hidden";
         }
       }
 
       function closeTravelTips() {
         const popup = document.getElementById("travelTipsPopup");
+        const button = document.querySelector(".tips-btn");
         if (popup) {
+          popup.classList.remove("active");
           popup.style.display = "none";
+          if (button) button.classList.remove("active");
           document.body.style.overflow = "auto";
         }
       }
 
-      // Close popups when clicking outside
+      // Ensure body can scroll on page load
       document.addEventListener("DOMContentLoaded", function () {
+        // Reset body overflow to ensure scrolling works
+        document.body.style.overflow = "auto";
+        document.documentElement.style.overflow = "auto";
+
         const popups = [
           "airportInfoPopup",
           "immigrationInfoPopup",
@@ -104,8 +126,8 @@
 
         // Scroll animations for How to Get Here section
         const observerOptions = {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
+          threshold: 0.05,
+          rootMargin: "0px 0px -20px 0px",
         };
 
         const observer = new IntersectionObserver(function (entries) {
@@ -187,6 +209,22 @@
                 <li><a href="index.html#package-high-tide">High Tide</a></li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a href="accomodation.html" class="nav-link">Accomodation</a>
+              <ul class="dropdown-menu">
+                <li><a href="accomodation.html">All Accomodation</a></li>
+                <li><a href="accomodation.html#guesthouses">Guesthouses</a></li>
+                <li>
+                  <a href="accomodation.html#brickwood"
+                    >Brickwood Guest House</a
+                  >
+                </li>
+                <li>
+                  <a href="accomodation.html#what-to-expect">What to Expect</a>
+                </li>
+                <li><a href="accomodation.html#faq">FAQ</a></li>
+              </ul>
+            </li>
 
             <li class="nav-item">
               <a href="courses.html" class="nav-link">Courses</a>
@@ -235,22 +273,33 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#safety" class="nav-link">Safety</a>
+              <a href="safety.html" class="nav-link">Safety</a>
               <ul class="dropdown-menu">
-                <li><a href="#safety">Safety First</a></li>
-                <li><a href="#safety-certified">Certified Equipment</a></li>
-                <li><a href="#safety-guides">Professional Guides</a></li>
-                <li><a href="#safety-protocols">Safety Protocols</a></li>
-                <li><a href="#safety-vessels">Modern Vessels</a></li>
-                <li><a href="#safety-emergency">Emergency Procedures</a></li>
+                <li><a href="safety.html#safety">Safety First</a></li>
+                <li>
+                  <a href="safety.html#safety-certified">Certified Equipment</a>
+                </li>
+                <li>
+                  <a href="safety.html#safety-guides">Professional Guides</a>
+                </li>
+                <li>
+                  <a href="safety.html#safety-protocols">Safety Protocols</a>
+                </li>
+                <li><a href="safety.html#safety-vessels">Modern Vessels</a></li>
+                <li>
+                  <a href="safety.html#safety-emergency"
+                    >Emergency Procedures</a
+                  >
+                </li>
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#location" class="nav-link">Contact</a>
+              <a href="contact.html" class="nav-link">Contact</a>
               <ul class="dropdown-menu">
-                <li><a href="#location">Our Location</a></li>
-                <li><a href="#location">Get Directions</a></li>
-                <li><a href="#about-us">About Us</a></li>
+                <li><a href="contact.html#contact">Send a Message</a></li>
+                <li><a href="contact.html#location">Our Location</a></li>
+                <li><a href="contact.html#location">Get Directions</a></li>
+                <li><a href="about.html#about-us">About Us</a></li>
                 <li><a href="about.html">Full About Page</a></li>
               </ul>
             </li>
@@ -260,21 +309,56 @@
     </header>
     <main class="about-main">
       <section class="about-hero">
-        <div class="container about-hero__inner">
-          <div class="about-hero__card">
-            <h2 class="about-hero__title section-title">About Big Blue</h2>
-            <p class="about-hero__text section-subtitle">
-              Local guides. Small groups. Safety‑first diving in Rasdhoo’s clear
-              waters and where unforgettable experiences await.
-            </p>
-          </div>
+        <div class="about-hero__background">
+          <img src="images/aboutbigblue.webp" alt="About Big Blue background" />
         </div>
+        <div class="about-hero__overlay"></div>
         <div class="about-hero__bubbles" aria-hidden="true">
           <span></span>
           <span></span>
           <span></span>
+          <span></span>
+          <span></span>
         </div>
-        <div class="about-hero__overlay"></div>
+        <div class="container about-hero__content">
+          <h1 class="about-hero__title">About Big Blue</h1>
+          <p class="about-hero__subtitle">
+            Local guides. Small groups. Safety‑first diving in Rasdhoo's clear
+            waters and where unforgettable experiences await.
+          </p>
+          <div class="about-hero__features">
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Local Expertise</span>
+            </div>
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Small Groups</span>
+            </div>
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Safety First</span>
+            </div>
+          </div>
+          <div class="about-hero__buttons">
+            <a href="#our-story" class="hero-btn hero-btn--story">
+              <i class="fas fa-book-open"></i>
+              <span>Our Story</span>
+            </a>
+            <a href="#team" class="hero-btn hero-btn--team">
+              <i class="fas fa-users"></i>
+              <span>Meet The Team</span>
+            </a>
+            <a href="#rasdhoo" class="hero-btn hero-btn--rasdhoo">
+              <i class="fas fa-map-marked-alt"></i>
+              <span>Discover Rasdhoo</span>
+            </a>
+            <a href="#how-to-get-here" class="hero-btn hero-btn--travel">
+              <i class="fas fa-route"></i>
+              <span>How to Get Here</span>
+            </a>
+          </div>
+        </div>
       </section>
       <!-- Our Story Section (inserted before Rasdhoo section) -->
       <section id="our-story" class="our-story-section">
@@ -334,18 +418,18 @@
             <div class="poster-media">
               <div class="poster-circle reveal-item">
                 <img
-                  src="images/bigbluehou.webp"
+                  src="images/divers-home1.webp"
                   alt="Big Blue Dive Rasdhoo Center"
                 />
               </div>
               <img
                 class="mini-shot ms1 reveal-item"
-                src="images/picnicisland.webp"
+                src="images/divers-home2.webp"
                 alt="Dive Center View 1"
               />
               <img
                 class="mini-shot ms2 reveal-item"
-                src="images/hightide.webp"
+                src="images/divers-home.webp"
                 alt="Dive Center View 2"
               />
               <div class="poster-pin reveal-item">
@@ -371,161 +455,130 @@
 
       <!-- Meet The Team Section -->
       <section id="team" class="meet-team-section">
-        <div class="team-header">
-          <div class="container">
-            <h2 class="team-title">Meet The Team</h2>
+        <div class="team-container-unique">
+          <div class="team-header-unique">
+            <h2 class="team-title-unique">Meet The Team</h2>
+            <p class="team-subtitle-unique">
+              Our passionate team of diving professionals dedicated to creating
+              unforgettable underwater experiences
+            </p>
           </div>
-        </div>
 
-        <div class="team-content">
-          <div class="container">
-            <div class="team-grid">
-              <div class="team-card">
-                <div class="team-image">
-                  <img src="images/aboutus.webp" alt="Yatte - Base Leader" />
-                </div>
-                <div class="team-info">
-                  <h3 class="team-name">Yatte</h3>
-                  <p class="team-role">Base Leader, PADI Staff Instructor</p>
-                  <p class="team-description">
-                    Leading our team with expertise and passion, ensuring
-                    exceptional diving experiences with the highest safety
-                    standards.
-                  </p>
-                  <div class="team-social">
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-facebook-f"></i
-                    ></a>
-
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                  </div>
-                </div>
+          <div class="team-grid-unique">
+            <!-- Leadership & Instructors -->
+            <div class="team-card-unique">
+              <div class="team-image-unique">
+                <img src="images/aboutus.webp" alt="Yatte - Base Leader" />
+                <div class="team-overlay-unique"></div>
               </div>
-
-              <div class="team-card">
-                <div class="team-image">
-                  <img src="images/cappi.webp" alt="Zakibe - Captain" />
-                </div>
-                <div class="team-info">
-                  <h3 class="team-name">Zakibe</h3>
-                  <p class="team-role">Captain</p>
-                  <p class="team-description">
-                    Expertly navigating our waters with years of experience,
-                    ensuring safe and smooth journeys to the best dive sites.
-                  </p>
-                  <div class="team-social">
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-facebook-f"></i
-                    ></a>
-
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                  </div>
-                </div>
+              <div class="team-info-unique">
+                <h3 class="team-name-unique">Yatte</h3>
+                <p class="team-role-unique">
+                  Base Leader, PADI Staff Instructor
+                </p>
+                <p class="team-description-unique">
+                  Leading our team with expertise and passion, ensuring
+                  exceptional diving experiences with the highest safety
+                  standards.
+                </p>
               </div>
+            </div>
 
-              <div class="team-card">
-                <div class="team-image">
-                  <img src="images/crew.webp" alt="Jeevan - Boat Crew" />
-                </div>
-                <div class="team-info">
-                  <h3 class="team-name">Jeevan</h3>
-                  <p class="team-role">Boat Crew</p>
-                  <p class="team-description">
-                    Dedicated crew member ensuring your comfort and safety
-                    throughout your diving adventure with a friendly smile.
-                  </p>
-                  <div class="team-social">
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-facebook-f"></i
-                    ></a>
-
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                  </div>
-                </div>
+            <div class="team-card-unique">
+              <div class="team-image-unique">
+                <img src="images/thille.webp" alt="Thille - Dive Master" />
+                <div class="team-overlay-unique"></div>
               </div>
-
-              <div class="team-card">
-                <div class="team-image">
-                  <img
-                    src="images/thille.webp"
-                    alt="Yanis - Reservation and Marketing Manager"
-                  />
-                </div>
-                <div class="team-info">
-                  <h3 class="team-name">Yanis</h3>
-                  <p class="team-role">Reservation and Marketing Manager</p>
-                  <p class="team-description">
-                    Managing bookings and sharing the beauty of Rasdhoo with the
-                    world, ensuring your journey is seamless from start to
-                    finish.
-                  </p>
-                  <div class="team-social">
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-facebook-f"></i
-                    ></a>
-
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                  </div>
-                </div>
+              <div class="team-info-unique">
+                <h3 class="team-name-unique">Thille</h3>
+                <p class="team-role-unique">Dive Master</p>
+                <p class="team-description-unique">
+                  Expert dive master with extensive knowledge of Rasdhoo's
+                  underwater world, guiding divers to unforgettable encounters
+                  with marine life.
+                </p>
               </div>
+            </div>
 
-              <div class="team-card">
-                <div class="team-image">
-                  <img
-                    src="images/aboutus.webp"
-                    alt="Mohamed Ali - Dive Instructor"
-                  />
-                </div>
-                <div class="team-info">
-                  <h3 class="team-name">Mohamed Ali</h3>
-                  <p class="team-role">Dive Instructor</p>
-                  <p class="team-description">
-                    Passionate instructor dedicated to teaching and guiding
-                    divers of all levels through Rasdhoo's incredible underwater
-                    world.
-                  </p>
-                  <div class="team-social">
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-facebook-f"></i
-                    ></a>
-
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                  </div>
-                </div>
+            <div class="team-card-unique">
+              <div class="team-image-unique">
+                <img
+                  src="images/aboutus.webp"
+                  alt="Mohamed Ali - Dive Instructor"
+                />
+                <div class="team-overlay-unique"></div>
               </div>
+              <div class="team-info-unique">
+                <h3 class="team-name-unique">Mohamed Ali</h3>
+                <p class="team-role-unique">Dive Instructor</p>
+                <p class="team-description-unique">
+                  Passionate instructor dedicated to teaching and guiding divers
+                  of all levels through Rasdhoo's incredible underwater world.
+                </p>
+              </div>
+            </div>
 
-              <div class="team-card">
-                <div class="team-image">
-                  <img src="images/crew.webp" alt="Zohir - Compressor Boy" />
-                </div>
-                <div class="team-info">
-                  <h3 class="team-name">Zohir</h3>
-                  <p class="team-role">Compressor Boy</p>
-                  <p class="team-description">
-                    Ensuring all equipment is properly maintained and tanks are
-                    filled to perfection, keeping our operations running
-                    smoothly.
-                  </p>
-                  <div class="team-social">
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-facebook-f"></i
-                    ></a>
+            <!-- Operations Team -->
+            <div class="team-card-unique">
+              <div class="team-image-unique">
+                <img src="images/cappi.webp" alt="Zakibe - Captain" />
+                <div class="team-overlay-unique"></div>
+              </div>
+              <div class="team-info-unique">
+                <h3 class="team-name-unique">Zakibe</h3>
+                <p class="team-role-unique">Captain</p>
+                <p class="team-description-unique">
+                  Expertly navigating our waters with years of experience,
+                  ensuring safe and smooth journeys to the best dive sites.
+                </p>
+              </div>
+            </div>
 
-                    <a href="#" class="social-link"
-                      ><i class="fab fa-instagram"></i
-                    ></a>
-                  </div>
-                </div>
+            <div class="team-card-unique">
+              <div class="team-image-unique">
+                <img
+                  src="images/dan.webp"
+                  alt="Yanis - Reservation and Marketing Manager"
+                />
+                <div class="team-overlay-unique"></div>
+              </div>
+              <div class="team-info-unique">
+                <h3 class="team-name-unique">Yanis</h3>
+                <p class="team-role-unique">Reservation & Marketing Manager</p>
+                <p class="team-description-unique">
+                  Managing bookings and sharing the beauty of Rasdhoo with the
+                  world, ensuring your journey is seamless from start to finish.
+                </p>
+              </div>
+            </div>
+
+            <div class="team-card-unique">
+              <div class="team-image-unique">
+                <img src="images/crew.webp" alt="Jeevan - Boat Crew" />
+                <div class="team-overlay-unique"></div>
+              </div>
+              <div class="team-info-unique">
+                <h3 class="team-name-unique">Jeevan</h3>
+                <p class="team-role-unique">Boat Crew</p>
+                <p class="team-description-unique">
+                  Dedicated crew member ensuring your comfort and safety
+                  throughout your diving adventure with a friendly smile.
+                </p>
+              </div>
+            </div>
+
+            <div class="team-card-unique">
+              <div class="team-image-unique">
+                <img src="images/crew.webp" alt="Zohir - Compressor Boy" />
+                <div class="team-overlay-unique"></div>
+              </div>
+              <div class="team-info-unique">
+                <h3 class="team-name-unique">Zohir</h3>
+                <p class="team-role-unique">Compressor Boy</p>
+                <p class="team-description-unique">
+                  Ensuring all equipment is properly maintained and tanks are
+                  filled to perfection, keeping our operations running smoothly.
+                </p>
               </div>
             </div>
           </div>
@@ -1200,13 +1253,40 @@
                 <p>+960 123-4567</p>
               </div>
               <div class="social-icons">
-                <a href="#" class="social-icon" aria-label="Facebook">
+                <a
+                  href="https://www.facebook.com/BigBlueDiversRasdhoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon"
+                  aria-label="Facebook"
+                >
                   <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="social-icon" aria-label="Instagram">
+                <a
+                  href="https://www.instagram.com/big_blue_divers_rasdhoo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon"
+                  aria-label="Instagram"
+                >
                   <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="social-icon" aria-label="WhatsApp">
+                <a
+                  href="https://www.tiktok.com/@bigbluediversrasdhoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon"
+                  aria-label="TikTok"
+                >
+                  <i class="fab fa-tiktok"></i>
+                </a>
+                <a
+                  href="https://wa.me/9609774604"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-icon"
+                  aria-label="WhatsApp"
+                >
                   <i class="fab fa-whatsapp"></i>
                 </a>
               </div>
@@ -1228,7 +1308,7 @@
               <h4 class="footer-title">KNOW MORE</h4>
               <ul class="footer-links">
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="#safety">Safety & Equipment</a></li>
+                <li><a href="safety.html">Safety & Equipment</a></li>
                 <li><a href="#reviews">Guest Reviews</a></li>
                 <li><a href="dive-sites.html">Dive Sites</a></li>
               </ul>

@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accomodation • Big Blue Dive Rasdhoo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="script.js"></script>
+    <script>
+      // Smooth scroll with offset for sticky header
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerOffset = 120;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Guesthouse data
+      const guesthouseData = {
+        madivaru: {
+          name: "Madivaru Kro",
+          website: "https://www.madivarukro.com/",
+          email: "info@madivarukro.com",
+          phone: "+960 95122122",
+          logo: "images/kro-logo.png",
+          image: "images/kro1.webp",
+          images: [
+            "images/kro1.webp",
+            "images/kro2.webp",
+            "images/kro3.webp",
+            "images/kro4.webp",
+            "images/kro5.webp",
+          ],
+          description:
+            "Experience authentic Maldivian hospitality at Madivaru Kro, nestled in the heart of Rasdhoo island. This charming guesthouse features a traditional wood-finished courtyard, welcoming reception area, and communal lounging and dining spaces. Located just 300 meters from 'Bikini Beach' and 280 meters from the harbor, Madivaru Kro offers the perfect blend of local culture and modern comfort, making it an ideal base for your diving adventures with Big Blue.",
+          features: [
+            "Traditional wood-finished courtyard",
+            "Located 300m from Bikini Beach",
+            "280m from Rasdhoo harbor",
+            "Communal lounging and dining spaces",
+            "Reception area with local hospitality",
+            "Walking distance to Big Blue Dive Center",
+            "Traditional Maldivian architecture",
+            "Roof terrace with panoramic views",
+          ],
+          rooms: [
+            "6 Double rooms available",
+            "1 Family room (perfect for groups)",
+            "4 Triple rooms",
+            "All rooms with private bathrooms",
+            "Comfortable, clean accommodations",
+            "Traditional Maldivian design elements",
+          ],
+          amenities: [
+            "Open-air roof terrace",
+            "Complimentary sunbeds",
+            "Panoramic sunrise & sunset views",
+            "Free WiFi throughout",
+            "Air-conditioned rooms",
+            "Communal dining area",
+            "Traditional courtyard",
+            "Reception and information desk",
+            "Close to beach and harbor",
+          ],
+          location:
+            "Rasdhoo Island, North Ari Atoll - 300m from Bikini Beach, 280m from harbor",
+          contact:
+            "Book through Big Blue Dive Center or contact Madivaru Kro directly",
+          special:
+            "Enjoy breathtaking Maldivian sunrises and sunsets from the complimentary roof terrace with panoramic views.",
+        },
+        brickwood: {
+          name: "Brickwood Maldives",
+          website: "www.brickwoodmaldives.com",
+          email: "hello@brickwoodmaldives.com",
+          phone: "+960 9159099",
+          logo: "images/brickwood-logo.png",
+          image: "images/brickwood-1.webp",
+          images: [
+            "images/brickwood-1.webp",
+            "images/brickwood-2.webp",
+            "images/brickwood-3.webp",
+            "images/brickwood-4.webp",
+            "images/brickwood-5.webp",
+            "images/brickwood-6.webp",
+          ],
+          description:
+            "Discover Authentic Island Living at Brickwood Maldives. Experience the true essence of the Maldives at our boutique property in Rasdhoo, Ari Atoll. We offer serene and welcoming accommodations designed to help you escape the ordinary, reconnect with nature, and immerse yourself in authentic Maldivian culture. From spacious residences to cozy deluxe rooms, Brickwood provides the perfect base for your diving adventures with Big Blue.",
+          features: [
+            "Boutique holiday experiences in Rasdhoo",
+            "Walking distance to dive center (5 minutes)",
+            "Spacious residences and deluxe rooms",
+            "Authentic Maldivian island living",
+            "On-site Driftwood Cafe with local cuisine",
+            "Community engagement and local culture",
+            "Sustainable practices and environmental protection",
+            "Warm, genuine hospitality rooted in respect",
+          ],
+          rooms: [
+            "Five Bedroom Residence (5000 sqft) - Sleeps 10 adults + 5 children",
+            "Three Bedroom Residence (1396 sqft) - Sleeps 6 adults + 5 children",
+            "Two Bedroom Residence (1028 sqft) - Sleeps 4 adults + 2 children",
+            "5 Deluxe Rooms (165 sqft each) - Sleeps 2 adults + 1 child",
+            "All residences feature separate dining and living areas",
+            "Kitchenettes available in all residences",
+            "King-sized beds throughout",
+          ],
+          amenities: [
+            "Driftwood Cafe - Maldivian & Western cuisine",
+            "Separate dining areas (residences)",
+            "Separate living areas (residences)",
+            "Kitchenettes (residences)",
+            "Free WiFi throughout",
+            "Air conditioning",
+            "Hot water",
+            "Daily housekeeping",
+            "Authentic island experiences",
+            "Local cultural activities",
+            "Sustainability initiatives",
+            "Community connection",
+          ],
+          location:
+            "Rasdhoo, Ari Atoll, Republic of Maldives - 5 minutes walk from Big Blue Dive Center",
+          contact:
+            "Book through Big Blue Dive Center or contact Brickwood directly",
+          special:
+            "At Brickwood Maldives, we're more than just accommodation. Experience our values of hospitality, quality, authenticity, sustainability, and community engagement. Enjoy authentic island flavors at Driftwood Cafe and discover hidden gems of Rasdhoo through our curated experiences.",
+        },
+      };
+
+      // Open guesthouse modal
+      function openGuesthouseModal(guesthouseId) {
+        const data = guesthouseData[guesthouseId];
+        if (!data) return;
+
+        // Reset image index
+        currentImageIndex = 0;
+        if (data.images && data.images.length > 0) {
+          currentGuesthouseImages = data.images;
+        }
+
+        const modal = document.getElementById("guesthouse-modal");
+        const modalBody = document.getElementById("modal-content-body");
+
+        // Store current guesthouse ID for image navigation
+        modal.setAttribute("data-guesthouse-id", guesthouseId);
+
+        modalBody.innerHTML = `
+          <!-- Hero Section -->
+          <div class="modal-hero">
+            <div class="modal-hero-image">
+              <img src="${
+                data.images && data.images.length > 0
+                  ? data.images[0]
+                  : data.image
+              }" alt="${data.name}" id="modal-main-img" />
+              <div class="modal-hero-overlay"></div>
+              ${
+                data.images && data.images.length > 1
+                  ? `
+              <div class="image-nav image-nav-prev" onclick="changeModalImage(-1)">
+                <i class="fas fa-chevron-left"></i>
+              </div>
+              <div class="image-nav image-nav-next" onclick="changeModalImage(1)">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              `
+                  : ""
+              }
+              ${
+                data.images && data.images.length > 1
+                  ? `
+              <div class="modal-image-counter">
+                <span id="current-image">1</span> / ${data.images.length}
+              </div>
+              `
+                  : ""
+              }
+            </div>
+            ${
+              data.images && data.images.length > 1
+                ? `
+            <div class="modal-thumbnails">
+              ${data.images
+                .map(
+                  (img, index) => `
+                <div class="thumbnail-item ${
+                  index === 0 ? "active" : ""
+                }" onclick="selectModalImage(${index})">
+                  <img src="${img}" alt="${data.name} ${index + 1}" />
+                </div>
+              `
+                )
+                .join("")}
+            </div>
+            `
+                : ""
+            }
+          </div>
+
+          <!-- Header Section -->
+          <div class="modal-landing-header">
+            <div class="modal-landing-logo">
+              <img src="${data.logo}" alt="${data.name} Logo" />
+            </div>
+            <h1 class="modal-landing-title">${data.name}</h1>
+            <p class="modal-landing-subtitle">${data.description}</p>
+            ${
+              data.website
+                ? `<a href="${data.website}" target="_blank" class="modal-landing-website">
+              <i class="fas fa-globe"></i>
+              <span>Visit Website</span>
+            </a>`
+                : ""
+            }
+          </div>
+
+          ${
+            data.special
+              ? `
+          <!-- Highlight Banner -->
+          <div class="modal-landing-banner">
+            <div class="modal-landing-banner-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <p>${data.special}</p>
+          </div>
+          `
+              : ""
+          }
+
+          <!-- Features Section -->
+          <section class="modal-landing-section modal-features-section">
+            <div class="modal-landing-container">
+              <h2 class="modal-landing-section-title">
+                <span>Key Features</span>
+              </h2>
+              <div class="modal-features-grid">
+                ${data.features
+                  .map(
+                    (feature) => `
+                  <div class="modal-feature-card">
+                    <div class="modal-feature-icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p>${feature}</p>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          </section>
+
+          <!-- Room Types Section -->
+          <section class="modal-landing-section modal-rooms-section">
+            <div class="modal-landing-container">
+              <h2 class="modal-landing-section-title">
+                <span>Accommodations</span>
+              </h2>
+              <div class="modal-rooms-grid">
+                ${data.rooms
+                  .map(
+                    (room) => `
+                  <div class="modal-room-card">
+                    <div class="modal-room-icon">
+                      <i class="fas fa-bed"></i>
+                    </div>
+                    <p>${room}</p>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          </section>
+
+          <!-- Amenities Section -->
+          <section class="modal-landing-section modal-amenities-section">
+            <div class="modal-landing-container">
+              <h2 class="modal-landing-section-title">
+                <span>Amenities & Facilities</span>
+              </h2>
+              <div class="modal-amenities-grid">
+                ${data.amenities
+                  .map(
+                    (amenity) => `
+                  <div class="modal-amenity-card">
+                    <i class="fas fa-check"></i>
+                    <span>${amenity}</span>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          </section>
+
+          <!-- Location & Contact Section -->
+          <section class="modal-landing-section modal-contact-section-landing">
+            <div class="modal-landing-container">
+              <div class="modal-contact-grid">
+                <div class="modal-contact-card">
+                  <div class="modal-contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <h3>Location</h3>
+                  <p>${data.location}</p>
+                </div>
+                ${
+                  data.email || data.phone
+                    ? `
+                <div class="modal-contact-card">
+                  <div class="modal-contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <h3>Contact</h3>
+                  <div class="modal-contact-details">
+                    ${
+                      data.phone
+                        ? `
+                    <a href="tel:${data.phone.replace(/\s/g, "")}">
+                      <i class="fas fa-phone"></i>
+                      ${data.phone}
+                    </a>
+                    `
+                        : ""
+                    }
+                    ${
+                      data.email
+                        ? `
+                    <a href="mailto:${data.email}">
+                      <i class="fas fa-envelope"></i>
+                      ${data.email}
+                    </a>
+                    `
+                        : ""
+                    }
+                  </div>
+                </div>
+                `
+                    : ""
+                }
+              </div>
+            </div>
+          </section>
+
+          <!-- CTA Section -->
+          <section class="modal-landing-cta">
+            <div class="modal-landing-container">
+              <h2>Ready to Experience Authentic Island Living?</h2>
+              <p>Book your stay and diving adventure with us today</p>
+              <div class="modal-landing-cta-buttons">
+                <a href="contact.html#contact" class="modal-landing-btn modal-landing-btn-primary">
+                  <i class="fas fa-envelope"></i>
+                  <span>Book Through Big Blue</span>
+                </a>
+                ${
+                  data.website
+                    ? `
+                <a href="${data.website}" target="_blank" class="modal-landing-btn modal-landing-btn-secondary">
+                  <i class="fas fa-external-link-alt"></i>
+                  <span>Visit Website</span>
+                </a>
+                `
+                    : ""
+                }
+              </div>
+              <p class="modal-landing-note">
+                <i class="fas fa-info-circle"></i>
+                Special rates available when booking accommodation with dive packages
+              </p>
+            </div>
+          </section>
+        `;
+
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // Close guesthouse modal
+      function closeGuesthouseModal() {
+        const modal = document.getElementById("guesthouse-modal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // Image gallery navigation
+      let currentImageIndex = 0;
+      let currentGuesthouseImages = [];
+
+      function changeModalImage(direction) {
+        const modal = document.getElementById("guesthouse-modal");
+        const guesthouseId = modal.getAttribute("data-guesthouse-id");
+        const data = guesthouseData[guesthouseId];
+        if (!data || !data.images || data.images.length <= 1) return;
+
+        currentImageIndex += direction;
+
+        if (currentImageIndex < 0) {
+          currentImageIndex = data.images.length - 1;
+        } else if (currentImageIndex >= data.images.length) {
+          currentImageIndex = 0;
+        }
+
+        updateModalImage(currentImageIndex);
+      }
+
+      function selectModalImage(index) {
+        currentImageIndex = index;
+        updateModalImage(index);
+      }
+
+      function updateModalImage(index) {
+        const modal = document.getElementById("guesthouse-modal");
+        const guesthouseId = modal.getAttribute("data-guesthouse-id");
+        const data = guesthouseData[guesthouseId];
+        if (!data || !data.images) return;
+
+        const mainImg = document.getElementById("modal-main-img");
+        if (mainImg && data.images[index]) {
+          mainImg.src = data.images[index];
+        }
+
+        // Update active thumbnail
+        document.querySelectorAll(".thumbnail-item").forEach((thumb, i) => {
+          thumb.classList.toggle("active", i === index);
+        });
+
+        // Update image counter
+        const counter = document.getElementById("current-image");
+        if (counter) {
+          counter.textContent = index + 1;
+        }
+      }
+
+      // Keyboard navigation for modal
+      document.addEventListener("keydown", function (e) {
+        const modal = document.getElementById("guesthouse-modal");
+        if (!modal.classList.contains("active")) return;
+
+        if (e.key === "Escape") {
+          closeGuesthouseModal();
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          changeModalImage(-1);
+        } else if (e.key === "ArrowRight") {
+          e.preventDefault();
+          changeModalImage(1);
+        }
+      });
+
+      // FAQ toggle function
+      function toggleAccommodationFAQ(id) {
+        const answer = document.getElementById(`accommodation-faq-${id}`);
+        const faqItem = answer.closest(".faq-item");
+        const arrow = faqItem.querySelector(".faq-arrow i");
+
+        // Close all other FAQs
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          if (item !== faqItem) {
+            item.classList.remove("active");
+          }
+        });
+
+        // Toggle current FAQ
+        faqItem.classList.toggle("active");
+      }
+    </script>
+    <style>
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      main.packages-main {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <a href="index.html#home">
+              <img src="images/logo.webp" alt="Big Blue Logo" />
+            </a>
+          </div>
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="about.html" class="nav-link">About</a>
+              <ul class="dropdown-menu">
+                <li><a href="about.html">About Big Blue</a></li>
+                <li><a href="about.html#our-story">Our Story</a></li>
+                <li><a href="about.html#dive-center">Dive Center</a></li>
+                <li><a href="about.html#team">Meet The Team</a></li>
+                <li><a href="about.html#values">Our Values & Mission</a></li>
+                <li><a href="about.html#certifications">Certifications</a></li>
+                <li><a href="about.html#rasdhoo">Discover Rasdhoo</a></li>
+                <li>
+                  <a href="about.html#how-to-get-here">How to Get Here</a>
+                </li>
+                <li><a href="gallery.html">Dive Gallery</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="dive-sites.html" class="nav-link">Dive Sites</a>
+              <ul class="dropdown-menu">
+                <li><a href="dive-sites.html">All Dive Sites</a></li>
+                <li><a href="dive-sites.html#dive-map">Dive Map</a></li>
+                <li><a href="dive-sites.html#dive-sites">Featured Sites</a></li>
+                <li><a href="dive-sites.html#marine-life">Marine Life</a></li>
+                <li><a href="dive-sites.html#faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="packages.html" class="nav-link">Packages</a>
+              <ul class="dropdown-menu">
+                <li><a href="index.html#services">All Packages</a></li>
+                <li>
+                  <a href="packages.html#packages-overview">Package Overview</a>
+                </li>
+                <li><a href="packages.html#customize">Customize Package</a></li>
+                <li>
+                  <a href="packages.html#what-to-expect">What to Expect</a>
+                </li>
+                <li><a href="index.html#package-small-wave">Small Wave</a></li>
+                <li><a href="index.html#package-low-tide">Low Tide</a></li>
+                <li><a href="index.html#package-high-tide">High Tide</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="accomodation.html" class="nav-link active"
+                >Accomodation</a
+              >
+              <ul class="dropdown-menu">
+                <li><a href="accomodation.html">All Accomodation</a></li>
+                <li><a href="accomodation.html#guesthouses">Guesthouses</a></li>
+                <li>
+                  <a href="accomodation.html#madivaru">Madivaru Kro</a>
+                </li>
+                <li>
+                  <a href="accomodation.html#brickwood">Brickwood Maldives</a>
+                </li>
+                <li>
+                  <a href="accomodation.html#what-to-expect">What to Expect</a>
+                </li>
+                <li><a href="accomodation.html#faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="courses.html" class="nav-link">Courses</a>
+              <ul class="dropdown-menu">
+                <li><a href="courses.html#courses-grid">All Courses</a></li>
+                <li><a href="courses.html#courses-grid">PADI Courses</a></li>
+                <li>
+                  <a href="courses.html#course-packages">Course Packages</a>
+                </li>
+                <li><a href="courses.html#requirements">Requirements</a></li>
+                <li><a href="courses.html#book-course">Book Course</a></li>
+                <li><a href="courses.html#faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="excursions.html" class="nav-link">Excursions</a>
+              <ul class="dropdown-menu">
+                <li><a href="excursions.html">All Excursions</a></li>
+                <li>
+                  <a href="excursions.html#excursion-snorkeling">Snorkeling</a>
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-sunset">Sunset Cruise</a>
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-dolphin"
+                    >Dolphin Watching</a
+                  >
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-fish-feeding"
+                    >Fish Feeding</a
+                  >
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-picnic">Picnic Islands</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="gallery.html" class="nav-link">Gallery</a>
+              <ul class="dropdown-menu">
+                <li><a href="gallery.html">Photo Gallery</a></li>
+                <li><a href="index.html#reviews">Guest Reviews</a></li>
+                <li><a href="dive-sites.html">Dive Sites</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="safety.html" class="nav-link">Safety</a>
+              <ul class="dropdown-menu">
+                <li><a href="safety.html#safety">Safety First</a></li>
+                <li>
+                  <a href="safety.html#safety-certified">Certified Equipment</a>
+                </li>
+                <li>
+                  <a href="safety.html#safety-guides">Professional Guides</a>
+                </li>
+                <li>
+                  <a href="safety.html#safety-protocols">Safety Protocols</a>
+                </li>
+                <li><a href="safety.html#safety-vessels">Modern Vessels</a></li>
+                <li>
+                  <a href="safety.html#safety-emergency"
+                    >Emergency Procedures</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link">Contact</a>
+              <ul class="dropdown-menu">
+                <li><a href="contact.html#contact">Send a Message</a></li>
+                <li><a href="contact.html#location">Our Location</a></li>
+                <li><a href="contact.html#hours">Opening Hours</a></li>
+                <li><a href="about.html#team">Meet The Team</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="packages-main" style="margin: 0; padding: 0">
+      <!-- Hero Section -->
+      <section class="packages-hero">
+        <div class="packages-hero__background">
+          <img
+            src="images/rasdhoo-island.webp"
+            alt="Rasdhoo Island accommodation"
+          />
+        </div>
+        <div class="packages-hero__overlay"></div>
+        <div class="packages-hero__bubbles" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="container packages-hero__content">
+          <h1 class="packages-hero__title">Accommodation</h1>
+          <p class="packages-hero__subtitle">
+            Discover authentic island living at our partner accommodations in
+            Rasdhoo. Experience genuine Maldivian hospitality, from cozy
+            family-run guesthouses to boutique residences, all perfectly located
+            for your diving adventures.
+          </p>
+          <div class="packages-hero__features">
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Partner Guesthouses</span>
+            </div>
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Walking Distance to Dive Center</span>
+            </div>
+            <div class="hero-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Authentic Island Experience</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Guesthouses Showcase Section -->
+      <section id="guesthouses" class="guesthouses-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Our Partner Guesthouses</h2>
+            <p class="section-subtitle">
+              Choose from our carefully selected partner accommodations, all
+              located within walking distance of Big Blue Dive Center.
+              Experience local hospitality while enjoying convenient access to
+              all diving activities.
+            </p>
+          </div>
+
+          <div class="guesthouses-grid">
+            <!-- Madivaru Kro Guesthouse -->
+            <div class="guesthouse-card" data-guesthouse="madivaru">
+              <!-- Note: Replace placeholder images with actual guesthouse images -->
+              <div class="guesthouse-image">
+                <img src="images/kro1.webp" alt="Madivaru Kro Guest House" />
+                <div class="guesthouse-overlay">
+                  <button
+                    class="guesthouse-view-btn"
+                    onclick="openGuesthouseModal('madivaru')"
+                  >
+                    <i class="fas fa-eye"></i>
+                    <span>View Details</span>
+                  </button>
+                </div>
+              </div>
+              <div class="guesthouse-logo-container">
+                <!-- Note: Replace with actual Madivaru Kro logo image -->
+                <img
+                  src="images/kro-logo.png"
+                  alt="Madivaru Kro Logo"
+                  class="guesthouse-logo"
+                  onclick="openGuesthouseModal('madivaru')"
+                />
+              </div>
+              <div class="guesthouse-info">
+                <h3 class="guesthouse-name">Madivaru Kro</h3>
+                <p class="guesthouse-description">
+                  A cozy, family-run guesthouse offering comfortable rooms with
+                  authentic Maldivian charm. Located just minutes from the dive
+                  center.
+                </p>
+                <div class="guesthouse-features">
+                  <span class="feature-tag">
+                    <i class="fas fa-walking"></i> 3 min walk
+                  </span>
+                  <span class="feature-tag">
+                    <i class="fas fa-utensils"></i> Breakfast included
+                  </span>
+                  <span class="feature-tag">
+                    <i class="fas fa-wifi"></i> Free WiFi
+                  </span>
+                </div>
+                <button
+                  class="guesthouse-btn"
+                  onclick="openGuesthouseModal('madivaru')"
+                >
+                  Learn More
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Brickwood Guesthouse -->
+            <div class="guesthouse-card" data-guesthouse="brickwood">
+              <!-- Note: Replace placeholder images with actual guesthouse images -->
+              <div class="guesthouse-image">
+                <img
+                  src="images/brickwood-1.webp"
+                  alt="Brickwood Guest House"
+                />
+                <div class="guesthouse-overlay">
+                  <button
+                    class="guesthouse-view-btn"
+                    onclick="openGuesthouseModal('brickwood')"
+                  >
+                    <i class="fas fa-eye"></i>
+                    <span>View Details</span>
+                  </button>
+                </div>
+              </div>
+              <div class="guesthouse-logo-container">
+                <!-- Note: Replace with actual Brickwood logo image -->
+                <img
+                  src="images/brickwood-logo.png"
+                  alt="Brickwood Logo"
+                  class="guesthouse-logo"
+                  onclick="openGuesthouseModal('brickwood')"
+                />
+              </div>
+              <div class="guesthouse-info">
+                <h3 class="guesthouse-name">Brickwood Maldives</h3>
+                <p class="guesthouse-description">
+                  Discover authentic island living at our boutique property.
+                  From spacious residences to cozy deluxe rooms, experience
+                  genuine Maldivian hospitality and culture. Perfect for divers
+                  and families seeking an authentic island experience.
+                </p>
+                <div class="guesthouse-features">
+                  <span class="feature-tag">
+                    <i class="fas fa-walking"></i> 5 min walk
+                  </span>
+                  <span class="feature-tag">
+                    <i class="fas fa-utensils"></i> Driftwood Cafe
+                  </span>
+                  <span class="feature-tag">
+                    <i class="fas fa-home"></i> Boutique Residences
+                  </span>
+                </div>
+                <button
+                  class="guesthouse-btn"
+                  onclick="openGuesthouseModal('brickwood')"
+                >
+                  Learn More
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What to Expect Section -->
+      <section id="what-to-expect" class="accommodation-expect-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">What to Expect</h2>
+            <p class="section-subtitle">
+              Your stay at our partner guesthouses comes with everything you
+              need for a comfortable and memorable diving adventure.
+            </p>
+          </div>
+
+          <div class="expect-horizontal-scroll">
+            <div class="expect-card-compact">
+              <div class="expect-icon-compact">
+                <i class="fas fa-home"></i>
+              </div>
+              <h3 class="expect-title-compact">Comfortable Rooms</h3>
+              <p class="expect-description-compact">
+                Clean, well-maintained rooms with AC, comfortable beds, and
+                private bathrooms.
+              </p>
+            </div>
+
+            <div class="expect-card-compact">
+              <div class="expect-icon-compact">
+                <i class="fas fa-coffee"></i>
+              </div>
+              <h3 class="expect-title-compact">Delicious Breakfast</h3>
+              <p class="expect-description-compact">
+                Hearty breakfast with local and international options. Fresh
+                fruits and traditional dishes.
+              </p>
+            </div>
+
+            <div class="expect-card-compact">
+              <div class="expect-icon-compact">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h3 class="expect-title-compact">Prime Location</h3>
+              <p class="expect-description-compact">
+                Walking distance to Big Blue Dive Center. Easy access to dive
+                trips.
+              </p>
+            </div>
+
+            <div class="expect-card-compact">
+              <div class="expect-icon-compact">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3 class="expect-title-compact">Local Hospitality</h3>
+              <p class="expect-description-compact">
+                Authentic Maldivian hospitality from friendly local hosts with
+                local insights.
+              </p>
+            </div>
+
+            <div class="expect-card-compact">
+              <div class="expect-icon-compact">
+                <i class="fas fa-concierge-bell"></i>
+              </div>
+              <h3 class="expect-title-compact">Dive Packages</h3>
+              <p class="expect-description-compact">
+                Combine accommodation with dive packages. Special rates
+                available.
+              </p>
+            </div>
+
+            <div class="expect-card-compact">
+              <div class="expect-icon-compact">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="expect-title-compact">Secure & Safe</h3>
+              <p class="expect-description-compact">
+                High standards of safety. Safe storage for dive equipment and
+                belongings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="faq-section">
+        <div class="container">
+          <div class="faq-content">
+            <div class="faq-header">
+              <h2 class="faq-title">Frequently Asked Questions</h2>
+              <p class="faq-subtitle">
+                Everything you need to know about accommodation at Big Blue
+              </p>
+            </div>
+
+            <div class="faq-grid">
+              <!-- FAQ Item 1 -->
+              <div class="faq-item">
+                <button
+                  class="faq-question"
+                  onclick="toggleAccommodationFAQ(1)"
+                >
+                  <span class="faq-icon">
+                    <i class="fas fa-calendar-check"></i>
+                  </span>
+                  <span class="faq-question-text"
+                    >How do I book accommodation?</span
+                  >
+                  <span class="faq-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </button>
+                <div class="faq-answer" id="accommodation-faq-1">
+                  <p>
+                    You can book accommodation directly through our website when
+                    booking dive packages, or contact us via email or WhatsApp.
+                    We recommend booking in advance, especially during peak
+                    season, to ensure availability at your preferred guesthouse.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ Item 2 -->
+              <div class="faq-item">
+                <button
+                  class="faq-question"
+                  onclick="toggleAccommodationFAQ(2)"
+                >
+                  <span class="faq-icon">
+                    <i class="fas fa-bed"></i>
+                  </span>
+                  <span class="faq-question-text"
+                    >What are the room types available?</span
+                  >
+                  <span class="faq-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </button>
+                <div class="faq-answer" id="accommodation-faq-2">
+                  <p>
+                    Both guesthouses offer single, double, and twin rooms. Some
+                    rooms feature ocean views, balconies, or additional
+                    amenities. Contact us for specific room availability and to
+                    discuss which room type best suits your needs.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ Item 3 -->
+              <div class="faq-item">
+                <button
+                  class="faq-question"
+                  onclick="toggleAccommodationFAQ(3)"
+                >
+                  <span class="faq-icon">
+                    <i class="fas fa-utensils"></i>
+                  </span>
+                  <span class="faq-question-text"
+                    >Are meals included in the accommodation?</span
+                  >
+                  <span class="faq-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </button>
+                <div class="faq-answer" id="accommodation-faq-3">
+                  <p>
+                    Yes, breakfast is included with all accommodation bookings.
+                    Both guesthouses offer delicious breakfast options featuring
+                    local and international dishes. Lunch and dinner can be
+                    arranged at local restaurants or cafes on the island.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ Item 4 -->
+              <div class="faq-item">
+                <button
+                  class="faq-question"
+                  onclick="toggleAccommodationFAQ(4)"
+                >
+                  <span class="faq-icon">
+                    <i class="fas fa-route"></i>
+                  </span>
+                  <span class="faq-question-text"
+                    >How far are the guesthouses from the dive center?</span
+                  >
+                  <span class="faq-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </button>
+                <div class="faq-answer" id="accommodation-faq-4">
+                  <p>
+                    Madivaru Kro is approximately 3 minutes walking distance
+                    from Big Blue Dive Center, while Brickwood Guest House is
+                    about 5 minutes away. Both locations are very convenient for
+                    joining morning dive trips and returning between activities.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ Item 5 -->
+              <div class="faq-item">
+                <button
+                  class="faq-question"
+                  onclick="toggleAccommodationFAQ(5)"
+                >
+                  <span class="faq-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                  </span>
+                  <span class="faq-question-text"
+                    >Do you offer package deals with accommodation and
+                    diving?</span
+                  >
+                  <span class="faq-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </button>
+                <div class="faq-answer" id="accommodation-faq-5">
+                  <p>
+                    Absolutely! We offer special package rates when you book
+                    accommodation together with diving packages. These packages
+                    provide the best value and convenience. Contact us for
+                    customized package quotes based on your diving plans and
+                    length of stay.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FAQ Item 6 -->
+              <div class="faq-item">
+                <button
+                  class="faq-question"
+                  onclick="toggleAccommodationFAQ(6)"
+                >
+                  <span class="faq-icon">
+                    <i class="fas fa-wifi"></i>
+                  </span>
+                  <span class="faq-question-text"
+                    >What amenities are available at the guesthouses?</span
+                  >
+                  <span class="faq-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </button>
+                <div class="faq-answer" id="accommodation-faq-6">
+                  <p>
+                    Both guesthouses provide free WiFi, air conditioning, hot
+                    water, comfortable beds, and daily housekeeping. Some rooms
+                    feature balconies with ocean views. Equipment storage areas
+                    are available for dive gear. Check with us for specific
+                    amenities at each guesthouse.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-cta">
+              <div class="faq-cta-content">
+                <h3>Need More Information?</h3>
+                <p>
+                  Our team is here to help you plan your perfect diving
+                  vacation. Get in touch and we'll assist with all your
+                  accommodation questions!
+                </p>
+                <a href="contact.html#contact" class="faq-contact-btn">
+                  <i class="fas fa-comments"></i>
+                  <span>Contact Us</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Guesthouse Modal -->
+    <div id="guesthouse-modal" class="guesthouse-modal">
+      <div class="modal-backdrop" onclick="closeGuesthouseModal()"></div>
+      <button class="modal-close" onclick="closeGuesthouseModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-content-wrapper">
+        <div class="modal-content">
+          <div id="modal-content-body">
+            <!-- Modal content will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-column company-info">
+            <div class="company-avatar">
+              <img src="images/logo.webp" alt="Big Blue Logo" />
+            </div>
+            <h3 class="company-name">Big Blue Divers Rasdhoo</h3>
+            <div class="company-details">
+              <p>Ghaazee Magu, Rasdhoo 09020</p>
+              <p>Maldives</p>
+              <p>+960 123-4567</p>
+            </div>
+            <div class="social-icons">
+              <a
+                href="https://www.facebook.com/BigBlueDiversRasdhoo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/big_blue_divers_rasdhoo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.tiktok.com/@bigbluediversrasdhoo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="TikTok"
+              >
+                <i class="fab fa-tiktok"></i>
+              </a>
+              <a
+                href="https://wa.me/9609774604"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon"
+                aria-label="WhatsApp"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">EXPLORE</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#services">Dive Packages</a></li>
+              <li><a href="courses.html">PADI Courses</a></li>
+              <li><a href="excursions.html">Island Excursions</a></li>
+              <li><a href="index.html#location">Our Location</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">KNOW MORE</h4>
+            <ul class="footer-links">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="safety.html">Safety & Equipment</a></li>
+              <li><a href="index.html#reviews">Guest Reviews</a></li>
+              <li><a href="dive-sites.html">Dive Sites</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">ABOUT</h4>
+            <ul class="footer-links">
+              <li><a href="contact.html#contact">Contact Us</a></li>
+              <li><a href="packages.html#booking">Book Now</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="index.html#terms">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-divider"></div>
+          <div class="footer-bottom-content">
+            <p class="copyright">
+              © 2025 Big Blue Divers Rasdhoo. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
