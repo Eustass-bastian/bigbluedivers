@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Packages • Big Blue Dive Rasdhoo</title>
+    <link rel="icon" type="image/webp" href="images/logo.webp" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="style2.css" />
     <link
@@ -52,6 +53,8 @@
               <a href="packages.html" class="nav-link active">Packages</a>
               <ul class="dropdown-menu">
                 <li><a href="index.html#packages">All Packages</a></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-header">Dive Packages</li>
                 <li>
                   <a href="packages.html#packages-overview">Package Overview</a>
                 </li>
@@ -62,6 +65,20 @@
                 <li><a href="index.html#package-small-wave">Small Wave</a></li>
                 <li><a href="index.html#package-low-tide">Low Tide</a></li>
                 <li><a href="index.html#package-high-tide">High Tide</a></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-header">Courses Packages</li>
+                <li>
+                  <a href="courses.html#course-packages">All Course Packages</a>
+                </li>
+                <li>
+                  <a href="courses.html#course-packages">Open Water Diver</a>
+                </li>
+                <li>
+                  <a href="courses.html#course-packages">Advanced Open Water</a>
+                </li>
+                <li>
+                  <a href="courses.html#course-packages">Rescue Diver + EFR</a>
+                </li>
               </ul>
             </li>
             <li class="nav-item">
@@ -69,7 +86,11 @@
               <ul class="dropdown-menu">
                 <li><a href="accomodation.html">All Accomodation</a></li>
                 <li><a href="accomodation.html#guesthouses">Guesthouses</a></li>
-                <li><a href="accomodation.html#brickwood">Brickwood Guest House</a></li>
+                <li>
+                  <a href="accomodation.html#brickwood"
+                    >Brickwood Guest House</a
+                  >
+                </li>
                 <li>
                   <a href="accomodation.html#what-to-expect">What to Expect</a>
                 </li>
@@ -96,12 +117,18 @@
                 <li>
                   <a href="excursions.html#excursion-snorkeling">Snorkeling</a>
                 </li>
-                <li><a href="excursions.html#excursion-sunset">Sunset Cruise</a></li>
                 <li>
-                  <a href="excursions.html#excursion-dolphin">Dolphin Watching</a>
+                  <a href="excursions.html#excursion-sunset">Sunset Cruise</a>
                 </li>
                 <li>
-                  <a href="excursions.html#excursion-fish-feeding">Fish Feeding</a>
+                  <a href="excursions.html#excursion-dolphin"
+                    >Dolphin Watching</a
+                  >
+                </li>
+                <li>
+                  <a href="excursions.html#excursion-fish-feeding"
+                    >Fish Feeding</a
+                  >
                 </li>
                 <li>
                   <a href="excursions.html#excursion-picnic">Picnic Islands</a>
@@ -131,7 +158,9 @@
                 </li>
                 <li><a href="safety.html#safety-vessels">Modern Vessels</a></li>
                 <li>
-                  <a href="safety.html#safety-emergency">Emergency Procedures</a>
+                  <a href="safety.html#safety-emergency"
+                    >Emergency Procedures</a
+                  >
                 </li>
               </ul>
             </li>
@@ -537,45 +566,31 @@
                   </div>
                   <div class="addons-grid">
                     <div class="addon-item">
-                      <input
-                        type="checkbox"
-                        id="addon-picnic"
-                        onchange="calculateTotal()"
-                      />
+                      <input type="checkbox" id="addon-picnic" />
                       <label for="addon-picnic">
                         <span class="addon-icon"
                           ><i class="fas fa-umbrella-beach"></i
                         ></span>
                         <span class="addon-details">
                           <span class="addon-name">Picnic Island Trip</span>
-                          <span class="addon-price">+$65</span>
                         </span>
                       </label>
                     </div>
 
                     <div class="addon-item">
-                      <input
-                        type="checkbox"
-                        id="addon-snorkeling"
-                        onchange="calculateTotal()"
-                      />
+                      <input type="checkbox" id="addon-snorkeling" />
                       <label for="addon-snorkeling">
                         <span class="addon-icon"
                           ><i class="fas fa-mask"></i
                         ></span>
                         <span class="addon-details">
                           <span class="addon-name">Snorkeling Trip</span>
-                          <span class="addon-price">+$45</span>
                         </span>
                       </label>
                     </div>
 
                     <div class="addon-item">
-                      <input
-                        type="checkbox"
-                        id="addon-transfer"
-                        onchange="calculateTotal()"
-                      />
+                      <input type="checkbox" id="addon-transfer" />
                       <label for="addon-transfer">
                         <span class="addon-icon"
                           ><i class="fas fa-plane-arrival"></i
@@ -584,24 +599,18 @@
                           <span class="addon-name"
                             >Airport Transfer (2-way)</span
                           >
-                          <span class="addon-price">+$80</span>
                         </span>
                       </label>
                     </div>
 
                     <div class="addon-item">
-                      <input
-                        type="checkbox"
-                        id="addon-night"
-                        onchange="calculateTotal()"
-                      />
+                      <input type="checkbox" id="addon-night" />
                       <label for="addon-night">
                         <span class="addon-icon"
                           ><i class="fas fa-moon"></i
                         ></span>
                         <span class="addon-details">
                           <span class="addon-name">Night Dive Experience</span>
-                          <span class="addon-price">+$90</span>
                         </span>
                       </label>
                     </div>
@@ -614,7 +623,7 @@
             <div class="price-summary-card">
               <div class="summary-header">
                 <h3>Your Custom Package</h3>
-                <p>Estimated Price</p>
+                <p>Package Summary</p>
               </div>
 
               <div class="summary-breakdown">
@@ -623,7 +632,6 @@
                     <i class="fas fa-swimmer"></i>
                     <span id="summary-dives">5</span> Dives
                   </span>
-                  <span class="breakdown-value" id="dives-price">$300</span>
                 </div>
 
                 <div class="breakdown-item">
@@ -631,22 +639,13 @@
                     <i class="fas fa-bed"></i>
                     <span id="summary-nights">3</span> Nights
                   </span>
-                  <span class="breakdown-value" id="nights-price">$150</span>
                 </div>
 
                 <div class="breakdown-item" id="addons-breakdown">
                   <span class="breakdown-label">
                     <i class="fas fa-plus-circle"></i>
-                    Add-ons
+                    Add-ons Selected
                   </span>
-                  <span class="breakdown-value" id="addons-price">$0</span>
-                </div>
-
-                <div class="breakdown-divider"></div>
-
-                <div class="breakdown-total">
-                  <span class="total-label">Total Package Price</span>
-                  <span class="total-value" id="total-price">$450</span>
                 </div>
               </div>
 
@@ -672,7 +671,7 @@
 
               <p class="summary-note">
                 <i class="fas fa-info-circle"></i>
-                Final price may vary based on availability and season
+                We'll provide a personalized quote based on your selections
               </p>
             </div>
           </div>
@@ -755,12 +754,13 @@
                 <div class="timeline-time">10:00 - 11:00</div>
                 <h3 class="timeline-title">Surface Interval</h3>
                 <p class="timeline-description">
-                  Relax on the boat with refreshments, share your first dive
+                  We spend our surface interval on the island at the harbour
+                  cafe. Relax with refreshments, share your first dive
                   experience, and prepare for the second dive of the day.
                 </p>
                 <div class="timeline-features">
                   <span class="feature-tag"
-                    ><i class="fas fa-water"></i> Refreshments</span
+                    ><i class="fas fa-coffee"></i> Harbour Cafe</span
                   >
                   <span class="feature-tag"
                     ><i class="fas fa-users"></i> Rest & Chat</span
@@ -904,7 +904,20 @@
             <div class="company-details">
               <p>Ghaazee Magu, Rasdhoo 09020</p>
               <p>Maldives</p>
-              <p>+960 123-4567</p>
+              <p>
+                <a
+                  href="tel:+9609774604"
+                  style="color: inherit; text-decoration: none"
+                  >+960 977-4604</a
+                >
+              </p>
+              <p>
+                <a
+                  href="mailto:bigbluediversrasdhoo@gmail.com"
+                  style="color: inherit; text-decoration: none"
+                  >bigbluediversrasdhoo@gmail.com</a
+                >
+              </p>
             </div>
             <div class="social-icons">
               <a
@@ -950,10 +963,10 @@
           <div class="footer-column">
             <h4 class="footer-title">EXPLORE</h4>
             <ul class="footer-links">
-              <li><a href="#packages">Dive Packages</a></li>
+              <li><a href="index.html#services">Dive Packages</a></li>
               <li><a href="courses.html">PADI Courses</a></li>
               <li><a href="excursions.html">Island Excursions</a></li>
-              <li><a href="#location">Our Location</a></li>
+              <li><a href="index.html#location">Our Location</a></li>
             </ul>
           </div>
 
@@ -962,8 +975,8 @@
             <h4 class="footer-title">KNOW MORE</h4>
             <ul class="footer-links">
               <li><a href="about.html">About Us</a></li>
-              <li><a href="#safety">Safety & Equipment</a></li>
-              <li><a href="#reviews">Guest Reviews</a></li>
+              <li><a href="safety.html">Safety & Equipment</a></li>
+              <li><a href="index.html#reviews">Guest Reviews</a></li>
               <li><a href="dive-sites.html">Dive Sites</a></li>
             </ul>
           </div>
@@ -972,11 +985,40 @@
           <div class="footer-column">
             <h4 class="footer-title">ABOUT</h4>
             <ul class="footer-links">
-              <li><a href="#location">Contact Us</a></li>
-              <li><a href="#booking">Book Now</a></li>
-              <li><a href="#faq">FAQ</a></li>
-              <li><a href="#terms">Terms & Conditions</a></li>
+              <li><a href="index.html#location">Contact Us</a></li>
+              <li><a href="index.html#booking">Book Now</a></li>
+              <li><a href="index.html#faq">FAQ</a></li>
+              <li><a href="index.html#terms">Terms & Conditions</a></li>
             </ul>
+          </div>
+
+          <!-- Certified Partners Section -->
+          <div class="footer-column certified-partners">
+            <h4 class="partners-title">CERTIFIED PARTNERS</h4>
+            <div class="partners-logos">
+              <div class="partner-item">
+                <img
+                  src="images/dan.webp"
+                  alt="DAN Logo"
+                  class="partner-logo"
+                />
+              </div>
+              <div class="partner-item">
+                <img
+                  src="images/PADI-logo.webp"
+                  alt="PADI Logo"
+                  class="partner-logo"
+                />
+              </div>
+              <div class="partner-item insurance-partner">
+                <p class="insurance-text">Short Term Insurance Partner</p>
+                <img
+                  src="images/logo.webp"
+                  alt="Big Blue Logo"
+                  class="partner-logo big-blue-logo"
+                />
+              </div>
+            </div>
           </div>
         </div>
 

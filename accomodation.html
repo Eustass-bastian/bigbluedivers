@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Accomodation • Big Blue Dive Rasdhoo</title>
+    <link rel="icon" type="image/webp" href="images/logo.webp" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="style2.css" />
     <link
@@ -104,6 +105,7 @@
           description:
             "Discover Authentic Island Living at Brickwood Maldives. Experience the true essence of the Maldives at our boutique property in Rasdhoo, Ari Atoll. We offer serene and welcoming accommodations designed to help you escape the ordinary, reconnect with nature, and immerse yourself in authentic Maldivian culture. From spacious residences to cozy deluxe rooms, Brickwood provides the perfect base for your diving adventures with Big Blue.",
           features: [
+            "Beach front guest house",
             "Boutique holiday experiences in Rasdhoo",
             "Walking distance to dive center (5 minutes)",
             "Spacious residences and deluxe rooms",
@@ -222,14 +224,6 @@
             </div>
             <h1 class="modal-landing-title">${data.name}</h1>
             <p class="modal-landing-subtitle">${data.description}</p>
-            ${
-              data.website
-                ? `<a href="${data.website}" target="_blank" class="modal-landing-website">
-              <i class="fas fa-globe"></i>
-              <span>Visit Website</span>
-            </a>`
-                : ""
-            }
           </div>
 
           ${
@@ -372,16 +366,6 @@
                   <i class="fas fa-envelope"></i>
                   <span>Book Through Big Blue</span>
                 </a>
-                ${
-                  data.website
-                    ? `
-                <a href="${data.website}" target="_blank" class="modal-landing-btn modal-landing-btn-secondary">
-                  <i class="fas fa-external-link-alt"></i>
-                  <span>Visit Website</span>
-                </a>
-                `
-                    : ""
-                }
               </div>
               <p class="modal-landing-note">
                 <i class="fas fa-info-circle"></i>
@@ -798,7 +782,7 @@
                     <i class="fas fa-utensils"></i> Driftwood Cafe
                   </span>
                   <span class="feature-tag">
-                    <i class="fas fa-home"></i> Boutique Residences
+                    <i class="fas fa-umbrella-beach"></i> Beach front
                   </span>
                 </div>
                 <button
@@ -1105,6 +1089,7 @@
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-content">
+          <!-- Company Information Column -->
           <div class="footer-column company-info">
             <div class="company-avatar">
               <img src="images/logo.webp" alt="Big Blue Logo" />
@@ -1113,7 +1098,20 @@
             <div class="company-details">
               <p>Ghaazee Magu, Rasdhoo 09020</p>
               <p>Maldives</p>
-              <p>+960 123-4567</p>
+              <p>
+                <a
+                  href="tel:+9609774604"
+                  style="color: inherit; text-decoration: none"
+                  >+960 977-4604</a
+                >
+              </p>
+              <p>
+                <a
+                  href="mailto:bigbluediversrasdhoo@gmail.com"
+                  style="color: inherit; text-decoration: none"
+                  >bigbluediversrasdhoo@gmail.com</a
+                >
+              </p>
             </div>
             <div class="social-icons">
               <a
@@ -1155,6 +1153,7 @@
             </div>
           </div>
 
+          <!-- Explore Column -->
           <div class="footer-column">
             <h4 class="footer-title">EXPLORE</h4>
             <ul class="footer-links">
@@ -1165,6 +1164,7 @@
             </ul>
           </div>
 
+          <!-- Know More Column -->
           <div class="footer-column">
             <h4 class="footer-title">KNOW MORE</h4>
             <ul class="footer-links">
@@ -1175,17 +1175,48 @@
             </ul>
           </div>
 
+          <!-- About Column -->
           <div class="footer-column">
             <h4 class="footer-title">ABOUT</h4>
             <ul class="footer-links">
-              <li><a href="contact.html#contact">Contact Us</a></li>
-              <li><a href="packages.html#booking">Book Now</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li><a href="index.html#location">Contact Us</a></li>
+              <li><a href="index.html#booking">Book Now</a></li>
+              <li><a href="index.html#faq">FAQ</a></li>
               <li><a href="index.html#terms">Terms & Conditions</a></li>
             </ul>
           </div>
+
+          <!-- Certified Partners Section -->
+          <div class="footer-column certified-partners">
+            <h4 class="partners-title">CERTIFIED PARTNERS</h4>
+            <div class="partners-logos">
+              <div class="partner-item">
+                <img
+                  src="images/dan.webp"
+                  alt="DAN Logo"
+                  class="partner-logo"
+                />
+              </div>
+              <div class="partner-item">
+                <img
+                  src="images/PADI-logo.webp"
+                  alt="PADI Logo"
+                  class="partner-logo"
+                />
+              </div>
+              <div class="partner-item insurance-partner">
+                <p class="insurance-text">Short Term Insurance Partner</p>
+                <img
+                  src="images/logo.webp"
+                  alt="Big Blue Logo"
+                  class="partner-logo big-blue-logo"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
+        <!-- Footer Bottom -->
         <div class="footer-bottom">
           <div class="footer-divider"></div>
           <div class="footer-bottom-content">
