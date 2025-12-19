@@ -164,9 +164,9 @@ const diveSiteData = {
   },
 };
 
-// Function to show image-only modal
+// Function to show detailed information modal
 const showDiveSiteModal = (siteData) => {
-  console.log("Showing image modal for:", siteData.title);
+  console.log("Showing info modal for:", siteData.title);
 
   // Remove any existing modal
   const existingModal = document.getElementById("dive-modal");
@@ -174,7 +174,19 @@ const showDiveSiteModal = (siteData) => {
     existingModal.remove();
   }
 
-  // Create simple image-only modal HTML
+  // Get difficulty badge color
+  const getDifficultyColor = (difficulty) => {
+    switch(difficulty.toLowerCase()) {
+      case 'beginner': return '#10b981';
+      case 'intermediate': return '#f59e0b';
+      case 'advanced': return '#ef4444';
+      default: return '#5ebec4';
+    }
+  };
+
+  const difficultyColor = getDifficultyColor(siteData.difficulty);
+
+  // Create detailed information modal HTML
   const modalHTML = `
       <div id="dive-modal" style="
         position: fixed;
@@ -182,75 +194,404 @@ const showDiveSiteModal = (siteData) => {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.92);
-        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(20px);
         z-index: 9999;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 20px;
         box-sizing: border-box;
-        animation: modalFadeIn 0.3s ease-out;
-        cursor: zoom-out;
+        animation: modalFadeIn 0.4s ease-out;
+        overflow: hidden;
       ">
         <div id="dive-modal-content" style="
           position: relative;
-          max-width: 95vw;
-          max-height: 95vh;
-          width: auto;
-          height: auto;
-          animation: modalZoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        ">
-          <button onclick="document.getElementById('dive-modal').style.animation='modalFadeOut 0.2s ease-out';document.getElementById('dive-modal-content').style.animation='modalZoomOut 0.2s ease-out';setTimeout(()=>{document.getElementById('dive-modal').remove();document.body.style.overflow='auto';},200)" style="
+          background: #ffffff;
+          border-radius: 28px;
+          max-width: 700px;
+          width: 100%;
+          max-height: 90vh;
+          box-shadow: 
+            0 40px 100px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+          animation: modalSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+        " onclick="event.stopPropagation()">
+          
+          <!-- Close Button -->
+          <button onclick="document.getElementById('dive-modal').style.animation='modalFadeOut 0.3s ease-out';document.getElementById('dive-modal-content').style.animation='modalSlideDown 0.3s ease-out';setTimeout(()=>{document.getElementById('dive-modal').remove();document.body.style.overflow='auto';},300)" style="
             position: absolute;
-            top: -15px;
-            right: -15px;
-            background: rgba(255,255,255,0.95);
+            top: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            font-size: 28px;
+            font-size: 26px;
             cursor: pointer;
-            z-index: 10001;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            color: #1b4965;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #64748b;
             font-weight: 300;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-          " onmouseover="this.style.background='#ff4444';this.style.color='white';this.style.transform='rotate(90deg) scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.95)';this.style.color='#1b4965';this.style.transform='rotate(0deg) scale(1)'">&times;</button>
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          " onmouseover="this.style.background='linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';this.style.color='white';this.style.transform='rotate(90deg) scale(1.1)';this.style.boxShadow='0 6px 20px rgba(239, 68, 68, 0.4)'" onmouseout="this.style.background='linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%)';this.style.color='#64748b';this.style.transform='rotate(0deg) scale(1)';this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.1)'">&times;</button>
           
-          <img src="${siteData.image}" alt="${siteData.title}" style="
-            width: 100%;
-            height: 100%;
-            max-width: 90vw;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.6);
-            display: block;
-          " />
-          
+          <!-- Header Section with Modern Gradient -->
           <div style="
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.75);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #1b4965 0%, #0ea5e9 50%, #5ebec4 100%);
+            padding: 50px 36px 36px;
             color: white;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            font-family: 'Quicksand', sans-serif;
-            white-space: nowrap;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            animation: slideUpLabel 0.5s ease-out 0.2s both;
-          ">${siteData.title}</div>
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+          ">
+            <!-- Animated Background Pattern -->
+            <div style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                           radial-gradient(circle at 80% 80%, rgba(94, 190, 196, 0.15) 0%, transparent 50%);
+              opacity: 0.6;
+            "></div>
+            
+            <!-- Decorative Dots -->
+            <div style="
+              position: absolute;
+              top: 20px;
+              right: 80px;
+              width: 120px;
+              height: 120px;
+              background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+              background-size: 20px 20px;
+              opacity: 0.3;
+            "></div>
+            
+            <!-- Difficulty Badge -->
+            <div style="
+              display: inline-flex;
+              align-items: center;
+              background: rgba(255, 255, 255, 0.25);
+              backdrop-filter: blur(10px);
+              border: 2px solid rgba(255, 255, 255, 0.3);
+              color: white;
+              padding: 8px 20px;
+              border-radius: 30px;
+              font-size: 0.8rem;
+              font-weight: 700;
+              margin-bottom: 20px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+              position: relative;
+            ">
+              <i class="fas fa-award" style="margin-right: 8px; font-size: 1rem;"></i>
+              ${siteData.difficulty} Level
+            </div>
+            
+            <!-- Title -->
+            <h2 style="
+              margin: 0;
+              font-size: 2.2rem;
+              font-weight: 800;
+              line-height: 1.2;
+              font-family: 'Quicksand', sans-serif;
+              text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+              letter-spacing: -0.5px;
+              position: relative;
+            ">${siteData.title}</h2>
+          </div>
+          
+          <!-- Content Section -->
+          <div style="padding: 36px; overflow-y: auto; flex: 1; min-height: 0;">
+            
+            <!-- Description -->
+            <div style="
+              background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+              padding: 24px;
+              border-radius: 20px;
+              margin-bottom: 32px;
+              border: 2px solid #bae6fd;
+              box-shadow: 0 4px 15px rgba(14, 165, 233, 0.08);
+              position: relative;
+              overflow: hidden;
+            ">
+              <div style="
+                position: absolute;
+                top: -20px;
+                right: -20px;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, rgba(94, 190, 196, 0.1) 0%, transparent 70%);
+                border-radius: 50%;
+              "></div>
+              <div style="
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+              ">
+                <div style="
+                  width: 40px;
+                  height: 40px;
+                  background: linear-gradient(135deg, #5ebec4 0%, #0ea5e9 100%);
+                  border-radius: 12px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-right: 12px;
+                  box-shadow: 0 4px 12px rgba(94, 190, 196, 0.3);
+                ">
+                  <i class="fas fa-info-circle" style="color: white; font-size: 1.1rem;"></i>
+                </div>
+                <h3 style="
+                  margin: 0;
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: #0c4a6e;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  font-family: 'Quicksand', sans-serif;
+                ">About This Site</h3>
+              </div>
+              <p style="
+                margin: 0;
+                font-size: 1.05rem;
+                line-height: 1.8;
+                color: #1e293b;
+                font-family: 'Quicksand', sans-serif;
+                position: relative;
+              ">${siteData.description}</p>
+            </div>
+            
+            <!-- Dive Details Grid -->
+            <div style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 18px;
+              margin-bottom: 32px;
+            ">
+              <!-- Depth Card -->
+              <div style="
+                background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
+                padding: 24px;
+                border-radius: 20px;
+                box-shadow: 0 6px 20px rgba(59, 130, 246, 0.12);
+                border: 2px solid #dbeafe;
+                transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                position: relative;
+                overflow: hidden;
+              " onmouseover="this.style.transform='translateY(-6px) scale(1.02)';this.style.boxShadow='0 12px 30px rgba(59,130,246,0.2)';this.style.borderColor='#93c5fd'" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 6px 20px rgba(59,130,246,0.12)';this.style.borderColor='#dbeafe'">
+                <div style="
+                  position: absolute;
+                  top: -10px;
+                  right: -10px;
+                  width: 80px;
+                  height: 80px;
+                  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+                  border-radius: 50%;
+                "></div>
+                <div style="
+                  width: 52px;
+                  height: 52px;
+                  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+                  border-radius: 14px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-bottom: 16px;
+                  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+                ">
+                  <i class="fas fa-water" style="color: white; font-size: 22px;"></i>
+                </div>
+                <div style="
+                  font-size: 0.75rem;
+                  color: #3b82f6;
+                  margin-bottom: 6px;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  font-weight: 700;
+                ">Depth Range</div>
+                <div style="
+                  font-size: 1.3rem;
+                  font-weight: 800;
+                  color: #1e293b;
+                  font-family: 'Quicksand', sans-serif;
+                  letter-spacing: -0.3px;
+                ">${siteData.depth}</div>
+              </div>
+              
+              <!-- Marine Life Card -->
+              <div style="
+                background: linear-gradient(145deg, #ffffff 0%, #ecfdf5 100%);
+                padding: 24px;
+                border-radius: 20px;
+                box-shadow: 0 6px 20px rgba(16, 185, 129, 0.12);
+                border: 2px solid #d1fae5;
+                transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                position: relative;
+                overflow: hidden;
+              " onmouseover="this.style.transform='translateY(-6px) scale(1.02)';this.style.boxShadow='0 12px 30px rgba(16,185,129,0.2)';this.style.borderColor='#a7f3d0'" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 6px 20px rgba(16,185,129,0.12)';this.style.borderColor='#d1fae5'">
+                <div style="
+                  position: absolute;
+                  top: -10px;
+                  right: -10px;
+                  width: 80px;
+                  height: 80px;
+                  background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+                  border-radius: 50%;
+                "></div>
+                <div style="
+                  width: 52px;
+                  height: 52px;
+                  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+                  border-radius: 14px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-bottom: 16px;
+                  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+                ">
+                  <i class="fas fa-fish" style="color: white; font-size: 22px;"></i>
+                </div>
+                <div style="
+                  font-size: 0.75rem;
+                  color: #10b981;
+                  margin-bottom: 6px;
+                  text-transform: uppercase;
+                  letter-spacing: 1px;
+                  font-weight: 700;
+                ">Marine Life</div>
+                <div style="
+                  font-size: 1.1rem;
+                  font-weight: 700;
+                  color: #1e293b;
+                  font-family: 'Quicksand', sans-serif;
+                  line-height: 1.5;
+                ">${siteData.marineLife}</div>
+              </div>
+            </div>
+            
+            <!-- Features List -->
+            <div style="
+              background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+              padding: 26px;
+              border-radius: 20px;
+              margin-bottom: 28px;
+              border: 2px solid #fcd34d;
+              box-shadow: 0 6px 20px rgba(251, 191, 36, 0.15);
+              position: relative;
+              overflow: hidden;
+            ">
+              <div style="
+                position: absolute;
+                top: -30px;
+                right: -30px;
+                width: 120px;
+                height: 120px;
+                background: radial-gradient(circle, rgba(217, 119, 6, 0.1) 0%, transparent 70%);
+                border-radius: 50%;
+              "></div>
+              <div style="
+                display: flex;
+                align-items: center;
+                margin-bottom: 16px;
+              ">
+                <div style="
+                  width: 44px;
+                  height: 44px;
+                  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+                  border-radius: 12px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-right: 12px;
+                  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+                ">
+                  <i class="fas fa-check-circle" style="
+                    color: white;
+                    font-size: 1.2rem;
+                  "></i>
+                </div>
+                <h3 style="
+                  margin: 0;
+                  font-size: 1.05rem;
+                  font-weight: 800;
+                  color: #78350f;
+                  text-transform: uppercase;
+                  letter-spacing: 0.8px;
+                  font-family: 'Quicksand', sans-serif;
+                ">What to Expect</h3>
+              </div>
+              <ul style="
+                margin: 0;
+                padding-left: 0;
+                list-style: none;
+                color: #92400e;
+                font-size: 0.98rem;
+                line-height: 2;
+                font-weight: 500;
+              ">
+                <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-check" style="color: #059669; margin-right: 12px; font-size: 0.9rem; min-width: 18px;"></i>
+                  Professional dive guides included
+                </li>
+                <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-check" style="color: #059669; margin-right: 12px; font-size: 0.9rem; min-width: 18px;"></i>
+                  All necessary equipment provided
+                </li>
+                <li style="display: flex; align-items: center; margin-bottom: 8px;">
+                  <i class="fas fa-check" style="color: #059669; margin-right: 12px; font-size: 0.9rem; min-width: 18px;"></i>
+                  Safety briefing before dive
+                </li>
+                <li style="display: flex; align-items: center;">
+                  <i class="fas fa-check" style="color: #059669; margin-right: 12px; font-size: 0.9rem; min-width: 18px;"></i>
+                  Perfect for ${siteData.difficulty.toLowerCase()} level divers
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Action Button -->
+            <a href="https://wa.me/9609774604?text=Hi!%20I'm%20interested%20in%20diving%20at%20${encodeURIComponent(siteData.title)}.%20Can%20you%20provide%20more%20information?" target="_blank" rel="noopener noreferrer" style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+              color: white;
+              text-align: center;
+              padding: 18px 36px;
+              border-radius: 16px;
+              text-decoration: none;
+              font-weight: 800;
+              font-size: 1.1rem;
+              transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+              box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+              font-family: 'Quicksand', sans-serif;
+              position: relative;
+              overflow: hidden;
+              border: 2px solid rgba(255, 255, 255, 0.2);
+            " onmouseover="this.style.transform='translateY(-4px) scale(1.02)';this.style.boxShadow='0 12px 35px rgba(16,185,129,0.45)';this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 8px 25px rgba(16,185,129,0.35)';this.style.borderColor='rgba(255,255,255,0.2)'">
+              <div style="
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+                animation: pulse 2s ease-in-out infinite;
+              "></div>
+              <i class="fab fa-whatsapp" style="margin-right: 12px; font-size: 1.4rem; position: relative; z-index: 1;"></i>
+              <span style="position: relative; z-index: 1;">Book This Dive Site</span>
+            </a>
+          </div>
         </div>
       </div>
     `;
@@ -264,27 +605,27 @@ const showDiveSiteModal = (siteData) => {
   // Close on backdrop click
   const modal = document.getElementById("dive-modal");
   modal.addEventListener("click", (e) => {
-    if (e.target.id === "dive-modal" || e.target.tagName === "IMG") {
-      modal.style.animation = "modalFadeOut 0.2s ease-out";
+    if (e.target.id === "dive-modal") {
+      modal.style.animation = "modalFadeOut 0.3s ease-out";
       document.getElementById("dive-modal-content").style.animation =
-        "modalZoomOut 0.2s ease-out";
+        "modalSlideDown 0.3s ease-out";
       setTimeout(() => {
         modal.remove();
         document.body.style.overflow = "auto";
-      }, 200);
+      }, 300);
     }
   });
 
   // Close on Escape key
   const escapeHandler = (e) => {
     if (e.key === "Escape") {
-      modal.style.animation = "modalFadeOut 0.2s ease-out";
+      modal.style.animation = "modalFadeOut 0.3s ease-out";
       document.getElementById("dive-modal-content").style.animation =
-        "modalZoomOut 0.2s ease-out";
+        "modalSlideDown 0.3s ease-out";
       setTimeout(() => {
         modal.remove();
         document.body.style.overflow = "auto";
-      }, 200);
+      }, 300);
       document.removeEventListener("keydown", escapeHandler);
     }
   };
@@ -351,6 +692,17 @@ const createMobileMenu = () => {
   const navContainer = document.querySelector(".nav-container");
   const navMenu = document.querySelector(".nav-menu");
 
+  // Get all nav items once
+  const navItems = document.querySelectorAll(".nav-item");
+  
+  // Add class to nav items with dropdowns for CSS targeting
+  navItems.forEach((item) => {
+    const dropdownMenu = item.querySelector(".dropdown-menu");
+    if (dropdownMenu) {
+      item.classList.add("has-dropdown");
+    }
+  });
+
   // Create mobile menu button with hamburger animation
   const mobileMenuBtn = document.createElement("button");
   mobileMenuBtn.className = "mobile-menu-btn";
@@ -381,22 +733,112 @@ const createMobileMenu = () => {
       // Restore vertical scroll while ensuring horizontal overflow stays hidden
       document.body.style.overflowY = "auto";
       document.body.style.overflowX = "hidden";
+      
+      // Close all mobile dropdowns when closing menu
+      navItems.forEach((item) => {
+        item.classList.remove("mobile-dropdown-open");
+      });
     }
   });
 
-  // Close menu when clicking on nav links
-  const navLinks = document.querySelectorAll(".nav-link");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (isMenuOpen) {
-        navMenu.classList.remove("mobile-active");
-        mobileMenuBtn.innerHTML = "☰";
-        mobileMenuBtn.setAttribute("aria-expanded", "false");
-        document.body.style.overflowY = "auto";
-        document.body.style.overflowX = "hidden";
-        isMenuOpen = false;
-      }
-    });
+  // Handle mobile dropdown toggle and navigation
+  navItems.forEach((item) => {
+    const navLink = item.querySelector(".nav-link");
+    const dropdownMenu = item.querySelector(".dropdown-menu");
+
+    if (dropdownMenu) {
+      // Parent item with dropdown - toggle dropdown on click
+      navLink.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768 && isMenuOpen) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Toggle dropdown
+          const isOpen = item.classList.contains("mobile-dropdown-open");
+          
+          // Close all other dropdowns
+          navItems.forEach((otherItem) => {
+            if (otherItem !== item) {
+              otherItem.classList.remove("mobile-dropdown-open");
+            }
+          });
+          
+          // Toggle current dropdown
+          if (isOpen) {
+            item.classList.remove("mobile-dropdown-open");
+          } else {
+            item.classList.add("mobile-dropdown-open");
+          }
+        }
+      });
+
+      // Handle dropdown sub-items - scroll to target and close menu
+      // Add staggered animation indices to list items for smooth fade-in
+      const dropdownListItems = dropdownMenu.querySelectorAll("li");
+      dropdownListItems.forEach((listItem, index) => {
+        listItem.style.setProperty("--item-index", index);
+      });
+      
+      const dropdownLinks = dropdownMenu.querySelectorAll("a");
+      dropdownLinks.forEach((dropdownLink) => {
+        dropdownLink.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768 && isMenuOpen) {
+            const href = dropdownLink.getAttribute("href");
+            
+            // Check if it's an anchor link (same page)
+            if (href && href.startsWith("#") && href !== "#") {
+              e.preventDefault();
+              
+              // Close menu first
+              navMenu.classList.remove("mobile-active");
+              mobileMenuBtn.innerHTML = "☰";
+              mobileMenuBtn.setAttribute("aria-expanded", "false");
+              document.body.style.overflowY = "auto";
+              document.body.style.overflowX = "hidden";
+              isMenuOpen = false;
+              
+              // Extract hash from href (remove #)
+              const hash = href.substring(1);
+              const targetElement = document.querySelector(`#${hash}`);
+              
+              if (targetElement) {
+                // Small delay to let menu close
+                setTimeout(() => {
+                  const headerOffset = 80;
+                  const elementPosition = targetElement.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                  
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                  });
+                }, 100);
+              }
+            } else {
+              // External link, page link, or cross-page anchor - close menu and navigate
+              navMenu.classList.remove("mobile-active");
+              mobileMenuBtn.innerHTML = "☰";
+              mobileMenuBtn.setAttribute("aria-expanded", "false");
+              document.body.style.overflowY = "auto";
+              document.body.style.overflowX = "hidden";
+              isMenuOpen = false;
+            }
+          }
+        });
+      });
+    } else {
+      // Regular nav item without dropdown - close menu on click
+      navLink.addEventListener("click", () => {
+        if (window.innerWidth <= 768 && isMenuOpen) {
+          navMenu.classList.remove("mobile-active");
+          mobileMenuBtn.innerHTML = "☰";
+          mobileMenuBtn.setAttribute("aria-expanded", "false");
+          document.body.style.overflowY = "auto";
+          document.body.style.overflowX = "hidden";
+          isMenuOpen = false;
+        }
+      });
+    }
   });
 
   // Close menu when clicking outside
@@ -408,6 +850,11 @@ const createMobileMenu = () => {
       document.body.style.overflowY = "auto";
       document.body.style.overflowX = "hidden";
       isMenuOpen = false;
+      
+      // Close all mobile dropdowns
+      navItems.forEach((item) => {
+        item.classList.remove("mobile-dropdown-open");
+      });
     }
   });
 
@@ -420,6 +867,11 @@ const createMobileMenu = () => {
       document.body.style.overflowY = "auto";
       document.body.style.overflowX = "hidden";
       isMenuOpen = false;
+      
+      // Close all mobile dropdowns
+      navItems.forEach((item) => {
+        item.classList.remove("mobile-dropdown-open");
+      });
     }
   };
 
@@ -434,6 +886,11 @@ const createMobileMenu = () => {
       document.body.style.overflowY = "auto";
       document.body.style.overflowX = "hidden";
       isMenuOpen = false;
+      
+      // Close all mobile dropdowns
+      navItems.forEach((item) => {
+        item.classList.remove("mobile-dropdown-open");
+      });
     }
   });
 };
@@ -1099,6 +1556,39 @@ const addModalAnimations = () => {
       }
     }
     
+    @keyframes modalSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes modalSlideDown {
+      from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+      }
+    }
+    
     @keyframes modalZoomIn {
       from {
         opacity: 0;
@@ -1132,42 +1622,192 @@ const addModalAnimations = () => {
       }
     }
     
-    /* Mobile responsive image modal */
+    /* Mobile responsive for dive site modal */
     @media (max-width: 768px) {
       #dive-modal {
-        padding: 10px !important;
+        padding: 12px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
       }
       
-      #dive-modal-content button {
-        top: -10px !important;
-        right: -10px !important;
-        width: 40px !important;
-        height: 40px !important;
-        font-size: 24px !important;
+      #dive-modal-content {
+        max-width: 100% !important;
+        max-height: calc(100vh - 24px) !important;
+        margin: 0 !important;
+        border-radius: 24px !important;
+        width: 100% !important;
       }
       
-      #dive-modal-content img {
-        max-width: 100vw !important;
-        max-height: 85vh !important;
-        border-radius: 8px !important;
+      #dive-modal-content > div:first-child {
+        padding: 38px 20px 28px !important;
+      }
+      
+      #dive-modal-content > div:first-child h2 {
+        font-size: 1.6rem !important;
+        padding-right: 50px;
+        letter-spacing: -0.3px !important;
+      }
+      
+      #dive-modal-content > div:first-child > div:nth-child(3) {
+        font-size: 0.72rem !important;
+        padding: 7px 16px !important;
+        margin-bottom: 14px !important;
       }
       
       #dive-modal-content > div:last-child {
-        bottom: 10px !important;
+        padding: 24px 18px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(1) {
+        padding: 20px !important;
+        margin-bottom: 24px !important;
+        border-radius: 18px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(1) > div:first-child {
+        margin-bottom: 10px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(1) > div:first-child > div {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 10px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(1) > div:first-child > div i {
+        font-size: 1rem !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(1) h3 {
         font-size: 0.9rem !important;
-        padding: 8px 16px !important;
-        max-width: 90% !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(1) p {
+        font-size: 0.98rem !important;
+        line-height: 1.7 !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(2) {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+        margin-bottom: 24px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(2) > div {
+        padding: 20px !important;
+        border-radius: 18px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(2) > div > div:first-child {
+        width: 46px !important;
+        height: 46px !important;
+        margin-bottom: 14px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(2) > div > div:first-child i {
+        font-size: 20px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(2) > div > div:nth-child(2) {
+        font-size: 0.72rem !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(2) > div > div:nth-child(3) {
+        font-size: 1.2rem !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(3) {
+        padding: 22px !important;
+        margin-bottom: 24px !important;
+        border-radius: 18px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(3) > div:first-child {
+        margin-bottom: 14px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(3) > div:first-child > div {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(3) h3 {
+        font-size: 0.95rem !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(3) ul {
+        font-size: 0.92rem !important;
+        line-height: 1.8 !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(3) ul li {
+        margin-bottom: 6px !important;
+      }
+      
+      #dive-modal-content > div:last-child > a {
+        padding: 16px 28px !important;
+        font-size: 1.05rem !important;
+        border-radius: 14px !important;
+      }
+      
+      #dive-modal-content > div:last-child > a i {
+        font-size: 1.3rem !important;
+      }
+      
+      #dive-modal-content button {
+        top: 14px !important;
+        right: 14px !important;
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 24px !important;
+      }
+    }
+    
+    /* Small mobile phones */
+    @media (max-width: 375px) {
+      #dive-modal {
+        padding: 8px !important;
+      }
+      
+      #dive-modal-content {
+        max-height: calc(100vh - 16px) !important;
+        border-radius: 20px !important;
+      }
+      
+      #dive-modal-content > div:first-child {
+        padding: 34px 16px 24px !important;
+      }
+      
+      #dive-modal-content > div:first-child h2 {
+        font-size: 1.4rem !important;
+      }
+      
+      #dive-modal-content > div:last-child {
+        padding: 20px 14px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(1) p {
+        font-size: 0.93rem !important;
+      }
+      
+      #dive-modal-content button {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 22px !important;
       }
     }
     
     /* Tablet responsive */
     @media (max-width: 1024px) and (min-width: 769px) {
-      #dive-modal-content img {
-        max-width: 85vw !important;
-        max-height: 85vh !important;
+      #dive-modal-content {
+        max-width: 600px !important;
       }
+    }
+    
+    /* Smooth scrolling for modal content */
+    #dive-modal {
+      -webkit-overflow-scrolling: touch;
     }
   `;
   document.head.appendChild(style);
