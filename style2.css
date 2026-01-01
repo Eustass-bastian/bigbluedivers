@@ -1032,37 +1032,20 @@
 
 .dive-site-detail-card {
   background: #ffffff;
-  border-radius: 24px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 
-    0 8px 30px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(226, 232, 240, 0.5);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
   animation: fadeInUp 0.8s ease both;
   display: flex;
   flex-direction: column;
   position: relative;
   cursor: pointer;
-  border: 2px solid #f1f5f9;
+  border: 1px solid #e2e8f0;
 }
 
 .dive-site-detail-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(94, 190, 196, 0.02) 0%, rgba(14, 165, 233, 0.02) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: 24px;
-}
-
-.dive-site-detail-card:hover::before {
-  opacity: 1;
+  display: none;
 }
 
 .dive-site-detail-card:nth-child(1) {
@@ -1121,91 +1104,83 @@
 }
 
 .dive-site-detail-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 
-    0 20px 50px rgba(94, 190, 196, 0.25),
-    0 0 0 1px rgba(94, 190, 196, 0.15);
-  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e1;
 }
 
 
 .dive-site-number {
   position: absolute;
-  top: 22px;
-  left: 22px;
-  width: 52px;
-  height: 52px;
-  background: linear-gradient(135deg, #5ebec4 0%, #0ea5e9 100%);
-  border-radius: 50%;
+  top: 18px;
+  left: 18px;
+  width: 40px;
+  height: 40px;
+  background: #0ea5e9;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: #fff;
-  box-shadow: 
-    0 6px 20px rgba(94, 190, 196, 0.35),
-    0 0 0 3px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   z-index: 3;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
   font-family: 'Quicksand', sans-serif;
 }
 
 .dive-site-detail-card:hover .dive-site-number {
-  transform: scale(1.1) rotate(-5deg);
-  background: linear-gradient(135deg, #0ea5e9 0%, #5ebec4 100%);
-  box-shadow: 
-    0 10px 30px rgba(14, 165, 233, 0.45),
-    0 0 0 3px rgba(255, 255, 255, 0.95);
+  transform: scale(1.05);
+  background: #0284c7;
 }
 
 .dive-site-difficulty-badge {
   position: absolute;
-  top: 22px;
-  right: 22px;
-  padding: 9px 18px;
-  border-radius: 25px;
-  font-size: 0.7rem;
-  font-weight: 800;
+  top: 18px;
+  right: 18px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.1px;
+  letter-spacing: 0.5px;
   z-index: 3;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .dive-site-difficulty-badge.beginner {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: #10b981;
   color: #fff;
 }
 
 .dive-site-difficulty-badge.intermediate {
-  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  background: #0ea5e9;
   color: #fff;
 }
 
 .dive-site-difficulty-badge.advanced {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: #f59e0b;
   color: #fff;
 }
 
 .dive-site-detail-card:hover .dive-site-difficulty-badge {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
 }
 
 .dive-site-detail-info {
-  padding: 28px 26px 26px;
-  padding-top: 90px;
+  padding: 24px 20px 20px;
+  padding-top: 70px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 220px;
+  min-height: 260px;
   background: #ffffff;
   position: relative;
   z-index: 2;
-  border-radius: 24px;
+  border-radius: 16px;
 }
 
 .dive-site-detail-header {
@@ -1236,48 +1211,28 @@
 }
 
 .dive-site-click-indicator {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #5ebec4 0%, #0ea5e9 100%);
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #0ea5e9;
   color: white;
-  font-size: 1.2rem;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1rem;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
-    0 6px 20px rgba(94, 190, 196, 0.35),
-    0 0 0 3px #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   position: relative;
   flex-shrink: 0;
-  overflow: hidden;
 }
 
 .dive-site-click-indicator::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s ease, height 0.4s ease;
+  display: none;
 }
 
 .dive-site-detail-card:hover .dive-site-click-indicator {
-  transform: scale(1.15);
-  background: linear-gradient(135deg, #0ea5e9 0%, #5ebec4 100%);
-  box-shadow: 
-    0 10px 30px rgba(14, 165, 233, 0.45),
-    0 0 0 3px #ffffff;
-}
-
-.dive-site-detail-card:hover .dive-site-click-indicator::before {
-  width: 100%;
-  height: 100%;
+  transform: scale(1.05);
+  background: #0284c7;
 }
 
 .dive-site-click-indicator i {
@@ -1287,7 +1242,7 @@
 }
 
 .dive-site-detail-card:hover .dive-site-click-indicator i {
-  transform: translateX(4px) scale(1.1);
+  transform: translateX(2px);
 }
 
 
@@ -1319,34 +1274,71 @@
 .dive-site-detail-spec {
   display: flex;
   align-items: center;
-  padding: 12px 16px;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  border-radius: 12px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 8px;
   color: #1e293b;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border: 1px solid #e2e8f0;
 }
 
 .dive-site-detail-card:hover .dive-site-detail-spec {
-  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-  border-color: rgba(14, 165, 233, 0.2);
-  transform: translateX(3px);
+  background: #f1f5f9;
+  border-color: #cbd5e1;
 }
 
 .dive-site-detail-spec i {
   color: #0ea5e9;
-  margin-right: 12px;
-  width: 20px;
+  margin-right: 10px;
+  width: 18px;
   text-align: center;
-  font-size: 1.15rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
 }
 
 .dive-site-detail-card:hover .dive-site-detail-spec i {
   color: #0284c7;
-  transform: scale(1.15) rotate(-5deg);
+}
+
+/* Dive Site Attributes Section - Icon Only Design */
+.dive-site-attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.dive-site-attribute-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #f8fafc;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  cursor: help;
+  position: relative;
+}
+
+.dive-site-detail-card:hover .dive-site-attribute-item {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.dive-site-attribute-item i {
+  color: #0ea5e9;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.dive-site-detail-card:hover .dive-site-attribute-item i {
+  color: #0284c7;
+  transform: scale(1.1);
 }
 
 /* Responsive Design for Dive Site Details */
@@ -1461,6 +1453,22 @@
     margin-right: 10px;
   }
 
+  .dive-site-attributes {
+    gap: 8px;
+    margin-top: 8px;
+    justify-content: flex-start;
+  }
+
+  .dive-site-attribute-item {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .dive-site-attribute-item i {
+    font-size: 1rem;
+  }
+
   .dive-site-number {
     width: 48px;
     height: 48px;
@@ -1521,6 +1529,21 @@
     width: 40px;
     height: 40px;
     font-size: 1.1rem;
+  }
+
+  .dive-site-attributes {
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .dive-site-attribute-item {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .dive-site-attribute-item i {
+    font-size: 0.95rem;
   }
 }
 

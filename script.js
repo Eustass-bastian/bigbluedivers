@@ -1,166 +1,220 @@
 // Dive Site Modal Functionality - Images match card numbers (1.rasdhoo-reef.webp for card 1)
 const diveSiteData = {
   1: {
-    image: "images/1.rasdhoo-reef.webp",
+    image: "images/divesites/01.rasdhooreef.webp",
     title: "Rasdhoo Reef",
     difficulty: "Beginner",
-    description:
-      "Beautiful coral formations with abundant marine life and excellent visibility. Perfect for photographers and marine enthusiasts looking to capture the vibrant underwater ecosystem.",
+    description: "A beautiful wall on the south side of Rasdhoo island with three small Thilas which are located on the drop-off edge a bit further away from the island wall. Thilas top starts from 18 to 20 meters which is suitable for beginners to experienced divers but the current can be medium to strong. Napoleon, white-tip reef sharks and grey reef sharks can be seen here regularly. Sometimes sting rays resting on the sandy bottom between 25 to 30 meters deep between the wall and thilas. If you are lucky eagle rays, and on very lucky days mantas !! This is also a great dive spot for macro fans because so many small creatures can be found here !",
     depth: "Depth: 8-25m",
     marineLife: "Reef fish, turtles, rays",
+    distance: "5 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Kind of Channel Dive",
+    current: "Small to Medium - can be Strong",
   },
   2: {
-    image: "images/2.madivaru-channel.webp",
+    image: "images/divesites/02.madivaruchannel.webp",
     title: "Madivaru Channel",
-    difficulty: "Intermediate",
-    description:
-      "Thrilling drift dive through the channel with strong currents and pelagic encounters. Experience the rush of gliding through nutrient-rich waters teeming with marine life.",
+    difficulty: "Advanced",
+    description: "A channel with lots of small thilas between Madivaru island and Rasdhoo local island along with the Atoll drop-off edge. This dive site is possible only when current runs into the Atoll, especially reef on left shoulder which means your dive profile starts from deep to shallow where the deepest thila top starts about 25 meters. On your way, you get to see tons of fish, sharks and all kind of rays can be seen. Sometimes a bit challenging if the current picks up but its worth to try if you get the right current! Only for experienced divers with Deep Dive Training or Advanced level because of the negative entry and the depth !",
     depth: "Depth: 12-35m",
     marineLife: "Sharks, eagle rays, jacks",
+    distance: "10 Minutes from Rasdhoo",
+    level: "Deep Dive Training or Advanced Divers - NITROX highly recommended",
+    type: "Channel Dive",
+    current: "Medium to Strong – can be very strong",
   },
   3: {
-    image: "images/3.hammerhead.webp",
+    image: "images/divesites/03.hammerheadpoint.webp",
     title: "Hammerhead Point",
     difficulty: "Advanced",
-    description:
-      "Famous hammerhead shark encounters in deep blue waters with strong currents. This thrilling dive site offers unforgettable encounters with schools of hammerhead sharks.",
+    description: "Another highlight, an early morning dive to meet the famous Scalloped Hammerhead shark which can only be seen in a few places in the Maldives. A blue water dive with no reference. In otherwords, no reef or bottom where the blue plankton let you think you are flying among the stars. Even without sharks an unforgottable experience. Only for experienced divers with Deep Dive Training or Advanced level, of course good buoyancy control required! NITROX highly recommended!! Please ask inside for more information !",
     depth: "Depth: 20-40m",
     marineLife: "Hammerhead sharks, pelagics",
+    distance: "10 Minutes from Rasdhoo",
+    level: "Deep Dive Training or Advanced Divers (Good Buoyancy required) NITROX highly recommended",
+    type: "Blue water dive with no reference",
+    current: "Medium to Strong – can be very strong",
   },
   4: {
-    image: "images/4.madivaru-corner.webp",
+    image: "images/divesites/04.madivarucorner.webp",
     title: "Madivaru Corner",
     difficulty: "Intermediate",
-    description:
-      "Spectacular corner dive with dramatic drop-offs and diverse marine ecosystems. The corner creates a natural gathering point for large schools of fish and predators.",
+    description: "A highlight in the Rasdhoo Atoll for many reasons. This reef is located just in front of the island Madivaru and has some superb overhangs between 26 to 30 meters before a breathtaking drop-off. The real beauty of the dive will be when the current runs along the reef on the right shoulder and into the Atoll. Because with this current you don't have to swim much because most of the time on your dive you just hold onto some dead coral on the drop-off around 18 meters where the breathtaking show begins. Everybody can find here almost anything they are looking for, from macro to big pelagic species like grey reef sharks, white-tip reef sharks, eagle rays, napoleon wrasse, shoals of barracuda, jack fish and even giant travellis and dog-tooth tunas chasing baitfish etc. Always worth a dive. Anything is possible, however the current can be medium to very strong.",
     depth: "Depth: 10-30m",
     marineLife: "Reef sharks, barracudas",
+    distance: "10 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Kind of Channel Dive",
+    current: "Small to Medium – can be Strong",
   },
   5: {
-    image: "images/5.madivaru-reef.webp",
+    image: "images/divesites/05.madivarureef.webp",
     title: "Madivaru Reef",
     difficulty: "Beginner",
-    description:
-      "Gentle reef dive perfect for beginners with colorful corals and friendly marine life. Enjoy a relaxed dive exploring healthy coral gardens and spotting tropical reef fish.",
+    description: "This wall located on the outside reef near the island Madivaru is perfect for a nice and easy drift dive. Also a good opportunity for beginners to experienced divers with medium to strong current. Along reef, corals are growing nicely and many species of fish can be spotted. Do not forget to turn you head the blue where pleasant surprises often appear!",
     depth: "Depth: 5-20m",
     marineLife: "Reef fish, nudibranchs",
+    distance: "10 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift",
+    current: "Small to Medium – can be Strong",
   },
   6: {
-    image: "images/6.veligandu-east.webp",
+    image: "images/divesites/06.veligandueast.webp",
     title: "Veligandu East",
     difficulty: "Intermediate",
-    description:
-      "East-facing reef with excellent coral coverage and abundant fish life. This pristine reef showcases some of the healthiest coral formations in the atoll.",
+    description: "Only 15 minutes away from Kuramathi, this reef slowly goes down to 30 meters. Big coral blocks can be found between 10 and 30 meters and many of them are full with glass fishes. Very friendly turtles, sometimes eagle rays, mobulas or white-tip reef sharks can be seen swimming along the reef. But don't forget to look out for « small stuff » like nudibranches, scorpion fish or stonefish which can also inhabit these blocks. In the shallow part you will find lots of anemones with plenty of « nemos ».",
     depth: "Depth: 8-28m",
     marineLife: "Groupers, snappers, rays",
+    distance: "15 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift",
+    current: "Small to Medium – can be Strong",
   },
   7: {
-    image: "images/7.veligandu-north.webp",
+    image: "images/divesites/07.veligandunorth.webp",
     title: "Veligandu North",
     difficulty: "Intermediate",
-    description:
-      "Northern reef section with dramatic topography and large fish aggregations. The unique underwater landscape creates perfect habitat for diverse marine species.",
+    description: "This dive site offers a top reef separated by a sandy plateau between 5 to 9 meters' depth, below is a very nice steep wall dropping to around 25 to 30 meters continuing to the atoll drop-off. Along the wall you can find some overhangs from a depth of 12 to 16 meters in different areas. Sometimes these overhangs are covered by glass fishes, through the glass fishes you may find lobsters or even sting ray resting. Lots of macro stuff possible here. If you look carefully, you may find ghost pipefish and even leaf fish inside the overhangs or at the edge of the overhangs. If Madivaru is the capital of the sharks then Veligandu Noth will be the Capital of the moray eels. Please do not forget to have a look in to the blue – sharks and more !!!!",
     depth: "Depth: 10-32m",
     marineLife: "Napoleon wrasse, sharks",
+    distance: "+25 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift",
+    current: "Small to Medium – can be Strong",
   },
   8: {
-    image: "images/8.madigaa.webp",
+    image: "images/divesites/08.madigaa.webp",
     title: "Madigaa",
     difficulty: "Beginner",
-    description:
-      "Shallow reef perfect for snorkeling and beginner divers with calm conditions. An ideal spot for first-time divers and those seeking a peaceful underwater experience.",
+    description: "Inside the North Channel, in the manta season (from November to April) there is a good chance of seeing mantas on this dive. A big coral block in 14 metres, with top at 10 metres is an attraction for many species of fish. Best is to sit next to the block when mantas are around and watch them circle !",
     depth: "Depth: 3-15m",
     marineLife: "Colorful reef fish, corals",
+    distance: "+25 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Coral Block (Mostly sit on the sandy bottom next to the Coral Block)",
+    current: "Small to Medium – can be Strong",
   },
   9: {
-    image: "images/9.north-channel.webp",
+    image: "images/divesites/09.northchannel.webp",
     title: "North Channel",
     difficulty: "Advanced",
-    description:
-      "Challenging drift dive through the northern channel with strong currents. Advanced divers will love the adrenaline rush and spectacular pelagic encounters.",
+    description: "The only channel in the northern part of the Rasdhoo Atoll where 5 reef fingers are lying towards the outside reef. The tops of the five fingers-shaped thilas are 8 meters below the surface. Between each and every Thila there will be a sandy bottom around the depth of 20 to 22 meters. Each finger provides home for many fish and of course as we are in the channel, there is a very high chance of big pelagic species. Sometimes eagle rays, sharks, turtles and dog-tooth tuna are seen, especially when the current runs into the Atoll. During manta season, mantas are coming here often, especialy when plankton is present! Current can be medium to strong but suitable for beginners to experienced divers.",
     depth: "Depth: 15-40m",
     marineLife: "Manta rays, sharks, tunas",
+    distance: "+25 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Channel Dive",
+    current: "Small to Medium – can be Strong",
   },
   10: {
-    image: "images/10.north-corner.webp",
+    image: "images/divesites/10.northcorner.webp",
     title: "North Corner",
     difficulty: "Intermediate",
-    description:
-      "Corner dive with excellent coral formations and diverse marine life. This strategic location attracts both reef dwellers and passing pelagic species.",
+    description: "A very nice and easy place to dive for beginners, the reef is a steep wall and goes down to approximately 30 meters. A few coral blocks are to be seen on the reef top where lobsters have their « home sweet home ». Along the wall, small holes with nudibranches, shrimps and more. During your dive look to the blue or reef top often because, if you are lucky, it is possible to see eagle rays or manta rays and even white-tip reef sharks which often come and say hi to you !",
     depth: "Depth: 8-25m",
     marineLife: "Reef sharks, groupers",
+    distance: "+25 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift",
+    current: "Small to Medium – can be Strong",
   },
   11: {
-    image: "images/11.miyaru-faru.webp",
+    image: "images/divesites/11.miyarufaru.webp",
     title: "Miyaru Faru",
     difficulty: "Intermediate",
-    description:
-      "Spectacular reef with vibrant coral gardens and abundant marine biodiversity. A photographer's paradise with endless opportunities to capture underwater beauty.",
+    description: "Another wall dive from the atoll barrier reef, but an easy dive site on the outside of the North of the Atoll. The reef slowly goes down between 3 to 10 meters then a steep wall follows. On the bottom 30 to 40 meters, we often see white-tip reef sharks relaxing. On the reef itself you can see moray eels, lionfish and for expert eyes even scorpionfish. A nice and easy dive ! During manta season even mantas… !",
     depth: "Depth: 10-30m",
     marineLife: "Coral gardens, reef fish",
+    distance: "+35 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift",
+    current: "Small to Medium – can be Strong",
   },
   12: {
-    image: "images/12.caves.webp",
+    image: "images/divesites/12.caves.webp",
     title: "The Caves",
     difficulty: "Advanced",
-    description:
-      "Underwater cave system with dramatic rock formations and unique marine life. Explore mysterious caverns and swim-throughs adorned with soft corals and sponges.",
+    description: "The furtherest dive site in the Rasdhoo Atoll which takes about 40 minutes to get to from Rasdhoo. This beautiful wall is part of our atoll barrier reef which is connected along the very end of the Kuramathi Sandbank on the South West side. Very nice reef formation with lots of overhangs between 17 to 30 meters. If you start with the reef on your right shoulder – of course if you are Deep Dive Training or Advanced level then 30 meters swim-through will be the best to start. Even if you are a beginner you could start within your allowable depth limit and keep drifting because soon you will reach 17 to 20 meters overhang which you can go inside but do not forget to get proper buoyancy under the overhang, otherwise you may hit the ceiling or kick on the sandy bottom which may lead to poor visibility or disturb the sting rays who rest often here! Apart from these two specific overhangs, there are still so many small ones where it is possible to find baby white-tip reef sharks or nurse sharks. It's great to stay above 20 meters because very often eagle rays pass long the edge of the reef – above your head. Do have a look into the blue for a surprise !",
     depth: "Depth: 15-35m",
     marineLife: "Cave fish, lobsters",
+    distance: "40 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift, Overhangs",
+    current: "Small to Medium – can be Strong",
   },
   13: {
-    image: "images/13.bodugaa.webp",
+    image: "images/divesites/13.bodugaa.webp",
     title: "Bodugaa",
     difficulty: "Beginner",
-    description:
-      "Beautiful reef with thriving hard corals and excellent visibility for photography. Crystal clear waters make this an ideal site for underwater photography and videography.",
+    description: "Bodu Gaa means Big Stone in Dhivehi. This Bodu Gaa can be seen on the reef top just a few inches below the surface and is fully covered by multi-coloured fish. On the wall between 25-28 meters are two sandy areas where it is not rare to meet white-tip reef sharks or sting rays relaxing for the day. Around 25 – 26 meters, a couple of nice coral blocks are well-located on this sandy bottom. These blocks are full of kashmir-snappers, oriental sweet-lips, glass fishes even sting rays are possible underneath any of the coral blocks. When there is some current, eagle rays may show-up.",
     depth: "Depth: 5-25m",
     marineLife: "Coral formations, reef fish",
+    distance: "+15 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift",
+    current: "Small to Medium – can be Strong",
   },
   14: {
-    image: "images/14.three-palm.webp",
+    image: "images/divesites/14.threepalms.webp",
     title: "Three Palms",
     difficulty: "Beginner",
-    description:
-      "Named after three distinctive coral formations, offering diverse marine habitats. These iconic pinnacles serve as landmarks and hubs of marine activity.",
+    description: "A very nice wall with a reef top starting in shallow water and which can be dived at any depth. Along the dive, we encounter three big coral blocks in three different area beteen 16 – 23 meters, just like « Three Palms ». Anything is possible here, like white-tip reef sharks, sting rays and even more... ! Eagle rays also like to drift in the current along this wall. Looking down, beautiful sea fans can be seen. If you are lucky sometimes green turtle or hawksbill turtle will come and say Hello… !",
     depth: "Depth: 8-25m",
     marineLife: "Unique structures, turtles",
+    distance: "12 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift",
+    current: "Small to Medium – can be Strong",
   },
   15: {
-    image: "images/15.holhifaru.webp",
+    image: "images/divesites/15.holhifaru.webp",
     title: "Holhifaru",
     difficulty: "Intermediate",
-    description:
-      "Spectacular reef with vibrant coral gardens and diverse marine ecosystems. This site showcases the incredible biodiversity of Rasdhoo Atoll.",
+    description: "Outside of Kuramathi, we find 3 bays along the main reef of the island. Each bay is surrounded with coral blocks at different depths between 16 – 25 meters where moray eels and losters are not rare. Very often you can see sting rays resting underneath coral blocks. On the sandy bottom you can find white-tip reef sharks, in the shallow part of the bays black-tip reef sharks – do not forget to have a look to the blue for a surprise… !",
     depth: "Depth: 10-30m",
     marineLife: "Coral gardens, reef sharks",
+    distance: "5 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wall, Drift",
+    current: "Small to Medium – can be Strong",
   },
   16: {
-    image: "images/16.rashoo-channel.webp",
+    image: "images/divesites/16.rasdhoochannel.webp",
     title: "Rashoo Channel",
     difficulty: "Advanced",
-    description:
-      "Thrilling drift dive through the channel with chances to spot pelagic species. Strong currents bring nutrients and attract magnificent pelagic visitors.",
+    description: "Another great dive site for the experiened divers with Deep Dive Training or Advanced level because of the negative entry and the depth! All thilas are already well-colonised on the atoll drop-off edge at the depth between 20 to 25 meters between Kuramathi and Rasdhoo island. On the sandy bottom between the thilas, look for sting rays or white-tip reef sharks. While crossing the channel, almost anything is possible like grey reef sharks, eagle rays, napoleon, dog-tooth tunas, and many more. On some very lucky days you may see silver-tip reef sharks ! However, this dive can be done only when the current runs into the Atoll. Due to the depth NITROX highly recommended – do not forget to set your computer for NITROX !",
     depth: "Depth: 12-35m",
     marineLife: "Strong currents, eagle rays",
+    distance: "+3 Minutes from Rasdhoo",
+    level: "Deep Dive Training or Advanced Divers - NITROX highly recommended",
+    type: "Channel Dive",
+    current: "Medium to Strong – can be very strong",
   },
   17: {
-    image: "images/17.reef-explorer.webp",
+    image: "images/divesites/17.reefexplorer.webp",
     title: "Reef Explorer",
     difficulty: "Intermediate",
-    description:
-      "Artificial reef created by a sunken vessel, now home to diverse marine species. This wreck has transformed into a thriving ecosystem over the years.",
+    description: "A 30 meter fishing boat that sank in the Rasdhoo channel that lies on its side on a sandy bottom, surrounded by garden eels and shrimp in a depth of 12-16 metres. Some big groupers have been spotted here, and a few mantas occasionally patrol the area. Good buoyancy control is need to avoid kicking up sediment which ruins visibility, and take care to avoid many metal structures protruding from the wreck and in the sand. Some nice coral blocks around. Look out for the cleaner shrimp and red fire-goby in the sand around the wreck.",
     depth: "Depth: 15-30m",
     marineLife: "Wreck exploration, marine life",
+    distance: "5 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wreck Dive",
+    current: "Small to Medium – can be Strong",
   },
   18: {
-    image: "images/18.kuramthi-queen.webp",
+    image: "images/divesites/18.kuramathiqueen.webp",
     title: "Kuramthi Queen",
     difficulty: "Advanced",
-    description:
-      "Deep dive site known for large pelagic encounters and dramatic underwater landscapes. Experience the thrill of diving in the blue with massive schools of fish.",
+    description: "A well-protected area – just inside the lagoon of Kuramathi. The Kuramathi Queen sits on a sandy bottom, the top of the wreck is at 16 metres, bottom at +20 m. Great for a night dive, very spooky !",
     depth: "Depth: 20-45m",
     marineLife: "Large pelagics, sharks",
+    distance: "10 Minutes from Rasdhoo",
+    level: "Beginners or Advanced Divers",
+    type: "Wreck Dive",
+    current: "Almost nothing",
   },
 };
 
@@ -209,7 +263,7 @@ const showDiveSiteModal = (siteData) => {
           position: relative;
           background: #ffffff;
           border-radius: 28px;
-          max-width: 700px;
+          max-width: 1100px;
           width: 100%;
           max-height: 90vh;
           box-shadow: 
@@ -313,11 +367,29 @@ const showDiveSiteModal = (siteData) => {
           
           <!-- Content Section -->
           <div style="padding: 36px; overflow-y: auto; flex: 1; min-height: 0;">
+            ${siteData.image ? `
+            <!-- Dive Site Image -->
+            <div style="
+              margin-bottom: 32px;
+              border-radius: 20px;
+              overflow: hidden;
+              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+              position: relative;
+            ">
+              <img src="${siteData.image}" alt="${siteData.title}" style="
+                width: 100%;
+                height: auto;
+                display: block;
+                max-height: 450px;
+                object-fit: cover;
+              " />
+            </div>
+            ` : ''}
             
-            <!-- Description -->
+            <!-- Dive Site Attributes -->
             <div style="
               background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
-              padding: 24px;
+              padding: 28px;
               border-radius: 20px;
               margin-bottom: 32px;
               border: 2px solid #bae6fd;
@@ -334,34 +406,166 @@ const showDiveSiteModal = (siteData) => {
                 background: radial-gradient(circle, rgba(94, 190, 196, 0.1) 0%, transparent 70%);
                 border-radius: 50%;
               "></div>
-              <div style="
-                display: flex;
-                align-items: center;
-                margin-bottom: 12px;
+              <div class="dive-attributes-grid" style="
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
               ">
-                <div style="
-                  width: 40px;
-                  height: 40px;
-                  background: linear-gradient(135deg, #5ebec4 0%, #0ea5e9 100%);
-                  border-radius: 12px;
+                <!-- Distance -->
+                <div class="dive-attr-item" style="
                   display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  margin-right: 12px;
-                  box-shadow: 0 4px 12px rgba(94, 190, 196, 0.3);
+                  flex-direction: column;
                 ">
-                  <i class="fas fa-info-circle" style="color: white; font-size: 1.1rem;"></i>
+                  <div style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 8px;
+                  ">
+                    <i class="fas fa-route" style="
+                      color: #0ea5e9;
+                      font-size: 1.2rem;
+                      margin-right: 10px;
+                    "></i>
+                    <span class="dive-attr-label" style="
+                      font-size: 0.75rem;
+                      color: #0c4a6e;
+                      text-transform: uppercase;
+                      letter-spacing: 0.5px;
+                      font-weight: 700;
+                      font-family: 'Quicksand', sans-serif;
+                    ">Distance</span>
+                  </div>
+                  <span class="dive-attr-value" style="
+                    font-size: 1.05rem;
+                    color: #1e293b;
+                    font-weight: 600;
+                    font-family: 'Quicksand', sans-serif;
+                    line-height: 1.4;
+                  ">${siteData.distance}</span>
                 </div>
-                <h3 style="
-                  margin: 0;
-                  font-size: 1rem;
-                  font-weight: 700;
-                  color: #0c4a6e;
-                  text-transform: uppercase;
-                  letter-spacing: 0.5px;
-                  font-family: 'Quicksand', sans-serif;
-                ">About This Site</h3>
+                
+                <!-- Level -->
+                <div class="dive-attr-item" style="
+                  display: flex;
+                  flex-direction: column;
+                ">
+                  <div style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 8px;
+                  ">
+                    <i class="fas fa-signal" style="
+                      color: #0ea5e9;
+                      font-size: 1.2rem;
+                      margin-right: 10px;
+                    "></i>
+                    <span class="dive-attr-label" style="
+                      font-size: 0.75rem;
+                      color: #0c4a6e;
+                      text-transform: uppercase;
+                      letter-spacing: 0.5px;
+                      font-weight: 700;
+                      font-family: 'Quicksand', sans-serif;
+                    ">Level</span>
+                  </div>
+                  <span class="dive-attr-value" style="
+                    font-size: 1.05rem;
+                    color: #1e293b;
+                    font-weight: 600;
+                    font-family: 'Quicksand', sans-serif;
+                    line-height: 1.4;
+                  ">${siteData.level}</span>
+                </div>
+                
+                <!-- Type -->
+                <div class="dive-attr-item" style="
+                  display: flex;
+                  flex-direction: column;
+                ">
+                  <div style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 8px;
+                  ">
+                    <i class="fas fa-tag" style="
+                      color: #0ea5e9;
+                      font-size: 1.2rem;
+                      margin-right: 10px;
+                    "></i>
+                    <span class="dive-attr-label" style="
+                      font-size: 0.75rem;
+                      color: #0c4a6e;
+                      text-transform: uppercase;
+                      letter-spacing: 0.5px;
+                      font-weight: 700;
+                      font-family: 'Quicksand', sans-serif;
+                    ">Type</span>
+                  </div>
+                  <span class="dive-attr-value" style="
+                    font-size: 1.05rem;
+                    color: #1e293b;
+                    font-weight: 600;
+                    font-family: 'Quicksand', sans-serif;
+                    line-height: 1.4;
+                  ">${siteData.type}</span>
+                </div>
+                
+                <!-- Current -->
+                <div class="dive-attr-item" style="
+                  display: flex;
+                  flex-direction: column;
+                ">
+                  <div style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 8px;
+                  ">
+                    <i class="fas fa-water" style="
+                      color: #0ea5e9;
+                      font-size: 1.2rem;
+                      margin-right: 10px;
+                    "></i>
+                    <span class="dive-attr-label" style="
+                      font-size: 0.75rem;
+                      color: #0c4a6e;
+                      text-transform: uppercase;
+                      letter-spacing: 0.5px;
+                      font-weight: 700;
+                      font-family: 'Quicksand', sans-serif;
+                    ">Current</span>
+                  </div>
+                  <span class="dive-attr-value" style="
+                    font-size: 1.05rem;
+                    color: #1e293b;
+                    font-weight: 600;
+                    font-family: 'Quicksand', sans-serif;
+                    line-height: 1.4;
+                  ">${siteData.current}</span>
+                </div>
               </div>
+            </div>
+            
+            <!-- Dive Site Description -->
+            ${siteData.description ? `
+            <div style="
+              background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+              padding: 28px;
+              border-radius: 20px;
+              margin-bottom: 32px;
+              border: 2px solid #bae6fd;
+              box-shadow: 0 4px 15px rgba(14, 165, 233, 0.08);
+              position: relative;
+              overflow: hidden;
+            ">
+              <div style="
+                position: absolute;
+                top: -20px;
+                right: -20px;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, rgba(94, 190, 196, 0.1) 0%, transparent 70%);
+                border-radius: 50%;
+              "></div>
               <p style="
                 margin: 0;
                 font-size: 1.05rem;
@@ -371,18 +575,19 @@ const showDiveSiteModal = (siteData) => {
                 position: relative;
               ">${siteData.description}</p>
             </div>
+            ` : ''}
             
             <!-- Dive Details Grid -->
             <div style="
               display: grid;
               grid-template-columns: 1fr 1fr;
-              gap: 18px;
-              margin-bottom: 32px;
+              gap: 20px;
+              margin-bottom: 36px;
             ">
               <!-- Depth Card -->
               <div style="
                 background: linear-gradient(145deg, #ffffff 0%, #f0f9ff 100%);
-                padding: 24px;
+                padding: 28px;
                 border-radius: 20px;
                 box-shadow: 0 6px 20px rgba(59, 130, 246, 0.12);
                 border: 2px solid #dbeafe;
@@ -400,39 +605,47 @@ const showDiveSiteModal = (siteData) => {
                   border-radius: 50%;
                 "></div>
                 <div style="
-                  width: 52px;
-                  height: 52px;
-                  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-                  border-radius: 14px;
                   display: flex;
                   align-items: center;
-                  justify-content: center;
-                  margin-bottom: 16px;
-                  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+                  margin-bottom: 18px;
                 ">
-                  <i class="fas fa-water" style="color: white; font-size: 22px;"></i>
+                  <div style="
+                    width: 56px;
+                    height: 56px;
+                    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 14px;
+                    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+                  ">
+                    <i class="fas fa-water" style="color: white; font-size: 24px;"></i>
+                  </div>
+                  <div>
+                    <div style="
+                      font-size: 0.7rem;
+                      color: #3b82f6;
+                      text-transform: uppercase;
+                      letter-spacing: 1.2px;
+                      font-weight: 700;
+                      margin-bottom: 4px;
+                    ">Depth Range</div>
+                    <div style="
+                      font-size: 1.4rem;
+                      font-weight: 800;
+                      color: #1e293b;
+                      font-family: 'Quicksand', sans-serif;
+                      letter-spacing: -0.3px;
+                    ">${siteData.depth}</div>
+                  </div>
                 </div>
-                <div style="
-                  font-size: 0.75rem;
-                  color: #3b82f6;
-                  margin-bottom: 6px;
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                  font-weight: 700;
-                ">Depth Range</div>
-                <div style="
-                  font-size: 1.3rem;
-                  font-weight: 800;
-                  color: #1e293b;
-                  font-family: 'Quicksand', sans-serif;
-                  letter-spacing: -0.3px;
-                ">${siteData.depth}</div>
               </div>
               
               <!-- Marine Life Card -->
               <div style="
                 background: linear-gradient(145deg, #ffffff 0%, #ecfdf5 100%);
-                padding: 24px;
+                padding: 28px;
                 border-radius: 20px;
                 box-shadow: 0 6px 20px rgba(16, 185, 129, 0.12);
                 border: 2px solid #d1fae5;
@@ -450,147 +663,80 @@ const showDiveSiteModal = (siteData) => {
                   border-radius: 50%;
                 "></div>
                 <div style="
-                  width: 52px;
-                  height: 52px;
-                  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-                  border-radius: 14px;
                   display: flex;
                   align-items: center;
-                  justify-content: center;
-                  margin-bottom: 16px;
-                  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+                  margin-bottom: 18px;
                 ">
-                  <i class="fas fa-fish" style="color: white; font-size: 22px;"></i>
+                  <div style="
+                    width: 56px;
+                    height: 56px;
+                    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 14px;
+                    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+                  ">
+                    <i class="fas fa-fish" style="color: white; font-size: 24px;"></i>
+                  </div>
+                  <div>
+                    <div style="
+                      font-size: 0.7rem;
+                      color: #10b981;
+                      text-transform: uppercase;
+                      letter-spacing: 1.2px;
+                      font-weight: 700;
+                      margin-bottom: 4px;
+                    ">Marine Life</div>
+                    <div style="
+                      font-size: 1.15rem;
+                      font-weight: 700;
+                      color: #1e293b;
+                      font-family: 'Quicksand', sans-serif;
+                      line-height: 1.4;
+                    ">${siteData.marineLife}</div>
+                  </div>
                 </div>
-                <div style="
-                  font-size: 0.75rem;
-                  color: #10b981;
-                  margin-bottom: 6px;
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                  font-weight: 700;
-                ">Marine Life</div>
-                <div style="
-                  font-size: 1.1rem;
-                  font-weight: 700;
-                  color: #1e293b;
-                  font-family: 'Quicksand', sans-serif;
-                  line-height: 1.5;
-                ">${siteData.marineLife}</div>
               </div>
-            </div>
-            
-            <!-- Features List -->
-            <div style="
-              background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-              padding: 26px;
-              border-radius: 20px;
-              margin-bottom: 28px;
-              border: 2px solid #fcd34d;
-              box-shadow: 0 6px 20px rgba(251, 191, 36, 0.15);
-              position: relative;
-              overflow: hidden;
-            ">
-              <div style="
-                position: absolute;
-                top: -30px;
-                right: -30px;
-                width: 120px;
-                height: 120px;
-                background: radial-gradient(circle, rgba(217, 119, 6, 0.1) 0%, transparent 70%);
-                border-radius: 50%;
-              "></div>
-              <div style="
-                display: flex;
-                align-items: center;
-                margin-bottom: 16px;
-              ">
-                <div style="
-                  width: 44px;
-                  height: 44px;
-                  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-                  border-radius: 12px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  margin-right: 12px;
-                  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
-                ">
-                  <i class="fas fa-check-circle" style="
-                    color: white;
-                    font-size: 1.2rem;
-                  "></i>
-                </div>
-                <h3 style="
-                  margin: 0;
-                  font-size: 1.05rem;
-                  font-weight: 800;
-                  color: #78350f;
-                  text-transform: uppercase;
-                  letter-spacing: 0.8px;
-                  font-family: 'Quicksand', sans-serif;
-                ">What to Expect</h3>
-              </div>
-              <ul style="
-                margin: 0;
-                padding-left: 0;
-                list-style: none;
-                color: #92400e;
-                font-size: 0.98rem;
-                line-height: 2;
-                font-weight: 500;
-              ">
-                <li style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-check" style="color: #059669; margin-right: 12px; font-size: 0.9rem; min-width: 18px;"></i>
-                  Professional dive guides included
-                </li>
-                <li style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-check" style="color: #059669; margin-right: 12px; font-size: 0.9rem; min-width: 18px;"></i>
-                  All necessary equipment provided
-                </li>
-                <li style="display: flex; align-items: center; margin-bottom: 8px;">
-                  <i class="fas fa-check" style="color: #059669; margin-right: 12px; font-size: 0.9rem; min-width: 18px;"></i>
-                  Safety briefing before dive
-                </li>
-                <li style="display: flex; align-items: center;">
-                  <i class="fas fa-check" style="color: #059669; margin-right: 12px; font-size: 0.9rem; min-width: 18px;"></i>
-                  Perfect for ${siteData.difficulty.toLowerCase()} level divers
-                </li>
-              </ul>
             </div>
             
             <!-- Action Button -->
-            <a href="https://wa.me/9609774604?text=Hi!%20I'm%20interested%20in%20diving%20at%20${encodeURIComponent(siteData.title)}.%20Can%20you%20provide%20more%20information?" target="_blank" rel="noopener noreferrer" style="
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-              color: white;
-              text-align: center;
-              padding: 18px 36px;
-              border-radius: 16px;
-              text-decoration: none;
-              font-weight: 800;
-              font-size: 1.1rem;
-              transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-              box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
-              font-family: 'Quicksand', sans-serif;
-              position: relative;
-              overflow: hidden;
-              border: 2px solid rgba(255, 255, 255, 0.2);
-            " onmouseover="this.style.transform='translateY(-4px) scale(1.02)';this.style.boxShadow='0 12px 35px rgba(16,185,129,0.45)';this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 8px 25px rgba(16,185,129,0.35)';this.style.borderColor='rgba(255,255,255,0.2)'">
-              <div style="
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-                animation: pulse 2s ease-in-out infinite;
-              "></div>
-              <i class="fab fa-whatsapp" style="margin-right: 12px; font-size: 1.4rem; position: relative; z-index: 1;"></i>
-              <span style="position: relative; z-index: 1;">Book This Dive Site</span>
-            </a>
+            <div style="
+              margin-top: 8px;
+            ">
+              <a href="https://wa.me/9609774604?text=Hi!%20I'm%20interested%20in%20diving%20at%20${encodeURIComponent(siteData.title)}.%20Can%20you%20provide%20more%20information?" target="_blank" rel="noopener noreferrer" style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                color: white;
+                text-align: center;
+                padding: 20px 40px;
+                border-radius: 18px;
+                text-decoration: none;
+                font-weight: 800;
+                font-size: 1.15rem;
+                transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+                font-family: 'Quicksand', sans-serif;
+                position: relative;
+                overflow: hidden;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+              " onmouseover="this.style.transform='translateY(-4px) scale(1.02)';this.style.boxShadow='0 12px 35px rgba(16,185,129,0.45)';this.style.borderColor='rgba(255,255,255,0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 8px 25px rgba(16,185,129,0.35)';this.style.borderColor='rgba(255,255,255,0.2)'">
+                <div style="
+                  position: absolute;
+                  top: -50%;
+                  left: -50%;
+                  width: 200%;
+                  height: 200%;
+                  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+                  animation: pulse 2s ease-in-out infinite;
+                "></div>
+                <i class="fab fa-whatsapp" style="margin-right: 14px; font-size: 1.5rem; position: relative; z-index: 1;"></i>
+                <span style="position: relative; z-index: 1; letter-spacing: 0.3px;">Book This Dive Site</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -644,7 +790,7 @@ window.openDiveSite = function (siteNumber) {
   }
 };
 
-// Function to setup dive site click handlers
+// Function to setup dive site click handlers and populate attributes
 const setupDiveSiteCards = () => {
   console.log("Setting up dive site cards...");
 
@@ -661,6 +807,66 @@ const setupDiveSiteCards = () => {
   cards.forEach((card, index) => {
     const siteNumber = index + 1;
     console.log(`Setting up card ${siteNumber}`);
+
+    // Get site data
+    const siteData = diveSiteData[siteNumber];
+    if (siteData) {
+      // Find the specs container
+      const specsContainer = card.querySelector(".dive-site-detail-specs");
+      if (specsContainer) {
+        // Clear existing content
+        specsContainer.innerHTML = "";
+        
+        // Add Depth (existing)
+        const depthSpec = document.createElement("div");
+        depthSpec.className = "dive-site-detail-spec";
+        depthSpec.innerHTML = `
+          <i class="fas fa-water"></i>
+          <span>${siteData.depth}</span>
+        `;
+        specsContainer.appendChild(depthSpec);
+        
+        // Add Attributes Section (if they exist) - Compact icon-based design
+        if (siteData.distance || siteData.level || siteData.type || siteData.current) {
+          const attributesContainer = document.createElement("div");
+          attributesContainer.className = "dive-site-attributes";
+          
+          if (siteData.distance) {
+            const attrItem = document.createElement("div");
+            attrItem.className = "dive-site-attribute-item";
+            attrItem.title = `Distance: ${siteData.distance}`;
+            attrItem.innerHTML = `<i class="fas fa-route"></i>`;
+            attributesContainer.appendChild(attrItem);
+          }
+          
+          if (siteData.level) {
+            const attrItem = document.createElement("div");
+            attrItem.className = "dive-site-attribute-item";
+            attrItem.title = `Level: ${siteData.level}`;
+            attrItem.innerHTML = `<i class="fas fa-signal"></i>`;
+            attributesContainer.appendChild(attrItem);
+          }
+          
+          if (siteData.type) {
+            const attrItem = document.createElement("div");
+            attrItem.className = "dive-site-attribute-item";
+            attrItem.title = `Type: ${siteData.type}`;
+            attrItem.innerHTML = `<i class="fas fa-tag"></i>`;
+            attributesContainer.appendChild(attrItem);
+          }
+          
+          if (siteData.current) {
+            const attrItem = document.createElement("div");
+            attrItem.className = "dive-site-attribute-item";
+            attrItem.title = `Current: ${siteData.current}`;
+            attrItem.innerHTML = `<i class="fas fa-water"></i>`;
+            attributesContainer.appendChild(attrItem);
+          }
+          
+          specsContainer.appendChild(attributesContainer);
+        }
+      }
+    }
 
     // Set cursor to pointer
     card.style.cursor = "pointer";
@@ -1656,17 +1862,82 @@ const addModalAnimations = () => {
       }
       
       #dive-modal-content > div:last-child {
-        padding: 24px 18px !important;
+        padding: 28px 20px !important;
       }
       
+      /* Attributes section - first section */
       #dive-modal-content > div:last-child > div:nth-child(1) {
-        padding: 20px !important;
+        padding: 32px 24px !important;
         margin-bottom: 24px !important;
         border-radius: 18px !important;
       }
       
+      /* Reduce image size on mobile */
+      #dive-modal-content img {
+        max-height: 220px !important;
+        margin-bottom: 20px !important;
+      }
+      
+      #dive-modal-content > div:last-child > div img {
+        border-radius: 16px !important;
+      }
+      
+      .dive-attributes-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 22px !important;
+      }
+      
+      .dive-attr-item {
+        display: grid !important;
+        grid-template-columns: 140px 1fr !important;
+        column-gap: 14px !important;
+        row-gap: 8px !important;
+        min-height: auto !important;
+        width: 100% !important;
+        padding: 14px 0 !important;
+        border-bottom: 1px solid rgba(14, 165, 233, 0.15) !important;
+      }
+      
+      .dive-attr-item:last-child {
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+      }
+      
+      .dive-attr-item > div {
+        display: flex !important;
+        align-items: center !important;
+        margin-bottom: 0 !important;
+        flex-shrink: 0 !important;
+      }
+      
+      .dive-attr-item i {
+        font-size: 0.85rem !important;
+        margin-right: 8px !important;
+        flex-shrink: 0 !important;
+      }
+      
+      .dive-attr-label {
+        font-size: 0.62rem !important;
+        flex-shrink: 0 !important;
+      }
+      
+      .dive-attr-value {
+        grid-column: 2 !important;
+        font-size: 0.82rem !important;
+        line-height: 1.5 !important;
+        margin-top: 4px !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-wrap: normal !important;
+        word-break: normal !important;
+        white-space: normal !important;
+        hyphens: none !important;
+      }
+      
       #dive-modal-content > div:last-child > div:nth-child(1) > div:first-child {
-        margin-bottom: 10px !important;
+        margin-bottom: 14px !important;
       }
       
       #dive-modal-content > div:last-child > div:nth-child(1) > div:first-child > div {
@@ -1680,75 +1951,80 @@ const addModalAnimations = () => {
       }
       
       #dive-modal-content > div:last-child > div:nth-child(1) h3 {
-        font-size: 0.9rem !important;
+        font-size: 0.85rem !important;
       }
       
       #dive-modal-content > div:last-child > div:nth-child(1) p {
-        font-size: 0.98rem !important;
+        font-size: 0.88rem !important;
         line-height: 1.7 !important;
+        margin-top: 8px !important;
       }
       
-      #dive-modal-content > div:last-child > div:nth-child(2) {
+      /* Description section - second section */
+      #dive-modal-content > div:last-child > div:nth-child(2):not(.dive-attributes-grid) {
+        padding: 28px 24px !important;
+        margin-top: 20px !important;
+        margin-bottom: 24px !important;
+        border-radius: 18px !important;
+      }
+      
+      /* Depth/Marine Life Grid - third section */
+      #dive-modal-content > div:last-child > div:nth-child(3) {
         grid-template-columns: 1fr !important;
-        gap: 14px !important;
+        gap: 18px !important;
+        margin-top: 20px !important;
         margin-bottom: 24px !important;
       }
       
-      #dive-modal-content > div:last-child > div:nth-child(2) > div {
+      #dive-modal-content > div:last-child > div:nth-child(3) > div {
         padding: 20px !important;
         border-radius: 18px !important;
       }
       
-      #dive-modal-content > div:last-child > div:nth-child(2) > div > div:first-child {
+      /* Depth and Marine Life Cards - fix icon containers */
+      #dive-modal-content > div:last-child > div:nth-child(3) > div > div:first-child {
         width: 46px !important;
         height: 46px !important;
         margin-bottom: 14px !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+        margin-right: 12px !important;
       }
       
-      #dive-modal-content > div:last-child > div:nth-child(2) > div > div:first-child i {
+      #dive-modal-content > div:last-child > div:nth-child(3) > div > div:first-child i {
         font-size: 20px !important;
+        color: white !important;
       }
       
-      #dive-modal-content > div:last-child > div:nth-child(2) > div > div:nth-child(2) {
+      /* Ensure gradient backgrounds are maintained for icon containers */
+      #dive-modal-content > div:last-child > div:nth-child(3) > div:first-child > div:first-child {
+        background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%) !important;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25) !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(3) > div:last-child > div:first-child {
+        background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25) !important;
+      }
+      
+      #dive-modal-content > div:last-child > div:nth-child(3) > div > div:nth-child(2) {
         font-size: 0.72rem !important;
       }
       
-      #dive-modal-content > div:last-child > div:nth-child(2) > div > div:nth-child(3) {
-        font-size: 1.2rem !important;
-      }
-      
-      #dive-modal-content > div:last-child > div:nth-child(3) {
-        padding: 22px !important;
-        margin-bottom: 24px !important;
-        border-radius: 18px !important;
-      }
-      
-      #dive-modal-content > div:last-child > div:nth-child(3) > div:first-child {
-        margin-bottom: 14px !important;
-      }
-      
-      #dive-modal-content > div:last-child > div:nth-child(3) > div:first-child > div {
-        width: 40px !important;
-        height: 40px !important;
-      }
-      
-      #dive-modal-content > div:last-child > div:nth-child(3) h3 {
-        font-size: 0.95rem !important;
-      }
-      
-      #dive-modal-content > div:last-child > div:nth-child(3) ul {
-        font-size: 0.92rem !important;
-        line-height: 1.8 !important;
-      }
-      
-      #dive-modal-content > div:last-child > div:nth-child(3) ul li {
-        margin-bottom: 6px !important;
-      }
-      
-      #dive-modal-content > div:last-child > a {
-        padding: 16px 28px !important;
+      #dive-modal-content > div:last-child > div:nth-child(3) > div > div:nth-child(3) {
         font-size: 1.05rem !important;
+      }
+      
+      /* Button section - last element */
+      #dive-modal-content > div:last-child > a {
+        padding: 14px 24px !important;
+        font-size: 0.95rem !important;
         border-radius: 14px !important;
+        margin-top: 24px !important;
+        display: block !important;
       }
       
       #dive-modal-content > div:last-child > a i {
@@ -1787,8 +2063,35 @@ const addModalAnimations = () => {
         padding: 20px 14px !important;
       }
       
+      #dive-modal-content img {
+        max-height: 180px !important;
+        margin-bottom: 18px !important;
+      }
+      
       #dive-modal-content > div:last-child > div:nth-child(1) p {
-        font-size: 0.93rem !important;
+        font-size: 0.83rem !important;
+      }
+
+      .dive-attr-item {
+        grid-template-columns: 110px 1fr !important;
+        column-gap: 12px !important;
+        padding-bottom: 22px !important;
+      }
+      
+      .dive-attr-item > div {
+        margin-bottom: 12px !important;
+      }
+
+      .dive-attr-label {
+        font-size: 0.6rem !important;
+      }
+
+      .dive-attr-value {
+        font-size: 0.8rem !important;
+      }
+      
+      .dive-attr-item i {
+        font-size: 0.8rem !important;
       }
       
       #dive-modal-content button {
